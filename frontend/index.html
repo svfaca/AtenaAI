@@ -55,6 +55,10 @@
         .sidebar-collapsed .sidebar-text {
             display: none;
         }
+        /* Mostrar ações compactas quando colapsado */
+        .sidebar-collapsed #collapsed-actions {
+            display: flex;
+        }
         
         /* Settings Modal */
         .settings-modal {
@@ -412,11 +416,24 @@ function hideToast() {
           </button>
         </div>
 
-        <ul id="conversation-list" class="space-y-1">
+                <ul id="conversation-list" class="space-y-1 sidebar-text">
           <!-- JS injeta aqui -->
         </ul>
 
       </div>
+
+            <!-- AÇÕES COMPACTAS (visíveis apenas com sidebar colapsada) -->
+            <div id="collapsed-actions" class="hidden flex-col items-center gap-3 py-4">
+                <button id="collapsed-new" class="p-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors" title="Nova conversa">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                </button>
+                <button id="collapsed-settings" class="p-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" title="Configurações">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 4a7.95 7.95 0 00-.34-2l2.12-1.65-2-3.46-2.49 1a8.12 8.12 0 00-1.73-1l-.38-2.65h-4l-.38 2.65c-.62.26-1.2.6-1.73 1l-2.49-1-2 3.46 2.12 1.65c-.16.65-.26 1.32-.26 2s.1 1.35.26 2l-2.12 1.65 2 3.46 2.49-1c.53.4 1.11.74 1.73 1l.38 2.65h4l.38-2.65c.62-.26 1.2-.6 1.73-1l2.49 1 2-3.46-2.12-1.65c.24-.65.34-1.32.34-2z"/></svg>
+                </button>
+                <button id="collapsed-logout" class="p-2 rounded-md bg-red-600 text-white hover:bg-red-700 transition-colors" title="Sair">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1"/></svg>
+                </button>
+            </div>
 
       <!-- FOOTER -->
       <div class="p-3 border-t border-gray-200 dark:border-gray-700 space-y-2">
@@ -853,6 +870,10 @@ function initAppUI() {
 
     // 5. New Conversation
     document.getElementById('new-conversation')?.addEventListener('click', startNewConversation);
+    // Collapsed actions
+    document.getElementById('collapsed-new')?.addEventListener('click', startNewConversation);
+    document.getElementById('collapsed-settings')?.addEventListener('click', openSettings);
+    document.getElementById('collapsed-logout')?.addEventListener('click', logout);
 }
 
 // Executar quando o DOM estiver pronto
@@ -1481,24 +1502,6 @@ function startNewConversation() {
         `;
     }
     console.log("🔄 Conversa resetada. Aguardando primeira mensagem para criar no backend");
-    
-    // Adicionar mensagem inicial com avatar adequado
-    if (chatEl) {
-        const initialDiv = document.createElement('div');
-        initialDiv.className = 'flex items-start';
-        initialDiv.innerHTML = `
-            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10.5 1.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1zM4.5 3.5a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM15.5 3.5a.5.5 0 00-.707 0l-.707.707a.5.5 0 00.707.707l.707-.707a.5.5 0 000-.707zM1.5 10.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1zM18.5 10.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1zM4.5 16.5a.5.5 0 00-.707-.707l-.707.707a.5.5 0 00.707.707l.707-.707zM15.5 16.5a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM10.5 18.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1z"/>
-                    <circle cx="10" cy="10" r="3" opacity="0.8"/>
-                </svg>
-            </div>
-            <div class="message ml-3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                <p>Selecione uma conversa ou envie uma mensagem para criar uma nova.</p>
-            </div>
-        `;
-        chatEl.appendChild(initialDiv);
-    }
 }
 
 // 📋 Carregar histórico de conversas
