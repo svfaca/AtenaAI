@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem Somos - IA Acadêmica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+
+        if (
+            localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+<div class="min-h-screen flex flex-col">
+
+    <!-- HEADER (INALTERADO) -->
+    <header class="border-b border-gray-200 dark:border-gray-700 py-3 px-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <a href="index.html" class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+                IA Acadêmica
+            </a>
+            <span class="ml-2 px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">
+                Beta
+            </span>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                <svg id="light-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+                </svg>
+                <svg id="dark-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                </svg>
+            </button>
+
+            <a href="quem-somos.html" class="text-sm font-medium hover:underline">Quem somos</a>
+            
+            <!-- Opções para usuário NÃO logado -->
+            <div id="menu-not-logged" class="flex items-center space-x-3">
+                <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Entrar</a>
+                <a href="cadastro.html" class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 rounded-md text-sm font-medium">
+                    Criar Conta
+                </a>
+            </div>
+
+            <!-- Opções para usuário logado -->
+            <div id="menu-logged" class="hidden flex items-center space-x-4">
+                <a href="index.html" class="text-primary-600 hover:text-primary-700 text-sm font-medium">Voltar ao Chat</a>
+                <button id="logout-header-btn" class="text-red-600 hover:text-red-700 text-sm font-medium">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="flex-1 container mx-auto px-4 py-10 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-10 text-center">Quem Somos</h2>
+
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-700">
+
+            <div class="flex flex-col md:flex-row gap-8 mb-10">
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <div class="w-64 h-64 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden border-4 border-primary-200 dark:border-primary-800">
+                        <img src="assets/images/pic.png" alt="Sávio Emmanuel" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="w-full md:w-2/3">
+                    <h3 class="text-2xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
+                        Olá!
+                    </h3>
+                    <p class="mb-4 text-lg">
+                        Meu nome é <strong>Sávio Emmanuel</strong>, estudante de Ciência da Computação, com interesse em desenvolvimento de software, inteligência artificial e educação.
+                    </p>
+                    <p class="text-lg">
+                        Acredito que a IA deve ser uma ferramenta de apoio ao aprendizado — nunca um atalho para evitá-lo.
+                        Este projeto nasce dessa visão: unir tecnologia, ética e educação de forma responsável e transparente.
+                    </p>
+                </div>
+            </div>
+
+            <div class="space-y-10">
+
+                <section>
+                    <h3 class="text-2xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
+                        🎓 Por que este projeto existe?
+                    </h3>
+                    <div class="space-y-4 text-lg">
+                        <p>
+                            A Inteligência Artificial generativa é uma tecnologia recente e ainda em processo de adaptação,
+                            especialmente em ambientes tradicionais como o acadêmico.
+                        </p>
+                        <p>
+                            No contexto universitário, seu uso pode ser ignorado, proibido ou penalizado,
+                            dependendo da instituição, da disciplina ou da abordagem do professor.
+                        </p>
+                        <p>
+                            Muitos chatbots ultrapassam o limite entre apoiar o aprendizado e realizar o trabalho por completo,
+                            o que gera desconfiança e resistência por parte de educadores.
+                        </p>
+                        <p>
+                            Este projeto surge como uma alternativa equilibrada:
+                            uma IA educativa, ética e transparente, que respeita o papel do professor,
+                            incentiva o pensamento crítico do aluno e promove aprendizado real.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="text-2xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
+                        🧠 O que é a IA Acadêmica?
+                    </h3>
+
+                    <p class="mb-6 text-lg">
+                        Um assistente acadêmico com IA, desenvolvido para apoiar — e não substituir — o processo de aprendizagem.
+                        A proposta é oferecer auxílio responsável, adaptado a diferentes contextos educacionais.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg border">
+                            <h4 class="font-semibold text-lg mb-2">Estudantes livres</h4>
+                            <p>Acesso controlado à IA para estudos independentes e revisão de conteúdos.</p>
+                        </div>
+
+                        <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg border">
+                            <h4 class="font-semibold text-lg mb-2">Alunos de turma</h4>
+                            <p>Uso da IA como explicadora, com limites definidos pelo professor.</p>
+                        </div>
+
+                        <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg border">
+                            <h4 class="font-semibold text-lg mb-2">Professores</h4>
+                            <p>Visão de controle e acompanhamento do uso da IA no processo educacional.</p>
+                        </div>
+                    </div>
+
+                    <p class="mt-6 text-lg font-medium text-center">
+                        Aprender com autonomia, mas nunca sozinho.
+                    </p>
+                </section>
+
+                <section class="text-center bg-primary-50 dark:bg-primary-900/30 p-6 rounded-lg border">
+                    <!-- Conteúdo para usuário NÃO logado -->
+                    <div id="cta-not-logged">
+                        <h3 class="text-xl font-semibold mb-3 text-primary-700 dark:text-primary-300">
+                            Junte-se a esta ideia
+                        </h3>
+                        <p class="text-lg mb-4">
+                            Este projeto está em desenvolvimento contínuo e aberto a melhorias, sugestões e parcerias.
+                        </p>
+                        <a href="cadastro.html"
+                           class="inline-block bg-primary-600 hover:bg-primary-700 text-white py-2.5 px-6 rounded-md font-medium">
+                            Criar conta gratuita
+                        </a>
+                    </div>
+
+                    <!-- Conteúdo para usuário logado -->
+                    <div id="cta-logged" class="hidden">
+                        <h3 class="text-xl font-semibold mb-3 text-primary-700 dark:text-primary-300">
+                            Bem-vindo!
+                        </h3>
+                        <p class="text-lg mb-4">
+                            Você já faz parte da comunidade IA Acadêmica. Continue estudando e explorando!
+                        </p>
+                        <a href="index.html"
+                           class="inline-block bg-primary-600 hover:bg-primary-700 text-white py-2.5 px-6 rounded-md font-medium">
+                            Voltar ao Chat
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-200 dark:border-gray-700 py-6 px-4">
+        <div class="container mx-auto max-w-4xl text-center text-sm text-gray-500 dark:text-gray-400">
+            © 2025 IA Acadêmica — Projeto educacional e experimental.
+        </div>
+    </footer>
+</div>
+
+<script>
+    // =================== TEMA ===================
+    document.getElementById('theme-toggle').onclick = () => {
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme',
+            document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        );
+    };
+
+    // =================== AUTENTICAÇÃO ===================
+    function checkAuthStatus() {
+        const token = localStorage.getItem('access_token');
+        const menuNotLogged = document.getElementById('menu-not-logged');
+        const menuLogged = document.getElementById('menu-logged');
+        const ctaNotLogged = document.getElementById('cta-not-logged');
+        const ctaLogged = document.getElementById('cta-logged');
+
+        if (token) {
+            // Usuário logado
+            menuNotLogged.classList.add('hidden');
+            menuLogged.classList.remove('hidden');
+            ctaNotLogged.classList.add('hidden');
+            ctaLogged.classList.remove('hidden');
+
+            // Ativar logout
+            document.getElementById('logout-header-btn')?.addEventListener('click', logout);
+        } else {
+            // Usuário não logado
+            menuNotLogged.classList.remove('hidden');
+            menuLogged.classList.add('hidden');
+            ctaNotLogged.classList.remove('hidden');
+            ctaLogged.classList.add('hidden');
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem('access_token');
+        window.location.href = 'index.html';
+    }
+
+    // Executar ao carregar a página
+    checkAuthStatus();
+</script>
+</body>
+</html>
