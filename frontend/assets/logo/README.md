@@ -1,33 +1,36 @@
-# Logo do Projeto IA Acadêmica
+# Logo do Projeto AtenaAI
 
-Esta pasta está preparada para armazenar os arquivos de logo do projeto.
+Esta pasta contém todos os arquivos de logo e ícones do projeto.
 
-## Arquivos Recomendados
+## Arquivos Disponíveis
 
-### 1. Logo Principal
-- **logo.svg** - Versão vetorial (recomendado para qualidade em qualquer tamanho)
-- **logo.png** - Versão PNG de alta resolução (1024x1024px ou maior)
+### Logo Principal
+- ✅ **logo.png** - Logo completa em PNG de alta resolução
+- ✅ **logo-light.png** - Logo otimizada para tema claro  
+- ✅ **logo-light.svg** - Logo vetorial para tema claro
+- ✅ **logo-dark.png** - Logo otimizada para tema escuro
+- ✅ **logo-dark.svg** - Logo vetorial para tema escuro
 
-### 2. Variações
-- **logo-light.svg/png** - Logo otimizada para tema claro
-- **logo-dark.svg/png** - Logo otimizada para tema escuro
-- **logo-icon.svg/png** - Apenas o ícone/marca sem texto (para favicon e app icons)
+### Ícones
+- ✅ **logo-icon.png** - Ícone/marca principal em PNG (usado nos headers)
+- ✅ **logo-icon.svg** - Ícone em formato vetorial
+- ✅ **logo-icon-light.png** - Ícone para tema claro
+- ✅ **logo-icon-dark.png** - Ícone para tema escuro
 
-### 3. Favicons
-- **favicon.ico** - Ícone para navegadores (16x16, 32x32, 48x48px)
-- **favicon-16x16.png**
-- **favicon-32x32.png**
-- **apple-touch-icon.png** - 180x180px para dispositivos Apple
+### Favicons
+- ✅ **favicon.ico** - Ícone para navegadores (múltiplas resoluções)
+- ✅ **favicon.png** - Favicon em PNG
+- ✅ **favicon-16x16.png** - Favicon 16x16px
+- ✅ **favicon-32x32.png** - Favicon 32x32px
+- ✅ **apple-touch-icon.png** - Ícone 180x180px para dispositivos Apple
 
 ## Uso nos Arquivos HTML
-
-Após adicionar a logo, atualize os seguintes arquivos:
 
 ### Header (todas as páginas)
 ```html
 <a href="index.html" class="flex items-center text-2xl font-semibold text-gray-900 dark:text-gray-100">
-    <img src="assets/logo/logo.svg" alt="IA Acadêmica" class="h-8 mr-2">
-    IA Acadêmica
+    <img src="assets/logo/logo.svg" alt="AtenaAI" class="h-8 mr-2">
+    AtenaAI
 </a>
 ```
 

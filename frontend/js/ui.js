@@ -20,8 +20,41 @@ if (themeToggle) {
 
     const isDark = document.documentElement.classList.contains("dark");
     localStorage.setItem("theme", isDark ? "dark" : "light");
+    
+    // Atualizar logos conforme o tema
+    setTimeout(() => {
+      if (typeof updateAllLogos === 'function') {
+        updateAllLogos();
+      }
+    }, 0);
   });
 }
+
+  /* =====================
+     LOGO (THEME-AWARE GLOBAL)
+  ===================== */
+  // Caminho do logo conforme tema atual
+  window.getLogoPath = function () {
+    const isDark = document.documentElement.classList.contains('dark');
+    // Atenção: arquivo "ligth" está escrito assim na pasta de assets
+    return isDark
+      ? 'assets/logo/logo-icon-dark.png'
+      : 'assets/logo/logo-icon-ligth.png';
+  };
+
+  // Atualiza todos <img data-theme-logo>
+  window.updateAllLogos = function () {
+    const path = window.getLogoPath();
+    document.querySelectorAll('img[data-theme-logo]')
+      .forEach(img => { img.src = path; });
+  };
+
+  // Inicializa logos ao carregar a página
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof window.updateAllLogos === 'function') {
+      window.updateAllLogos();
+    }
+  });
 
 /* =====================
    SIDEBAR

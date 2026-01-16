@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IA Acadêmica — Chat</title>
+<title>AtenaAI — Chat</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -28,6 +28,21 @@ tailwind.config = {
     }
   }
 };
+
+// Verificar tema salvo
+if (localStorage.getItem('theme') === 'dark' || 
+    (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+} else {
+    document.documentElement.classList.remove('dark');
+}
+
+// Atualizar logos conforme o tema ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof updateAllLogos === 'function') {
+        updateAllLogos();
+    }
+});
 </script>
 
 <style>
@@ -124,8 +139,9 @@ tailwind.config = {
 
 <header class="border-b border-gray-200 dark:border-gray-700 py-3 px-4 flex justify-between items-center">
   <div class="flex items-center">
-    <a href="chat.html" class="text-xl font-semibold hover:underline">
-      IA Acadêmica
+    <a href="chat.html" class="flex items-center text-xl font-semibold hover:underline">
+      <img src="assets/logo/logo-icon-ligth.png" alt="Logo AtenaAI" class="h-9 w-9 mr-2" data-theme-logo>
+      AtenaAI
     </a>
     <span class="ml-2 px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">
       Beta
@@ -141,17 +157,14 @@ tailwind.config = {
         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
       </svg>
     </button>
-    <a href="quem_somos.html" class="text-sm font-medium hover:underline">Quem somos</a>
+    <a href="quem-somos.html" class="text-sm font-medium hover:underline">Quem somos</a>
   </div>
 </header>
 
 <div id="chat-messages" class="chat-container flex-1 overflow-y-auto p-6 space-y-6">
-  <div class="flex items-start gap-3">
-    <div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white">
-      ⚡
-    </div>
+  <div class="flex items-start">
     <div class="max-w-[75%] bg-white dark:bg-gray-800 p-4 rounded-2xl rounded-tl-sm shadow-sm">
-      <p>Olá! Sou a IA Acadêmica. Como posso ajudar nos seus estudos hoje?</p>
+      <p>Olá! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
     </div>
   </div>
 </div>

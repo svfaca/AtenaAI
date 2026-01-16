@@ -6,7 +6,11 @@ import json
 
 
 def create_user(db: Session, user: UserCreate):
-    if user.account_type != "student":
+    # Normaliza o tipo de conta para aceitar tanto "student" quanto "estudante"
+    normalized_account_type = (user.account_type or "").strip().lower()
+    if normalized_account_type in ("student", "estudante"):
+        account_type = "student"
+    else:
         raise ValueError("Tipo de conta ainda não disponível.")
     
     # Verificar se email já existe
@@ -29,7 +33,7 @@ def create_user(db: Session, user: UserCreate):
         email=user.email,
         hashed_password=hash_password(user.password),
         full_name=user.full_name,
-        account_type=user.account_type,
+        account_type=account_type,
         nickname=user.nickname,
         interests=interests_json,
         profile_image=user.profile_image,

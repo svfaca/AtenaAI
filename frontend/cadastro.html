@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Conta - IA Acadêmica</title>
+    <title>Criar Conta - AtenaAI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -39,6 +39,13 @@
         } else {
             document.documentElement.classList.remove('dark');
         }
+        
+        // Atualizar logos conforme o tema ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof updateAllLogos === 'function') {
+                updateAllLogos();
+            }
+        });
     </script>
 </head>
 <!-- TOAST -->
@@ -63,8 +70,9 @@
     <header class="border-b border-gray-200 dark:border-gray-700 py-3 px-4 flex justify-between items-center">
         <!-- Logo e Beta -->
         <div class="flex items-center">
-            <a href="index.html" class="text-2xl font-semibold block leading-tight text-gray-900 dark:text-gray-100">
-                IA Acadêmica
+            <a href="index.html" class="flex items-center text-2xl font-semibold leading-tight text-gray-900 dark:text-gray-100">
+                <img src="assets/logo/logo-icon-ligth.png" alt="Logo AtenaAI" class="h-9 w-9 mr-2" data-theme-logo>
+                AtenaAI
             </a>
             <span class="ml-2 px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">
                 Beta
@@ -288,7 +296,7 @@
                 <form id="account-type-form" class="space-y-5">
                     <div class="space-y-4">
                         <div class="relative">
-                            <input type="radio" id="account-type-student" name="account-type" value="estudante" class="hidden peer" required>
+                            <input type="radio" id="account-type-student" name="account-type" value="student" class="hidden peer" required>
                             <label for="account-type-student" class="block p-4 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-primary-50 dark:peer-checked:bg-primary-900 peer-checked:border-primary-500 dark:peer-checked:border-primary-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
                                 <div class="flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 dark:text-primary-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -328,7 +336,7 @@
                                     </svg>
                                     <div>
                                         <h3 class="font-medium">Aluno</h3>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">Conta vinculada a uma turma. A conta e a IA Acadêmica são moderadas pelo professor</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Conta vinculada a uma turma. A conta e a AtenaAI são moderadas pelo professor</p>
                                     </div>
                                 </div>
                             </label>
