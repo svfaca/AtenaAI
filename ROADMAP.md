@@ -2,7 +2,16 @@
 
 ## 🎯 Visão Geral
 
-Transformar a AtenaAI de um assistente individual para uma plataforma educacional completa, conectando professores, instituições e alunos em um ecossistema inteligente de aprendizado.
+Transformar a AtenaAI de um assistente para estudantes independentes para uma plataforma educacional completa, conectando professores, instituições e alunos (em turmas) em um ecossistema inteligente de aprendizado.
+
+---
+
+## 📌 Terminologia
+
+- **📚 Estudante**: Usuário independente que estuda sozinho, interage privativamente com a IA
+- **🎓 Aluno**: Usuário matriculado em uma turma, faz parte de uma comunidade de aprendizado com colegas, professores e IA
+- **👨‍🏫 Professor**: Gerencia turmas, recebe feedbacks personalizados sobre alunos, customiza a IA
+- **🏫 Instituição**: Gerencia múltiplos professores, turmas e alunos em um nível centralizado
 
 ---
 
@@ -17,7 +26,7 @@ Transformar a AtenaAI de um assistente individual para uma plataforma educaciona
 - [ ] Visualização de lista de alunos por turma
 - [ ] Configuração de objetivos pedagógicos por turma
 
-#### 🎓 Modo Aluno em Sala
+#### 🎓 Modo Aluno (Matriculado em Turma)
 - [ ] Acesso mediante convite (professor/instituição)
 - [ ] Perfil de aluno vinculado a turmas
 - [ ] Visualização de turmas matriculadas
@@ -164,17 +173,19 @@ Transformar a AtenaAI de um assistente individual para uma plataforma educaciona
 
 ### Até V2.0
 - 100+ professores ativos
-- 1000+ alunos cadastrados
+- 1000+ alunos cadastrados (matriculados em turmas)
 - 50+ turmas criadas
+- 10000+ estudantes independentes usando modo estudante
 
 ### Até V3.0
 - 10+ instituições parceiras
-- 5000+ alunos ativos
+- 5000+ alunos em turmas ativos
+- 50000+ estudantes independentes
 - 95%+ uptime
 
 ### Até V4.0
 - 50+ instituições
-- 50000+ usuários totais
+- 100000+ usuários totais (alunos + estudantes)
 - App com nota 4.5+ nas lojas
 
 ---

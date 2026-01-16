@@ -2,7 +2,7 @@
 
 AtenaAI é uma plataforma de assistente educacional inteligente, projetada para auxiliar estudantes em seus estudos através de inteligência artificial. O projeto oferece uma interface moderna e intuitiva com suporte a temas claro/escuro, chat em tempo real e gerenciamento de conversas.
 
-> 🚀 **Visão Futura**: Expandir para uma plataforma educacional completa conectando professores, instituições e alunos através de salas de aula virtuais, feedbacks personalizados por IA e gestão inteligente de turmas.
+> 🚀 **Visão Futura**: Expandir para uma plataforma educacional completa conectando professores, instituições e alunos (matriculados em turmas) através de salas de aula virtuais, feedbacks personalizados por IA e gestão inteligente de turmas.
 
 ## ✨ Features
 
@@ -117,18 +117,18 @@ npx serve frontend
 
 ## 📖 Como Usar
 
-### Atualmente Disponível
-1. **Cadastro**: Crie uma conta como estudante ou professor
+### Atualmente Disponível - Modo Estudante
+1. **Cadastro**: Crie uma conta como estudante independente
 2. **Login**: Acesse com suas credenciais
-3. **Chat**: Comece a conversar com a AtenaAI
+3. **Chat**: Converse com a AtenaAI de forma privada e pessoal
 4. **Conversas**: Gerencie suas conversas no painel lateral
 5. **Configurações**: Personalize suas áreas de interesse
 
-### Em Desenvolvimento
+### Em Desenvolvimento - Modo Aluno (Turmas)
 - Sistema de turmas e salas de aula virtuais
 - Chat colaborativo entre alunos e professores
 - Feedbacks personalizados da IA para professores
-- Convites e acesso controlado para estudantes
+- Convites e acesso controlado para alunos
 
 ## 🎨 Temas
 
@@ -168,7 +168,7 @@ A AtenaAI oferece suporte completo a tema claro e escuro:
 - **Gestão de Turmas**: Criar e gerenciar turmas de alunos
 - **Feedbacks Personalizados**: Receber análises e insights da IA sobre o desempenho individual de cada aluno
 - **Prompt Customizável**: Regular o comportamento da IA de acordo com objetivos pedagógicos específicos
-- **Acompanhamento**: Dashboard com métricas de progresso e engajamento dos estudantes
+- **Acompanhamento**: Dashboard com métricas de progresso e engajamento dos alunos
 - **Materiais**: Compartilhar recursos e conteúdos educacionais com as turmas
 
 ### 🏫 Modo Instituição
@@ -177,7 +177,7 @@ A AtenaAI oferece suporte completo a tema claro e escuro:
 - **Customização da IA**: Ajustar o comportamento da IA de acordo com a metodologia da instituição
 - **Integrações**: Conectar com sistemas acadêmicos existentes
 
-### 🎓 Modo Aluno Aprimorado
+### 👨‍🎓 Modo Aluno (em Turmas)
 - **Acesso Controlado**: Contas de aluno disponíveis apenas mediante convite de professor ou instituição
 - **Salas de Aula Virtuais**: 
   - 💬 **Chat Geral**: Espaço colaborativo com colegas, professores e IA
@@ -185,6 +185,13 @@ A AtenaAI oferece suporte completo a tema claro e escuro:
   - 👥 **Grupos de Estudo**: Criar grupos de discussão com colegas
 - **Perfil Acadêmico**: Histórico de progresso, conquistas e áreas de melhoria
 - **Notificações**: Alertas de tarefas, feedbacks do professor e mensagens da turma
+
+### 🎓 Modo Estudante (Atual)
+- ✅ Chat privado e independente com a IA
+- ✅ Gerenciamento pessoal de conversas
+- ✅ Personalização de áreas de interesse
+- ✅ Tema claro/escuro
+- Suporte contínuo e melhorias
 
 ### 🆕 Novas Funcionalidades
 - 📊 **Sistema de Avaliações**: Questionários e exercícios com correção automática
