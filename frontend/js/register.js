@@ -122,7 +122,7 @@ interestsForm.addEventListener("submit", async (e) => {
         email,
         password,
         full_name: fullName,
-        account_type: "student",
+        account_type: "estudante",
         nickname,
         interests,
         profile_image: profileImageBase64,
@@ -383,7 +383,7 @@ emailInput?.addEventListener("blur", async () => {
             return;
         }
 
-        if (accountType.value !== "student") {
+        if (accountType.value !== "estudante") {
             showToast({
                 title: "Em desenvolvimento",
                 message: "Apenas contas de estudante estão disponíveis."
