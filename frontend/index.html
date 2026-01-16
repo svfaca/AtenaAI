@@ -391,8 +391,8 @@ function hideToast() {
         </div>
 
         <div class="sidebar-text flex-1">
-          <p id="user-name" class="font-semibold">Minha Conta</p>
-          <p id="user-role" class="text-sm text-gray-500">Aluno</p>
+          <p id="user-name" class="font-semibold">Carregando...</p>
+          <p id="user-role" class="text-sm text-gray-500">Estudante</p>
         </div>
 
         <button id="sidebar-toggle"
@@ -739,7 +739,7 @@ async function fetchUserData() {
             
             updateAvatar();
             const userNameEl = document.getElementById('user-name');
-            if (userNameEl) userNameEl.textContent = userData.name || 'Minha Conta';
+            if (userNameEl) userNameEl.textContent = userData.nickname || userData.name || 'Usuário';
             
             const userRoleEl = document.getElementById('user-role');
             if (userRoleEl) {
@@ -1232,7 +1232,7 @@ function openSettings() {
     // Selecionar tipo de conta
     const accountTypeSelect = document.getElementById('setting-account-type');
     console.log('Tipo de conta do usuário:', userData.account_type);
-    accountTypeSelect.value = userData.account_type || 'aluno';
+    accountTypeSelect.value = userData.account_type || 'estudante';
     
     // Desmarcar todos os checkboxes de interesses primeiro
     document.querySelectorAll('.interest-checkbox').forEach(cb => {
@@ -1352,8 +1352,8 @@ settingsForm?.addEventListener('submit', async (e) => {
             
             // Atualizar avatar e nome na sidebar
             updateAvatar();
-            document.getElementById('user-name').textContent = userData.name || 'Minha Conta';
-            document.getElementById('user-role').textContent = userData.account_type ? userData.account_type.charAt(0).toUpperCase() + userData.account_type.slice(1) : 'Aluno';
+            document.getElementById('user-name').textContent = userData.nickname || userData.name || 'Usuário';
+            document.getElementById('user-role').textContent = userData.account_type ? userData.account_type.charAt(0).toUpperCase() + userData.account_type.slice(1) : 'Estudante';
             
             // Fechar modal
             closeSettings();
