@@ -1,0 +1,97 @@
+{
+  "common": {
+    "appName": "AtenaAI",
+    "language": "English",
+    "themeLight": "Light",
+    "themeDark": "Dark"
+  },
+  "navigation": {
+    "chat": "Chat",
+    "about": "About Us",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Sign Up"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "name": "Full Name",
+    "accountType": "Account Type",
+    "student": "Student",
+    "teacher": "Teacher",
+    "loginButton": "Login",
+    "registerButton": "Create Account",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "passwordMismatch": "Passwords do not match",
+    "signupError": "Error creating account",
+    "loginError": "Login error"
+  },
+  "chat": {
+    "newChat": "+ New",
+    "newConversation": "New conversation",
+    "sendMessage": "Send a message...",
+    "typing": "Typing...",
+    "conversations": "Conversations",
+    "deleteConfirm": "Delete conversation",
+    "deleteMessage": "This action cannot be undone. Do you want to continue?",
+    "deleteSuccess": "Conversation deleted",
+    "copyConversation": "Copy conversation",
+    "renameConversation": "Rename conversation",
+    "myInterests": "My Areas of Interest"
+  },
+  "interests": {
+    "math": "Mathematics",
+    "statistics": "Statistics",
+    "physics": "Physics",
+    "chemistry": "Chemistry",
+    "programming": "Programming",
+    "engineering": "Engineering",
+    "biology": "Biology",
+    "health": "Health",
+    "anatomy": "Anatomy",
+    "physicalEducation": "Physical Education",
+    "history": "History",
+    "geography": "Geography",
+    "philosophy": "Philosophy",
+    "sociology": "Sociology",
+    "psychology": "Psychology",
+    "literature": "Literature",
+    "languages": "Languages",
+    "writing": "Writing",
+    "law": "Law",
+    "economics": "Economics"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "preferences": "Preferences",
+    "save": "Save",
+    "cancel": "Cancel",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "updateSuccess": "Settings updated successfully"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "AtenaAI is an intelligent educational platform",
+    "mission": "Our Mission",
+    "vision": "Our Vision",
+    "backToChat": "Back to Chat"
+  },
+  "errors": {
+    "unauthorized": "Unauthorized",
+    "notFound": "Not found",
+    "serverError": "Server error",
+    "networkError": "Connection error",
+    "required": "This field is required"
+  },
+  "messages": {
+    "welcome": "Hello! I'm AtenaAI. How can I help you with your studies today?",
+    "loading": "Loading...",
+    "noResults": "No results found"
+  }
+}

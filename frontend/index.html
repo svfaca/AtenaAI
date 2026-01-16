@@ -13,6 +13,9 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- i18n -->
+    <script src="js/i18n.js"></script>
 
     <script>
         tailwind.config = {
@@ -431,9 +434,9 @@ function hideToast() {
       <div class="flex-1 overflow-y-auto p-3 space-y-3">
 
         <div class="flex items-center justify-between sidebar-text">
-          <p class="text-xs uppercase text-gray-500">Conversas</p>
+          <p data-i18n="chat.conversations" class="text-xs uppercase text-gray-500">Conversas</p>
           <button id="new-conversation"
-            class="text-xs text-blue-600 hover:text-blue-700 font-medium transition-colors">
+            class="text-xs text-blue-600 hover:text-blue-700 font-medium transition-colors" data-i18n="chat.newChat">
             + Novo
           </button>
         </div>
@@ -459,11 +462,12 @@ function hideToast() {
 
       <!-- FOOTER -->
       <div class="p-3 border-t border-gray-200 dark:border-gray-700 space-y-2">
-        <button id="settings-btn" class="w-full text-left text-sm hover:underline sidebar-text">
+        <button id="settings-btn" data-i18n="navigation.settings" class="w-full text-left text-sm hover:underline sidebar-text">
           Configurações
         </button>
 
         <button id="logout-btn"
+          data-i18n="navigation.logout"
           class="w-full text-left text-sm text-red-500 hover:underline sidebar-text">
           Sair
         </button>
@@ -491,18 +495,33 @@ function hideToast() {
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
                     </svg>
                 </button>
+
+                <!-- Language Selector -->
+                <div class="relative group">
+                    <button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium">
+                        🌐
+                    </button>
+                    <div class="absolute right-0 mt-2 w-32 bg-white dark:bg-gray-800 rounded-lg shadow-lg hidden group-hover:block z-50">
+                        <button onclick="setLanguage('pt-BR')" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg text-sm">
+                            Português 🇧🇷
+                        </button>
+                        <button onclick="setLanguage('en-US')" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-b-lg text-sm">
+                            English 🇺🇸
+                        </button>
+                    </div>
+                </div>
                 
                 <!-- Menu não logado -->
                 <div id="menu-not-logged" class="items-center space-x-4">
-                    <a href="quem-somos.html" class="text-sm font-medium hover:underline">Quem somos</a>
-                    <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Entrar</a>
-                    <a href="cadastro.html" class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 rounded-md text-sm font-medium">Criar Conta</a>
+                    <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline">Quem somos</a>
+                    <a href="login.html" data-i18n="navigation.login" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Entrar</a>
+                    <a href="cadastro.html" data-i18n="navigation.register" class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 rounded-md text-sm font-medium">Criar Conta</a>
                 </div>
                 
                 <!-- Menu logado -->
                 <div id="menu-logged" class="hidden flex items-center space-x-4">
-                    <a href="quem-somos.html" class="text-sm font-medium hover:underline">Quem somos</a>
-                    <button id="logout-header" class="text-red-600 hover:text-red-700 text-sm font-medium">Sair</button>
+                    <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline">Quem somos</a>
+                    <button id="logout-header" data-i18n="navigation.logout" class="text-red-600 hover:text-red-700 text-sm font-medium">Sair</button>
                 </div>
             </div>
         </header>
@@ -512,7 +531,7 @@ function hideToast() {
             <div id="chat-messages" class="chat-container flex-1 overflow-y-auto p-4 space-y-6">
                 <div class="flex items-start">
                     <div class="message bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                        <p>Olá! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
+                        <p data-i18n="messages.welcome">Olá! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
                     </div>
                 </div>
             </div>
@@ -523,6 +542,7 @@ function hideToast() {
             <form id="chat-form" class="flex gap-2" onsubmit="return false;">
                 <textarea id="user-input" rows="1"
                           class="flex-1 bg-gray-100 dark:bg-gray-800 rounded-lg p-3 resize-none outline-none"
+                          data-i18n-placeholder="chat.sendMessage"
                           placeholder="Envie uma mensagem..."></textarea>
 
                 <button type="button" id="send-btn" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg">

@@ -1,0 +1,97 @@
+{
+  "common": {
+    "appName": "AtenaAI",
+    "language": "Português",
+    "themeLight": "Claro",
+    "themeDark": "Escuro"
+  },
+  "navigation": {
+    "chat": "Chat",
+    "about": "Quem somos",
+    "settings": "Configurações",
+    "logout": "Sair",
+    "login": "Entrar",
+    "register": "Cadastre-se"
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Senha",
+    "confirmPassword": "Confirmar Senha",
+    "name": "Nome Completo",
+    "accountType": "Tipo de Conta",
+    "student": "Estudante",
+    "teacher": "Professor",
+    "loginButton": "Entrar",
+    "registerButton": "Criar Conta",
+    "noAccount": "Não tem conta?",
+    "haveAccount": "Já tem conta?",
+    "passwordMismatch": "As senhas não coincidem",
+    "signupError": "Erro ao criar conta",
+    "loginError": "Erro ao fazer login"
+  },
+  "chat": {
+    "newChat": "+ Novo",
+    "newConversation": "Nova conversa",
+    "sendMessage": "Envie uma mensagem...",
+    "typing": "Digitando...",
+    "conversations": "Conversas",
+    "deleteConfirm": "Deletar conversa",
+    "deleteMessage": "Esta ação não pode ser desfeita. Deseja continuar?",
+    "deleteSuccess": "Conversa deletada",
+    "copyConversation": "Copiar conversa",
+    "renameConversation": "Renomear conversa",
+    "myInterests": "Minhas Áreas de Interesse"
+  },
+  "interests": {
+    "math": "Matemática",
+    "statistics": "Estatística",
+    "physics": "Física",
+    "chemistry": "Química",
+    "programming": "Programação",
+    "engineering": "Engenharia",
+    "biology": "Biologia",
+    "health": "Saúde",
+    "anatomy": "Anatomia",
+    "physicalEducation": "Ed. Física",
+    "history": "História",
+    "geography": "Geografia",
+    "philosophy": "Filosofia",
+    "sociology": "Sociologia",
+    "psychology": "Psicologia",
+    "literature": "Literatura",
+    "languages": "Idiomas",
+    "writing": "Redação",
+    "law": "Direito",
+    "economics": "Economia"
+  },
+  "settings": {
+    "title": "Configurações",
+    "profile": "Perfil",
+    "preferences": "Preferências",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "changePassword": "Alterar Senha",
+    "currentPassword": "Senha Atual",
+    "newPassword": "Nova Senha",
+    "updateSuccess": "Configurações atualizadas com sucesso"
+  },
+  "about": {
+    "title": "Quem Somos",
+    "description": "AtenaAI é uma plataforma educacional inteligente",
+    "mission": "Nossa Missão",
+    "vision": "Nossa Visão",
+    "backToChat": "Voltar ao Chat"
+  },
+  "errors": {
+    "unauthorized": "Não autorizado",
+    "notFound": "Não encontrado",
+    "serverError": "Erro no servidor",
+    "networkError": "Erro de conexão",
+    "required": "Campo obrigatório"
+  },
+  "messages": {
+    "welcome": "Olá! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?",
+    "loading": "Carregando...",
+    "noResults": "Nenhum resultado encontrado"
+  }
+}
