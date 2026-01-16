@@ -2,6 +2,8 @@
 
 AtenaAI é uma plataforma de assistente educacional inteligente, projetada para auxiliar estudantes em seus estudos através de inteligência artificial. O projeto oferece uma interface moderna e intuitiva com suporte a temas claro/escuro, chat em tempo real e gerenciamento de conversas.
 
+> 🚀 **Visão Futura**: Expandir para uma plataforma educacional completa conectando professores, instituições e alunos através de salas de aula virtuais, feedbacks personalizados por IA e gestão inteligente de turmas.
+
 ## ✨ Features
 
 - 🤖 **Chat Inteligente**: Assistente de IA especializado em educação
@@ -115,11 +117,18 @@ npx serve frontend
 
 ## 📖 Como Usar
 
+### Atualmente Disponível
 1. **Cadastro**: Crie uma conta como estudante ou professor
 2. **Login**: Acesse com suas credenciais
 3. **Chat**: Comece a conversar com a AtenaAI
 4. **Conversas**: Gerencie suas conversas no painel lateral
 5. **Configurações**: Personalize suas áreas de interesse
+
+### Em Desenvolvimento
+- Sistema de turmas e salas de aula virtuais
+- Chat colaborativo entre alunos e professores
+- Feedbacks personalizados da IA para professores
+- Convites e acesso controlado para estudantes
 
 ## 🎨 Temas
 
@@ -152,6 +161,38 @@ A AtenaAI oferece suporte completo a tema claro e escuro:
 
 ### Chat
 - `POST /chat/send` - Enviar mensagem
+
+## 🚀 Roadmap - Planos Futuros
+
+### 👨‍🏫 Modo Professor
+- **Gestão de Turmas**: Criar e gerenciar turmas de alunos
+- **Feedbacks Personalizados**: Receber análises e insights da IA sobre o desempenho individual de cada aluno
+- **Prompt Customizável**: Regular o comportamento da IA de acordo com objetivos pedagógicos específicos
+- **Acompanhamento**: Dashboard com métricas de progresso e engajamento dos estudantes
+- **Materiais**: Compartilhar recursos e conteúdos educacionais com as turmas
+
+### 🏫 Modo Instituição
+- **Gestão Centralizada**: Administrar múltiplos professores e turmas
+- **Analytics Avançado**: Relatórios consolidados de desempenho institucional
+- **Customização da IA**: Ajustar o comportamento da IA de acordo com a metodologia da instituição
+- **Integrações**: Conectar com sistemas acadêmicos existentes
+
+### 🎓 Modo Aluno Aprimorado
+- **Acesso Controlado**: Contas de aluno disponíveis apenas mediante convite de professor ou instituição
+- **Salas de Aula Virtuais**: 
+  - 💬 **Chat Geral**: Espaço colaborativo com colegas, professores e IA
+  - 🔒 **Conversas Individuais**: Chat privado com a IA para dúvidas pessoais
+  - 👥 **Grupos de Estudo**: Criar grupos de discussão com colegas
+- **Perfil Acadêmico**: Histórico de progresso, conquistas e áreas de melhoria
+- **Notificações**: Alertas de tarefas, feedbacks do professor e mensagens da turma
+
+### 🆕 Novas Funcionalidades
+- 📊 **Sistema de Avaliações**: Questionários e exercícios com correção automática
+- 🏆 **Gamificação**: Badges, pontos e rankings para incentivar o aprendizado
+- 📹 **Videoconferência**: Integração para aulas ao vivo
+- 📁 **Biblioteca de Recursos**: Repositório compartilhado de materiais educacionais
+- 🌐 **Modo Offline**: Funcionalidades básicas disponíveis sem conexão
+- 📱 **Aplicativo Mobile**: Versão nativa para iOS e Android
 
 ## 🤝 Contribuindo
 
