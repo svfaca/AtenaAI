@@ -1,6 +1,25 @@
 // 🌐 Sistema de Internacionalização (i18n)
 
-let currentLanguage = localStorage.getItem('language') || 'pt-BR';
+// Detectar linguagem do navegador
+function detectBrowserLanguage() {
+    const browserLang = navigator.language || navigator.userLanguage; // ex: 'pt-BR', 'en-US'
+    
+    // Verificar se o idioma é suportado
+    if (browserLang.startsWith('pt')) {
+        return 'pt-BR';
+    } else if (browserLang.startsWith('en')) {
+        return 'en-US';
+    }
+    
+    // Fallback para português
+    return 'pt-BR';
+}
+
+let currentLanguage = localStorage.getItem('language') || detectBrowserLanguage();
+let translations = {};
+
+// Carregar arquivo de tradução
+async function loadLanguage(lang) {
 let translations = {};
 
 // Carregar arquivo de tradução

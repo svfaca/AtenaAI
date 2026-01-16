@@ -495,22 +495,6 @@ function hideToast() {
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
                     </svg>
                 </button>
-
-                <!-- Language Selector -->
-                <div class="relative group">
-                    <button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium">
-                        🌐
-                    </button>
-                    <div class="absolute right-0 mt-2 w-32 bg-white dark:bg-gray-800 rounded-lg shadow-lg hidden group-hover:block z-50">
-                        <button onclick="setLanguage('pt-BR')" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg text-sm">
-                            Português 🇧🇷
-                        </button>
-                        <button onclick="setLanguage('en-US')" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-b-lg text-sm">
-                            English 🇺🇸
-                        </button>
-                    </div>
-                </div>
-                
                 <!-- Menu não logado -->
                 <div id="menu-not-logged" class="items-center space-x-4">
                     <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline">Quem somos</a>
@@ -739,6 +723,20 @@ function hideToast() {
                         <option value="guardian">Responsável</option>
                     </select>
                     <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">⚠️ O tipo de conta não pode ser alterado no momento</p>
+
+                            <!-- Idioma -->
+                            <div class="settings-section">
+                                <h3 class="settings-section-title">Idioma</h3>
+                
+                                <div class="settings-form-group">
+                                    <label for="setting-language">Selecione seu idioma</label>
+                                    <select id="setting-language">
+                                        <option value="pt-BR">Português (PT-BR) 🇧🇷</option>
+                                        <option value="en-US">English (EN-US) 🇺🇸</option>
+                                    </select>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">A interface será atualizada imediatamente</p>
+                                </div>
+                            </div>
                 </div>
             </div>
 
@@ -1310,6 +1308,13 @@ function openSettings() {
     accountTypeSelect.value = userData.account_type || 'estudante';
     
     // Desmarcar todos os checkboxes de interesses primeiro
+        // Selecionar idioma
+        const languageSelect = document.getElementById('setting-language');
+        if (languageSelect) {
+            languageSelect.value = getLanguage();
+        }
+    
+        // Desmarcar todos os checkboxes de interesses primeiro
     document.querySelectorAll('.interest-checkbox').forEach(cb => {
         cb.checked = false;
     });
@@ -1371,6 +1376,17 @@ profileImageInput?.addEventListener('change', (e) => {
 
 // Submeter formulário de configurações
 settingsForm?.addEventListener('submit', async (e) => {
+    // Mudar idioma quando seletor é alterado
+    const languageSelect = document.getElementById('setting-language');
+    if (languageSelect) {
+        languageSelect.addEventListener('change', (e) => {
+            const newLanguage = e.target.value;
+            setLanguage(newLanguage);
+        });
+    }
+
+    // Submeter formulário de configurações
+    settingsForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const token = localStorage.getItem('access_token');
