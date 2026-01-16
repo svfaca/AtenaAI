@@ -261,7 +261,7 @@
                 </section>
 
                 <!-- CTAs de Login/Cadastro -->
-                <section class="text-center bg-primary-50 dark:bg-primary-900/30 p-8 rounded-xl border-2 border-primary-200 dark:border-primary-700">
+                <section id="cta-signup" class="text-center bg-primary-50 dark:bg-primary-900/30 p-8 rounded-xl border-2 border-primary-200 dark:border-primary-700">
                     <h3 class="text-2xl font-semibold mb-4 text-primary-700 dark:text-primary-300">
                         🚀 Junte-se a esta ideia
                     </h3>
@@ -274,7 +274,7 @@
                     </a>
                 </section>
 
-                <section class="text-center bg-secondary-50 dark:bg-secondary-900/30 p-8 rounded-xl border-2 border-secondary-200 dark:border-secondary-700">
+                <section id="cta-login" class="text-center bg-secondary-50 dark:bg-secondary-900/30 p-8 rounded-xl border-2 border-secondary-200 dark:border-secondary-700">
                     <h3 class="text-2xl font-semibold mb-4 text-secondary-700 dark:text-secondary-300">
                         👋 Bem-vindo!
                     </h3>
@@ -312,30 +312,37 @@
         const token = localStorage.getItem('access_token');
         const menuNotLogged = document.getElementById('menu-not-logged');
         const menuLogged = document.getElementById('menu-logged');
-        const ctaNotLogged = document.getElementById('cta-not-logged');
-        const ctaLogged = document.getElementById('cta-logged');
+        const ctaSignup = document.getElementById('cta-signup');
+        const ctaLogin = document.getElementById('cta-login');
 
         if (token) {
             // Usuário logado
             menuNotLogged.classList.add('hidden');
             menuLogged.classList.remove('hidden');
-            ctaNotLogged.classList.add('hidden');
-            ctaLogged.classList.remove('hidden');
+            
+            // Esconde as CTAs de login/cadastro para usuário logado
+            if (ctaSignup) ctaSignup.classList.add('hidden');
+            if (ctaLogin) ctaLogin.classList.add('hidden');
 
             // Ativar logout
-            document.getElementById('logout-header-btn')?.addEventListener('click', logout);
+            const logoutBtn = document.getElementById('logout-header-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', logout);
+            }
         } else {
             // Usuário não logado
             menuNotLogged.classList.remove('hidden');
             menuLogged.classList.add('hidden');
-            ctaNotLogged.classList.remove('hidden');
-            ctaLogged.classList.add('hidden');
+            
+            // Mostra as CTAs de login/cadastro para usuário não logado
+            if (ctaSignup) ctaSignup.classList.remove('hidden');
+            if (ctaLogin) ctaLogin.classList.remove('hidden');
         }
     }
 
     function logout() {
         localStorage.removeItem('access_token');
-        window.location.href = 'index.html';
+        window.location.href = 'quem-somos.html';
     }
 
     // Executar ao carregar a página
