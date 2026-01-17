@@ -365,27 +365,43 @@
         const token = localStorage.getItem('access_token');
         const menuNotLogged = document.getElementById('menu-not-logged');
         const menuLogged = document.getElementById('menu-logged');
+        const mobileMenuNotLogged = document.getElementById('mobile-menu-not-logged');
+        const mobileMenuLogged = document.getElementById('mobile-menu-logged');
         const ctaSignup = document.getElementById('cta-signup');
         const ctaLogin = document.getElementById('cta-login');
 
         if (token) {
-            // Usuário logado
+            // Usuário logado - Desktop
             menuNotLogged.classList.add('hidden');
             menuLogged.classList.remove('hidden');
+            
+            // Usuario logado - Mobile
+            if (mobileMenuNotLogged) mobileMenuNotLogged.classList.add('hidden');
+            if (mobileMenuLogged) mobileMenuLogged.classList.remove('hidden');
             
             // Esconde as CTAs de login/cadastro para usuário logado
             if (ctaSignup) ctaSignup.classList.add('hidden');
             if (ctaLogin) ctaLogin.classList.add('hidden');
 
-            // Ativar logout
+            // Ativar logout - Desktop
             const logoutBtn = document.getElementById('logout-header-btn');
             if (logoutBtn) {
                 logoutBtn.addEventListener('click', logout);
             }
+            
+            // Ativar logout - Mobile
+            const mobileLogoutBtn = document.getElementById('mobile-logout-btn');
+            if (mobileLogoutBtn) {
+                mobileLogoutBtn.addEventListener('click', logout);
+            }
         } else {
-            // Usuário não logado
+            // Usuário não logado - Desktop
             menuNotLogged.classList.remove('hidden');
             menuLogged.classList.add('hidden');
+            
+            // Usuario nao logado - Mobile
+            if (mobileMenuNotLogged) mobileMenuNotLogged.classList.remove('hidden');
+            if (mobileMenuLogged) mobileMenuLogged.classList.add('hidden');
             
             // Mostra as CTAs de login/cadastro para usuário não logado
             if (ctaSignup) ctaSignup.classList.remove('hidden');
