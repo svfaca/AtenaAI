@@ -1,5 +1,7 @@
 console.log("REGISTER.JS ATIVO");
 
+const API_BASE_URL = "https://atenaai.onrender.com";
+
 // ================= PREVIEW DE FOTO DE PERFIL =================
 const profileImageInput = document.getElementById("profile-image");
 const profileImagePreview = document.getElementById("profile-image-preview");
@@ -115,7 +117,7 @@ interestsForm.addEventListener("submit", async (e) => {
     // 1️⃣ REGISTRO
     // =====================
     console.log("📤 Enviando dados de registro para servidor...");
-    const registerResponse = await fetch("https://atenaai.onrender.com/register/", {
+    const registerResponse = await fetch(`${API_BASE_URL}/register/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -142,7 +144,7 @@ interestsForm.addEventListener("submit", async (e) => {
     // 2️⃣ LOGIN AUTOMÁTICO
     // =====================
     console.log("🔐 Fazendo login automático...");
-    const loginResponse = await fetch("https://atenaai.onrender.com/login/", {
+    const loginResponse = await fetch(`${API_BASE_URL}/login/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
@@ -267,7 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         try {
-            const response = await fetch("https://atenaai.onrender.com/auth/check-email", {
+            const response = await fetch(`${API_BASE_URL}/auth/check-email`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email })
