@@ -2,8 +2,21 @@
 <html lang="pt-BR" class="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
     <title>Quem Somos - AtenaAI</title>
+    
+    <!-- Script para calcular altura real do viewport -->
+    <script>
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        setVH();
+        window.addEventListener('resize', setVH);
+        window.addEventListener('orientationchange', function() {
+            setTimeout(setVH, 100);
+        });
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/logo/favicon.ico">
@@ -87,8 +100,11 @@
         }
         /* Responsividade */
         html, body {
-            min-height: 100%;
             overflow-x: hidden;
+        }
+        body {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
         }
         @media (max-width: 640px) {
             .text-4xl { font-size: 1.75rem; }
@@ -102,7 +118,7 @@
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-<div class="min-h-screen min-h-[100dvh] flex flex-col">
+<div class="min-h-screen flex flex-col" style="min-height: calc(var(--vh, 1vh) * 100);">
 
     <!-- HEADER -->
     <header class="border-b border-gray-200 dark:border-gray-700 py-3 px-4 flex justify-between items-center">
