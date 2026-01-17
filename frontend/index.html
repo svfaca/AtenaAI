@@ -1,2094 +1,4190 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+
 <html lang="pt-BR" class="light">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AtenaAI</title>
 
+
+
     <!-- Favicon -->
+
     <link rel="icon" type="image/x-icon" href="assets/logo/favicon.ico">
+
     <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32x32.png">
+
     <link rel="icon" type="image/png" sizes="16x16" href="assets/logo/favicon-16x16.png">
+
     <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 
+
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     
+
     <!-- i18n -->
+
     <script src="js/i18n.js"></script>
 
+
+
     <script>
+
         tailwind.config = {
+
             darkMode: 'class',
+
             theme: {
+
                 extend: {
+
                     fontFamily: {
+
                         sans: ['Inter', 'sans-serif'],
+
                     },
+
                 }
+
             }
+
         }
+
     </script>
 
+
+
     <style>
+
         body {
+
             font-family: 'Inter', sans-serif;
+
             transition: background-color 0.3s, color 0.3s;
+
         }
+
         .chat-container {
+
             height: calc(100vh - 180px);
+
         }
+
         .message {
+
             max-width: 85%;
+
             animation: fadeIn 0.25s ease-in-out;
+
         }
+
         @keyframes fadeIn {
+
             from { opacity: 0; transform: translateY(8px); }
+
             to { opacity: 1; transform: translateY(0); }
+
         }
+
         .typing-indicator span {
+
             animation: blink 1.4s infinite both;
+
         }
+
         .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+
         .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
 
+
+
         @keyframes blink {
+
             0% { opacity: .2; }
+
             20% { opacity: 1; }
+
             100% { opacity: .2; }
+
         }
+
         
+
         .sidebar-collapsed {
+
             width: 4rem !important;
+
         }
+
         .sidebar-collapsed .sidebar-text {
+
             display: none;
+
         }
+
         /* Mostrar ações compactas quando colapsado */
+
         .sidebar-collapsed #collapsed-actions {
+
             display: flex;
+
         }
+
         
-        /* Desktop menus - esconder no mobile */
+
+        /* Desktop menus - esconder não mobile */
+
         .desktop-menu {
+
             display: none !important;
+
         }
+
         @media (min-width: 768px) {
+
             .desktop-menu.auth-show {
+
                 display: flex !important;
+
             }
+
         }
+
         
-        /* Mobile menu button - mostrar apenas no mobile */
+
+        /* Mobile menu button - mostrar apenas não mobile */
+
         #mobile-menu-btn {
+
             display: block;
+
         }
+
         @media (min-width: 768px) {
+
             #mobile-menu-btn {
+
                 display: none;
+
             }
+
         }
+
         
-        /* Ícones de menu da conversa - design minimalista e moderno */
+
+        /* Icones de menu da conversa - design minimalista e moderno */
+
         .conv-menu-btn {
+
             transition: all 0.2s ease;
+
         }
+
         .conv-menu-btn:hover {
+
             transform: scale(1.1);
+
         }
+
         
+
         .sidebar-collapsed .conv-menu-btn {
+
             padding: 0.375rem !important;
+
         }
+
         .sidebar-collapsed .conv-menu-btn svg {
+
             width: 1rem !important;
+
             height: 1rem !important;
+
         }
+
         
+
         /* Settings Modal */
+
         .settings-modal {
+
             position: fixed;
+
             right: 0;
+
             top: 0;
+
             width: 450px;
+
             height: 100vh;
+
             background: white;
+
             dark: white;
+
             box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+
             z-index: 40;
+
             overflow-y: auto;
+
             transform: translateX(500px);
+
             transition: transform 0.3s ease-in-out;
+
         }
+
         
+
         .settings-modal.active {
+
             transform: translateX(0);
+
         }
+
         
+
         .dark .settings-modal {
+
             background: #111827;
+
             box-shadow: -2px 0 8px rgba(0,0,0,0.3);
+
         }
+
         
+
         .settings-modal-overlay {
+
             position: fixed;
+
             inset: 0;
+
             background: rgba(0,0,0,0);
+
             z-index: 30;
+
             transition: background 0.3s ease-in-out;
+
             pointer-events: none;
+
         }
+
         
+
         .settings-modal-overlay.active {
+
             background: rgba(0,0,0,0.5);
+
             pointer-events: auto;
+
         }
+
         
+
         /* Confirmation Modal */
+
         #confirm-modal {
+
             position: fixed;
+
             top: 50%;
+
             left: 50%;
+
             transform: translate(-50%, -50%) scale(0.95);
+
             opacity: 0;
+
             z-index: 50;
+
             background: white;
+
             border-radius: 16px;
+
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
             min-width: 360px;
+
             max-width: 90vw;
+
             transition: all 0.3s ease-out;
+
             pointer-events: none;
+
         }
+
         
+
         #confirm-modal:not(.hidden) {
+
             opacity: 1;
+
             transform: translate(-50%, -50%) scale(1);
+
             pointer-events: auto;
+
         }
+
         
+
         .dark #confirm-modal {
+
             background: #1f2937;
+
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
         }
+
         
+
         #confirm-modal-overlay {
+
             position: fixed;
+
             inset: 0;
+
             background: rgba(0, 0, 0, 0);
+
             z-index: 40;
+
             pointer-events: none;
+
             transition: background 0.3s ease-out;
+
         }
+
         
+
         #confirm-modal-overlay:not(.hidden) {
+
             background: rgba(0, 0, 0, 0.5);
+
             pointer-events: auto;
+
             backdrop-filter: blur(4px);
+
         }
+
         
+
         @keyframes pulse {
+
             0%, 100% { opacity: 1; }
+
             50% { opacity: 0.5; }
+
         }
+
         
+
         .animate-pulse {
+
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
         }
+
+
 
         #confirm-modal.hidden,
+
         #confirm-modal-overlay.hidden {
+
             display: none;
+
         }
 
+
+
         .settings-form-group {
+
             margin-bottom: 20px;
+
         }
+
         
+
         .settings-form-group label {
+
             display: block;
+
             font-size: 14px;
+
             font-weight: 500;
+
             margin-bottom: 8px;
+
             color: #374151;
+
         }
+
         
+
         .dark .settings-form-group label {
+
             color: #D1D5DB;
+
         }
+
         
+
         .settings-form-group input,
+
         .settings-form-group textarea,
+
         .settings-form-group select {
+
             width: 100%;
+
             padding: 10px;
+
             border: 1px solid #D1D5DB;
+
             border-radius: 6px;
+
             font-family: Inter, sans-serif;
+
             font-size: 14px;
+
             transition: border-color 0.2s;
+
         }
+
         
+
         .dark .settings-form-group input,
+
         .dark .settings-form-group textarea,
+
         .dark .settings-form-group select {
+
             background: #1F2937;
+
             border-color: #4B5563;
+
             color: #F3F4F6;
+
         }
+
         
+
         .settings-form-group input:focus,
+
         .settings-form-group textarea:focus,
+
         .settings-form-group select:focus {
+
             outline: none;
+
             border-color: #2563EB;
+
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+
         }
+
         
+
         .settings-file-input {
+
             position: relative;
+
         }
+
         
+
         .settings-file-input label {
+
             display: flex;
+
             align-items: center;
+
             gap: 10px;
+
             padding: 10px;
+
             border: 2px dashed #D1D5DB;
+
             border-radius: 6px;
+
             cursor: pointer;
+
             transition: all 0.2s;
+
         }
+
         
+
         .dark .settings-file-input label {
+
             border-color: #4B5563;
+
         }
+
         
+
         .settings-file-input label:hover {
+
             border-color: #2563EB;
+
             background: #F9FAFB;
+
         }
+
         
+
         .dark .settings-file-input label:hover {
+
             background: #1F2937;
+
         }
+
         
+
         .settings-file-input input[type="file"] {
+
             display: none;
+
         }
+
         
+
         .profile-preview {
+
             width: 80px;
+
             height: 80px;
+
             border-radius: 50%;
+
             object-fit: cover;
+
             border: 3px solid #E5E7EB;
+
         }
+
         
+
         .dark .profile-preview {
+
             border-color: #4B5563;
+
         }
+
         
+
         .settings-btn-group {
+
             display: flex;
+
             gap: 10px;
+
             margin-top: 30px;
+
         }
+
         
+
         .settings-btn-group button {
+
             flex: 1;
+
             padding: 10px 16px;
+
             border-radius: 6px;
+
             font-weight: 500;
+
             transition: all 0.2s;
+
             cursor: pointer;
+
             border: none;
+
         }
+
         
+
         .settings-btn-save {
+
             background: #2563EB;
+
             color: white;
+
         }
+
         
+
         .settings-btn-save:hover {
+
             background: #1D4ED8;
+
         }
+
         
+
         .settings-btn-cancel {
+
             background: #E5E7EB;
+
             color: #374151;
+
         }
+
         
+
         .dark .settings-btn-cancel {
+
             background: #4B5563;
+
             color: #F3F4F6;
+
         }
+
         
+
         .settings-btn-cancel:hover {
+
             background: #D1D5DB;
+
         }
+
         
+
         .dark .settings-btn-cancel:hover {
+
             background: #6B7280;
+
         }
+
         
+
         .settings-section {
+
             border-bottom: 1px solid #E5E7EB;
+
             padding-bottom: 20px;
+
             margin-bottom: 20px;
+
         }
+
         
+
         .dark .settings-section {
+
             border-color: #4B5563;
+
         }
+
         
+
         .settings-section-title {
+
             font-size: 16px;
+
             font-weight: 600;
+
             color: #111827;
+
             margin-bottom: 16px;
+
         }
+
         
+
         .dark .settings-section-title {
+
             color: #F3F4F6;
+
         }
+
         
+
         .settings-danger-zone {
+
             border: 2px solid #DC2626;
+
             border-radius: 6px;
+
             padding: 16px;
+
             margin-top: 30px;
+
         }
+
         
+
         .dark .settings-danger-zone {
+
             border-color: #EF4444;
+
         }
+
         
+
         .settings-danger-title {
+
             color: #DC2626;
+
             font-weight: 600;
+
             margin-bottom: 10px;
+
         }
+
         
+
         .settings-btn-danger {
+
             width: 100%;
+
             padding: 10px 16px;
+
             border: none;
+
             border-radius: 6px;
+
             background: #FEE2E2;
+
             color: #DC2626;
+
             font-weight: 500;
+
             cursor: pointer;
+
             transition: all 0.2s;
+
         }
+
         
+
         .settings-btn-danger:hover {
+
             background: #FCA5A5;
+
         }
+
     </style>
+
 </head>
+
+
 
 <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
+
+
 <script>
-// Fun��o hideToast definida cedo para ser usada no onclick
+
+// Fun��o hideToast definida cedo para ser usada não onclick
+
 function hideToast() {
+
     const toast = document.getElementById('toast');
+
     if (toast) {
+
         toast.classList.add('hidden');
+
     }
+
 }
+
 </script>
 
+
+
 <div id="toast"
+
      class="fixed top-5 right-5 z-50 hidden max-w-sm w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4">
+
   <div class="flex items-start gap-3">
+
     <div id="toast-icon"
+
          class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-red-100 text-red-600">
+
       ?
+
     </div>
+
+
 
     <div class="flex-1">
+
       <p id="toast-title" class="font-medium text-gray-900 dark:text-gray-100">
+
         Erro
+
       </p>
+
       <p id="toast-message" class="text-sm text-gray-600 dark:text-gray-400">
+
         Mensagem aqui
+
       </p>
+
     </div>
+
+
 
     <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600">
+
       ?
+
     </button>
+
   </div>
+
 </div>
+
+
 
 <!-- CONTAINER PRINCIPAL -->
+
 <div id="main-container" class="flex h-screen">
 
+
+
     <!-- SIDEBAR (Apenas para usu�rios logados) -->
+
     <aside id="sidebar"
+
       class="hidden w-64 transition-all duration-300 bg-gray-100 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex-col">
 
+
+
       <!-- PERFIL -->
+
       <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center gap-3 relative">
+
         
+
         <div id="user-avatar"
+
           class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold overflow-hidden flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity">
+
           <span id="avatar-initial">S</span>
+
           <img id="avatar-image" class="w-full h-full object-cover hidden" src="" alt="Avatar">
+
         </div>
+
+
 
         <div class="sidebar-text flex-1">
+
           <p id="user-name" class="font-semibold">Carregando...</p>
+
           <p id="user-role" class="text-sm text-gray-500" data-i18n="auth.student">Estudante</p>
+
         </div>
+
+
 
         <button id="sidebar-toggle"
+
           class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 absolute right-2 top-1/2 transform -translate-y-1/2 sidebar-text">
-          ?
+
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+
         </button>
+
       </div>
+
+
 
       <!-- CONVERSAS -->
+
       <div class="flex-1 overflow-y-auto p-3 space-y-3">
 
+
+
         <div class="flex items-center justify-between sidebar-text">
+
           <p data-i18n="chat.conversations" class="text-xs uppercase text-gray-500">Conversas</p>
+
           <button id="new-conversation"
+
             class="text-xs text-blue-600 hover:text-blue-700 font-medium transition-colors" data-i18n="chat.newChat">
+
             + Novo
+
           </button>
+
         </div>
+
+
 
                 <ul id="conversation-list" class="space-y-1 sidebar-text">
+
           <!-- JS injeta aqui -->
+
         </ul>
 
+
+
       </div>
+
+
 
             <!-- A��ES COMPACTAS (vis�veis apenas com sidebar colapsada) -->
+
             <div id="collapsed-actions" class="hidden flex-col items-center gap-3 py-4">
+
                 <button id="collapsed-new" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="Nova conversa">
+
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H5a1 1 0 110-2h6V5a1 1 0 011-1z"/></svg>
+
                 </button>
+
                 <button id="collapsed-settings" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="Configura��es">
+
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+
                 </button>
+
                 <button id="collapsed-logout" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="Sair">
+
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 6l1.414 1.414L10.828 11h8.172v2h-8.172l3.586 3.586L13 18l-6-6 6-6zm-2-4h12a1 1 0 011 1v16a1 1 0 01-1 1H11v-2h12V3H11V1z"/></svg>
+
                 </button>
+
             </div>
+
+
 
       <!-- FOOTER -->
+
       <div class="p-3 border-t border-gray-200 dark:border-gray-700 space-y-2">
+
         <button id="settings-btn" data-i18n="navigation.settings" class="w-full text-left text-sm hover:underline sidebar-text">
+
           Configura��es
+
         </button>
+
+
 
         <button id="logout-btn"
+
           data-i18n="navigation.logout"
+
           class="w-full text-left text-sm text-red-500 hover:underline sidebar-text">
+
           Sair
+
         </button>
+
       </div>
+
     </aside>
 
+
+
     <!-- CONTE�DO PRINCIPAL -->
+
     <div class="flex-1 flex flex-col overflow-hidden">
 
+
+
         <!-- HEADER -->
+
         <header class="border-b border-gray-200 dark:border-gray-700 py-2 px-3 flex justify-between items-center">
+
             <div class="flex items-center">
+
                 <a href="index.html" class="flex items-center text-xl font-semibold hover:opacity-80 transition-opacity cursor-pointer text-gray-900 dark:text-gray-100">
+
                     <img src="assets/logo/logo-icon-ligth.png" alt="Logo AtenaAI" class="h-8 w-8 mr-1" data-theme-logo>
+
                     AtenaAI
+
                 </a>
+
                 <span class="ml-2 px-2 py-0.5 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Beta</span>
+
             </div>
+
             <div class="flex items-center gap-1">
+
                 <!-- Tema -->
+
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+
                     <svg id="light-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+
                         <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+
                     </svg>
+
                     <svg id="dark-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+
                     </svg>
+
                 </button>
+
                 
+
                 <!-- Menu hamburger mobile -->
+
                 <button id="mobile-menu-btn" class="md:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+
                     </svg>
+
                 </button>
+
                 
+
                 <!-- Menu não logado - desktop only -->
+
                 <div id="menu-not-logged" class="desktop-menu items-center gap-2">
+
                     <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline px-2">Quem somos</a>
+
                     <a href="login.html" data-i18n="navigation.login" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md text-sm font-medium">Entrar</a>
+
                     <a href="cadastro.html" data-i18n="navigation.register" class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-1.5 rounded-md text-sm font-medium">Criar Conta</a>
+
                 </div>
+
                 
+
                 <!-- Menu logado - desktop only -->
+
                 <div id="menu-logged" class="desktop-menu items-center gap-2">
+
                     <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline px-2">Quem somos</a>
+
                     <button id="logout-header" data-i18n="navigation.logout" class="text-red-600 hover:text-red-700 text-sm font-medium">Sair</button>
+
                 </div>
+
             </div>
+
         </header>
+
         
+
         <!-- Mobile Menu Dropdown -->
+
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3">
+
             <div id="mobile-menu-not-logged" class="flex flex-col gap-2">
+
                 <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium py-2 border-b border-gray-100 dark:border-gray-700">Quem somos</a>
+
                 <a href="login.html" data-i18n="navigation.login" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium text-center">Entrar</a>
+
                 <a href="cadastro.html" data-i18n="navigation.register" class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-4 py-2 rounded-md text-sm font-medium text-center">Criar Conta</a>
+
             </div>
+
             <div id="mobile-menu-logged" class="hidden flex flex-col gap-2">
+
                 <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium py-2 border-b border-gray-100 dark:border-gray-700">Quem somos</a>
+
                 <button id="mobile-logout" data-i18n="navigation.logout" class="text-left text-red-600 hover:text-red-700 text-sm font-medium py-2">Sair</button>
+
             </div>
+
         </div>
 
-        <!-- CHAT (sempre vis�vel) -->
+
+
+        <!-- CHAT (sempre visivel) -->
+
         <div id="chat-container" class="flex flex-col flex-1 overflow-hidden">
+
             <div id="chat-messages" class="chat-container flex-1 overflow-y-auto p-4 space-y-6">
+
                 <div class="flex items-start">
+
                     <div class="message bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                        <p data-i18n="messages.welcome">Ol�! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
+
+                        <p data-i18n="messages.welcome">Ola! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
+
 
         <!-- INPUT -->
+
         <div id="chat-input-section" class="border-t border-gray-200 dark:border-gray-700 p-4">
+
             <form id="chat-form" class="flex gap-2" onsubmit="return false;">
+
                 <textarea id="user-input" rows="1"
+
                           class="flex-1 bg-gray-100 dark:bg-gray-800 rounded-lg p-3 resize-none outline-none"
+
                           data-i18n-placeholder="chat.sendMessage"
+
                           placeholder="Envie uma mensagem..."></textarea>
 
+
+
                 <button type="button" id="send-btn" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg">
+
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+
                               d="M12 19l9 2-9-18-9 18 9-2z"/>
+
                     </svg>
+
                 </button>
+
             </form>
 
+
+
             <div class="text-xs text-center text-gray-500 mt-2" data-i18n="messages.versionWarning">
-                Vers�o limitada. Algumas respostas podem ser restritas.
+
+                Versão limitada. Algumas respostas podem ser restritas.
+
             </div>
+
             </div>
+
         </div>
+
     </div>
+
+
 
     <!-- RENAME CONVERSATION MODAL -->
+
     <div id="rename-modal-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center"></div>
+
     <div id="rename-modal" class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-6 z-50">
+
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Renomear Conversa</h3>
+
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Renãomear Conversa</h3>
+
             <button id="rename-close" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors">
+
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+
                 </svg>
+
             </button>
+
         </div>
-        <input type="text" id="rename-input" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" placeholder="Novo nome da conversa...">
+
+        <input type="text" id="rename-input" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" placeholder="Novo nãome da conversa...">
+
         <div class="flex gap-2">
+
             <button id="rename-cancel" class="flex-1 px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-lg transition-colors font-medium">
+
                 Cancelar
+
             </button>
+
             <button id="rename-save" class="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium">
+
                 Salvar
+
             </button>
+
         </div>
+
     </div>
+
+
 
     <!-- CONFIRMATION MODAL -->
+
     <div id="confirm-modal-overlay" class="hidden"></div>
+
     <div id="confirm-modal" class="hidden">
+
         <div class="flex flex-col items-center text-center p-8">
-            <!-- �cone de aviso -->
+
+            <!-- Icone de aviso -->
+
             <div class="w-16 h-16 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mb-6 animate-pulse">
-                <span class="text-4xl">??</span>
+
+                <span class="text-4xl">⚠️</span>
+
             </div>
+
             
-            <!-- T�tulo -->
+
+            <!-- Titulo -->
+
             <h3 id="confirm-title" class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Deletar conversa</h3>
+
             
+
             <!-- Mensagem -->
+
             <p id="confirm-message" class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                Esta a��o n�o pode ser desfeita. Deseja continuar?
+
+                Esta acao nao pode ser desfeita. Deseja continuar?
+
             </p>
+
             
-            <!-- Bot�es -->
+
+            <!-- Botoes -->
+
             <div class="flex gap-3 w-full">
+
                 <button id="confirm-cancel" class="flex-1 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-md">
+
                     Cancelar
+
                 </button>
+
                 <button id="confirm-ok" class="flex-1 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-md hover:shadow-red-500/50">
+
                     Deletar
+
                 </button>
+
             </div>
+
         </div>
+
     </div>
+
+
 
     <!-- SETTINGS MODAL -->
+
     <div id="settings-modal-overlay" class="settings-modal-overlay"></div>
 
+
+
     <div id="settings-modal" class="settings-modal">
+
     <div class="p-6">
+
         <!-- Header -->
+
         <div class="flex items-center justify-between mb-6">
+
             <h2 class="text-xl font-bold" data-i18n="settings.title">Configura��es</h2>
+
             <button id="close-settings" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+
                 ?
+
             </button>
+
         </div>
 
+
+
         <!-- Form -->
+
         <form id="settings-form">
+
             <!-- Foto de Perfil -->
+
             <div class="settings-section">
+
                 <h3 class="settings-section-title" data-i18n="settings.profilePicture">Foto de Perfil</h3>
+
                 
+
                 <div class="flex items-center gap-4 mb-4">
+
                     <img id="profile-preview" class="profile-preview" src="" alt="Foto de perfil">
+
                     <div class="settings-file-input">
+
                         <label for="profile-image">
-                            ?? <span data-i18n="settings.chooseImage">Escolher imagem</span>
+
+                             <span data-i18n="settings.chooseImage">Escolher imagem</span>
+
                         </label>
+
                         <input type="file" id="profile-image" accept="image/*">
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- Informa��es Pessoais -->
+
             <div class="settings-section">
+
                 <h3 class="settings-section-title" data-i18n="settings.personalInfo">Informa��es Pessoais</h3>
+
                 
+
                 <div class="settings-form-group">
+
                     <label for="setting-name" data-i18n="settings.fullName">Nome Completo</label>
-                    <input type="text" id="setting-name" data-i18n-placeholder="settings.fullNamePlaceholder" placeholder="Seu nome completo">
+
+                    <input type="text" id="setting-name" data-i18n-placeholder="settings.fullNamePlaceholder" placeholder="Seu nãome completo">
+
                 </div>
 
+
+
                 <div class="settings-form-group">
+
                     <label for="setting-nickname" data-i18n="settings.nickname">Apelido</label>
+
                     <input type="text" id="setting-nickname" data-i18n-placeholder="settings.nicknamePlaceholder" placeholder="Seu apelido (opcional)">
+
                 </div>
 
+
+
                 <div class="settings-form-group">
+
                     <label for="setting-email" data-i18n="settings.email">Email</label>
+
                     <input type="email" id="setting-email" data-i18n-placeholder="settings.emailPlaceholder" placeholder="seu@email.com">
+
                 </div>
 
+
+
                 <div class="settings-form-group">
+
                     <label for="setting-birth-date" data-i18n="settings.birthDate">Data de Nascimento</label>
+
                     <input type="date" id="setting-birth-date">
+
                 </div>
 
+
+
                 <div class="settings-form-group">
+
                     <label for="setting-gender" data-i18n="settings.gender">G�nero</label>
+
                     <select id="setting-gender">
+
                         <option value="" data-i18n="settings.selectGender">Selecione...</option>
-                        <option value="male" data-i18n="settings.male">Masculino</option>
-                        <option value="female" data-i18n="settings.female">Feminino</option>
+
+                        <option value="male" data-i18n="settings.male">Masculinão</option>
+
+                        <option value="female" data-i18n="settings.female">Femininão</option>
+
                         <option value="other" data-i18n="settings.other">Outro</option>
+
                     </select>
+
                 </div>
+
             </div>
+
+
 
             <!-- Interesses -->
+
             <div class="settings-section">
+
                 <h3 class="settings-section-title" data-i18n="settings.interests">Interesses</h3>
+
                 
+
                 <div class="settings-form-group">
+
                     <label class="block text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.selectAcademicInterests">Selecione seus interesses acad�micos</label>
+
                     <div id="interests-container" class="grid grid-cols-2 gap-2">
-                        <!-- Exatas e Tecnologia -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2" data-i18n="interests.exactsAndTechnology">?? Exatas e Tecnologia</div></div>
+
+                        <!-- Exatas e Tecnãologia -->
+
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2" data-i18n="interests.exactsAndTechnãology"> Exatas e Tecnãologia</div></div>
+
                         <div><input type="checkbox" id="interest-math" value="math" class="interest-checkbox hidden peer"><label for="interest-math" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.math">Matem�tica</span></label></div>
+
                         <div><input type="checkbox" id="interest-statistics" value="statistics" class="interest-checkbox hidden peer"><label for="interest-statistics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.statistics">Estat�stica</span></label></div>
+
                         <div><input type="checkbox" id="interest-physics" value="physics" class="interest-checkbox hidden peer"><label for="interest-physics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physics">F�sica</span></label></div>
+
                         <div><input type="checkbox" id="interest-chemistry" value="chemistry" class="interest-checkbox hidden peer"><label for="interest-chemistry" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.chemistry">Qu�mica</span></label></div>
-                        <div><input type="checkbox" id="interest-programming" value="programming" class="interest-checkbox hidden peer"><label for="interest-programming" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.programming">Programa��o</span></label></div>
+
+                        <div><input type="checkbox" id="interest-programming" value="programming" class="interest-checkbox hidden peer"><label for="interest-programming" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.programming">Programacao</span></label></div>
+
                         <div><input type="checkbox" id="interest-engineering" value="engineering" class="interest-checkbox hidden peer"><label for="interest-engineering" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.engineering">Engenharia</span></label></div>
+
                         
+
                         <!-- Biol�gicas e Sa�de -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.biologicalAndHealth">?? Biol�gicas e Sa�de</div></div>
+
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.biologicalAndHealth"> Biol�gicas e Sa�de</div></div>
+
                         <div><input type="checkbox" id="interest-biology" value="biology" class="interest-checkbox hidden peer"><label for="interest-biology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.biology">Biologia</span></label></div>
+
                         <div><input type="checkbox" id="interest-health" value="health" class="interest-checkbox hidden peer"><label for="interest-health" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.health">Sa�de</span></label></div>
+
                         <div><input type="checkbox" id="interest-anatomy" value="anatomy" class="interest-checkbox hidden peer"><label for="interest-anatomy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.anatomy">Anatomia</span></label></div>
+
                         <div><input type="checkbox" id="interest-pe" value="physical_education" class="interest-checkbox hidden peer"><label for="interest-pe" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physicalEducation">Ed. F�sica</span></label></div>
+
                         
+
                         <!-- Humanas -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.humanities">??? Humanas</div></div>
+
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.humanities">? Humanas</div></div>
+
                         <div><input type="checkbox" id="interest-history" value="history" class="interest-checkbox hidden peer"><label for="interest-history" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.history">Hist�ria</span></label></div>
+
                         <div><input type="checkbox" id="interest-geography" value="geography" class="interest-checkbox hidden peer"><label for="interest-geography" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.geography">Geografia</span></label></div>
+
                         <div><input type="checkbox" id="interest-philosophy" value="philosophy" class="interest-checkbox hidden peer"><label for="interest-philosophy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.philosophy">Filosofia</span></label></div>
+
                         <div><input type="checkbox" id="interest-sociology" value="sociology" class="interest-checkbox hidden peer"><label for="interest-sociology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.sociology">Sociologia</span></label></div>
+
                         <div><input type="checkbox" id="interest-psychology" value="psychology" class="interest-checkbox hidden peer"><label for="interest-psychology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.psychology">Psicologia</span></label></div>
+
                         
+
                         <!-- Linguagens -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.languages">?? Linguagens</div></div>
+
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.languages"> Linguagens</div></div>
+
                         <div><input type="checkbox" id="interest-literature" value="literature" class="interest-checkbox hidden peer"><label for="interest-literature" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.literature">Literatura</span></label></div>
+
                         <div><input type="checkbox" id="interest-languages" value="languages" class="interest-checkbox hidden peer"><label for="interest-languages" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.languages">Idiomas</span></label></div>
-                        <div><input type="checkbox" id="interest-writing" value="writing" class="interest-checkbox hidden peer"><label for="interest-writing" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.writing">Reda��o</span></label></div>
+
+                        <div><input type="checkbox" id="interest-writing" value="writing" class="interest-checkbox hidden peer"><label for="interest-writing" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.writing">Redacao</span></label></div>
+
                         
+
                         <!-- Aplicadas e Profissionais -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.appliedAndProfessional">?? Aplicadas e Profissionais</div></div>
+
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.appliedAndProfessional"> Aplicadas e Profissionais</div></div>
+
                         <div><input type="checkbox" id="interest-law" value="law" class="interest-checkbox hidden peer"><label for="interest-law" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.law">Direito</span></label></div>
-                        <div><input type="checkbox" id="interest-economics" value="economics" class="interest-checkbox hidden peer"><label for="interest-economics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.economics">Economia</span></label></div>
+
+                        <div><input type="checkbox" id="interest-econãomics" value="econãomics" class="interest-checkbox hidden peer"><label for="interest-econãomics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.econãomics">Econãomia</span></label></div>
+
                         <div><input type="checkbox" id="interest-arts" value="arts" class="interest-checkbox hidden peer"><label for="interest-arts" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.arts">Artes</span></label></div>
+
                         
+
                         <!-- Acad�mico e Produtividade -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.academicAndProductivity">?? Acad�mico e Produtividade</div></div>
+
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.academicAndProductivity"> Acad�mico e Produtividade</div></div>
+
                         <div><input type="checkbox" id="interest-research" value="research_methodology" class="interest-checkbox hidden peer"><label for="interest-research" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.researchMethodology">Pesquisa</span></label></div>
+
                         <div><input type="checkbox" id="interest-study" value="study_skills" class="interest-checkbox hidden peer"><label for="interest-study" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.studySkills">Estudos</span></label></div>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- Tipo de Conta -->
+
             <div class="settings-section">
+
                 <h3 class="settings-section-title" data-i18n="settings.accountType">Tipo de Conta</h3>
+
                 
+
                 <div class="settings-form-group">
+
                     <label for="setting-account-type" data-i18n="settings.accountType">Tipo de Conta</label>
+
                     <select id="setting-account-type" disabled class="opacity-50 cursor-not-allowed">
+
                         <option value="estudante" data-i18n="auth.student">Estudante</option>
+
                         <option value="teacher" data-i18n="auth.teacher">Professor</option>
+
                         <option value="guardian" data-i18n="auth.guardian">Respons�vel</option>
+
                     </select>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.accountTypeWarning">?? O tipo de conta n�o pode ser alterado no momento</p>
+
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.accountTypeWarning"> O tipo de conta nao pode ser alterado no momento</p>
+
+
 
                             <!-- Idioma -->
+
                             <div class="settings-section">
+
                                 <h3 class="settings-section-title" data-i18n="settings.language">Idioma</h3>
+
                 
+
                                 <div class="settings-form-group">
+
                                     <label for="setting-language" data-i18n="settings.selectLanguage">Selecione seu idioma</label>
+
                                     <select id="setting-language">
-                                        <option value="pt-BR">Portugu�s (PT-BR) ????</option>
-                                        <option value="en-US">English (EN-US) ????</option>
+
+                                        <option value="pt-BR">Portugues (PT-BR) 🇧🇷</option>
+
+                                        <option value="en-US">English (EN-US) 🇺🇸</option>
+
                                     </select>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.languageNote">A interface ser� atualizada imediatamente</p>
+
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.languageNote">A interface sera atualizada imediatamente</p>
+
                                 </div>
+
                             </div>
+
                 </div>
+
             </div>
 
-            <!-- Bot�es -->
+
+
+            <!-- Botoes -->
+
             <div class="settings-btn-group">
+
                 <button type="button" id="cancel-settings" class="settings-btn-cancel" data-i18n="settings.cancel">Cancelar</button>
+
                 <button type="submit" class="settings-btn-save" data-i18n="settings.save">Salvar Altera��es</button>
+
             </div>
+
+
 
             <!-- Danger Zone -->
+
             <div class="settings-danger-zone">
-                <div class="settings-danger-title" data-i18n="settings.dangerZone">?? Zona Perigosa</div>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.dangerZoneWarning">A��es irrevers�veis podem afetar sua conta</p>
+
+                <div class="settings-danger-title" data-i18n="settings.dangerZone"> Zona Perigosa</div>
+
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.dangerZoneWarning">Acoes irrevers�veis podem afetar sua conta</p>
+
                 <button type="button" id="delete-account-btn" class="settings-btn-danger" data-i18n="settings.deleteAccount">Deletar Minha Conta</button>
+
             </div>
+
         </form>
+
     </div>
+
     </div>
+
+
 
 </div>
 
+
+
 <script>
+
 /* ================= CONFIGURA��ES E GLOBAIS ================= */
+
 let currentConversationId = null;
+
 let form, input, chat;
+
 let userData = {
+
     id: null, email: null, name: null, nickname: null, account_type: null,
+
     interests: null, gender: null, birth_date: null, profile_image: null
+
 };
 
-// ?? BUSCAR DADOS DO USU�RIO
+
+
+//  BUSCAR DADOS DO USU�RIO
+
 async function fetchUserData() {
+
     const token = localStorage.getItem('access_token');
+
     if (!token) return;
+
     try {
-        console.log("?? Buscando dados do usu�rio...");
+
+        console.log(" Buscando dados do usu�rio...");
+
         const res = await fetch("https://atenaai.onrender.com/auth/me", {
+
             headers: { "Authorization": `Bearer ${token}` }
+
         });
+
         if (res.ok) {
+
             const user = await res.json();
-            console.log("?? Dados recebidos:", user);
+
+            console.log(" Dados recebidos:", user);
+
             userData.id = user.id;
+
             userData.email = user.email;
+
             userData.name = user.full_name;
+
             userData.nickname = user.nickname;
+
             userData.account_type = user.account_type;
+
             userData.interests = user.interests;
+
             userData.gender = user.gender;
+
             userData.birth_date = user.birth_date;
+
             userData.profile_image = user.profile_image;
+
             
+
             updateAvatar();
+
             const userNameEl = document.getElementById('user-name');
+
             if (userNameEl) userNameEl.textContent = userData.nickname || userData.name || 'Usu�rio';
+
             
+
             const userRoleEl = document.getElementById('user-role');
+
             if (userRoleEl) {
+
                 // Traduzir tipo de conta usando chaves i18n
+
                 const accountTypeKey = {
+
                     'student': 'auth.student',
+
                     'estudante': 'auth.student',
+
                     'teacher': 'auth.teacher',
+
                     'professor': 'auth.teacher',
+
                     'guardian': 'auth.guardian',
+
                     'responsavel': 'auth.guardian'
+
                 };
+
                 const key = accountTypeKey[userData.account_type?.toLowerCase()] || 'auth.student';
+
                 userRoleEl.textContent = typeof t === 'function' ? t(key) : 'Estudante';
+
             }
+
         } else if (res.status === 401) {
-            console.warn("?? Token expirado ou inv�lido (401).");
+
+            console.warn(" Token expirado ou inv�lido (401).");
+
             localStorage.removeItem('access_token');
+
             checkAndUpdateAuthStatus();
+
         }
+
     } catch (err) {
-        console.error("? Erro ao buscar dados do usu�rio:", err);
+
+        console.error("? Erro ação buscar dados do usu�rio:", err);
+
     }
+
 }
 
-// ??? ATUALIZAR AVATAR
+
+
+// ? ATUALIZAR AVATAR
+
 function updateAvatar() {
+
     const avatarImage = document.getElementById('avatar-image');
+
     const avatarInitial = document.getElementById('avatar-initial');
+
     if (!avatarImage || !avatarInitial) return;
+
     if (userData.profile_image) {
+
         avatarImage.src = userData.profile_image;
+
         avatarImage.classList.remove('hidden');
+
         avatarInitial.classList.add('hidden');
+
     } else {
+
         avatarInitial.textContent = userData.name ? userData.name.charAt(0).toUpperCase() : 'S';
+
         avatarImage.classList.add('hidden');
+
         avatarInitial.classList.remove('hidden');
+
     }
+
 }
+
+
 
 // 🔐 VERIFICADOR DE AUTENTICAÇÃO
+
 function checkAndUpdateAuthStatus() {
+
     const token = localStorage.getItem('access_token');
+
     const sidebar = document.getElementById('sidebar');
+
     const menuNotLogged = document.getElementById('menu-not-logged');
+
     const menuLogged = document.getElementById('menu-logged');
+
     const mobileMenuNotLogged = document.getElementById('mobile-menu-not-logged');
+
     const mobileMenuLogged = document.getElementById('mobile-menu-logged');
+
     
+
     console.log("🔍 checkAndUpdateAuthStatus called - Token:", !!token);
+
     
+
     if (token) {
+
         console.log("✅ Token found, showing authenticated UI");
+
         if (sidebar) {
+
             sidebar.classList.remove('hidden');
+
             console.log("✅ Sidebar shown");
+
         }
+
         if (menuLogged) {
+
             menuLogged.classList.add('auth-show');
+
             console.log("✅ Logged menu shown");
+
         }
+
         if (menuNotLogged) {
+
             menuNotLogged.classList.remove('auth-show');
+
             console.log("✅ Not logged menu hidden");
+
         }
+
         // Mobile menus
+
         if (mobileMenuLogged) mobileMenuLogged.classList.remove('hidden');
+
         if (mobileMenuNotLogged) mobileMenuNotLogged.classList.add('hidden');
+
         
+
         fetchUserData();
+
         setupConversations();
+
     } else {
+
         console.log("❌ No token, showing not-authenticated UI");
+
         if (sidebar) {
+
             sidebar.classList.add('hidden');
+
             console.log("❌ Sidebar hidden");
+
         }
+
         if (menuLogged) {
+
             menuLogged.classList.remove('auth-show');
+
             console.log("❌ Logged menu hidden");
+
         }
+
         if (menuNotLogged) {
+
             menuNotLogged.classList.add('auth-show');
+
             console.log("❌ Not logged menu shown");
+
         }
+
         // Mobile menus
+
         if (mobileMenuLogged) mobileMenuLogged.classList.add('hidden');
+
         if (mobileMenuNotLogged) mobileMenuNotLogged.classList.remove('hidden');
+
     }
+
 }
+
+
 
 // 🎨 Função central de inicialização de UI
+
 function initAppUI() {
+
     console.log("🎨 Inicializando Listeners da UI...");
 
+
+
     // 1. Logout
+
     document.getElementById('logout-btn')?.addEventListener('click', logout);
+
     document.getElementById('logout-header')?.addEventListener('click', logout);
+
     document.getElementById('mobile-logout')?.addEventListener('click', logout);
 
+
+
     // 2. Mobile Menu Toggle
+
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
     const mobileMenu = document.getElementById('mobile-menu');
+
     mobileMenuBtn?.addEventListener('click', () => {
+
         mobileMenu?.classList.toggle('hidden');
+
     });
+
+
 
     // 3. Sidebar Toggle
+
     const sidebarToggle = document.getElementById('sidebar-toggle');
+
     sidebarToggle?.addEventListener('click', () => {
+
         document.getElementById('sidebar')?.classList.toggle('sidebar-collapsed');
+
     });
+
+
 
     const avatarToggle = document.getElementById('user-avatar');
+
     avatarToggle?.addEventListener('click', () => {
+
         document.getElementById('sidebar')?.classList.toggle('sidebar-collapsed');
+
     });
 
+
+
     // 4. Theme Toggle
+
     const themeToggle = document.getElementById("theme-toggle");
+
     if (themeToggle) {
+
         themeToggle.onclick = () => {
+
             const isDark = document.documentElement.classList.toggle("dark");
+
             localStorage.setItem("theme", isDark ? "dark" : "light");
+
             if (typeof updateAllLogos === 'function') {
+
                 updateAllLogos();
+
             }
+
         };
+
     }
+
+
 
     // 4. Settings Modal
+
     const settingsBtn = document.getElementById('settings-btn');
+
     if (settingsBtn) settingsBtn.onclick = openSettings;
+
     
+
     document.getElementById('close-settings')?.addEventListener('click', closeSettings);
+
     document.getElementById('cancel-settings')?.addEventListener('click', closeSettings);
+
     document.getElementById('settings-modal-overlay')?.addEventListener('click', closeSettings);
 
+
+
     // 5. New Conversation
+
     document.getElementById('new-conversation')?.addEventListener('click', startNewConversation);
+
     // Collapsed actions
+
     document.getElementById('collapsed-new')?.addEventListener('click', startNewConversation);
+
     document.getElementById('collapsed-settings')?.addEventListener('click', openSettings);
+
     document.getElementById('collapsed-logout')?.addEventListener('click', logout);
+
 }
+
+
 
 // Executar quando o DOM estiver pronto
+
 document.addEventListener('DOMContentLoaded', () => {
+
     console.log("? DOM Pronto");
+
     
+
     // Configurar componentes do Chat
+
     form = document.getElementById("chat-form");
+
     input = document.getElementById("user-input");
+
     chat = document.getElementById("chat-messages");
+
     const sendBtn = document.getElementById("send-btn");
 
+
+
     if (sendBtn) {
+
         sendBtn.addEventListener('click', (e) => {
+
             e.preventDefault();
+
             handleFormSubmit(e);
+
         });
+
     }
+
+
 
     if (form) {
+
         form.addEventListener('submit', (e) => {
+
             e.preventDefault();
+
             handleFormSubmit(e);
+
         });
+
     }
+
+
 
     // Handlers para o textarea (Enter para enviar)
+
     if (input) {
+
         input.addEventListener('keydown', (e) => {
+
             if (e.key === 'Enter' && !e.shiftKey) {
+
                 e.preventDefault();
+
                 handleFormSubmit(e);
+
             }
+
         });
+
     }
 
-    // Configurar Modal de Confirma��o
+
+
+    // Configurar Modal de Confirmacao
+
     const confirmOkBtn = document.getElementById('confirm-ok');
+
     const confirmCancelBtn = document.getElementById('confirm-cancel');
+
     const confirmOverlay = document.getElementById('confirm-modal-overlay');
+
     
+
     if (confirmOkBtn) {
+
         confirmOkBtn.onclick = async () => {
+
             if (pendingConfirmAction) await pendingConfirmAction();
+
             hideConfirmModal();
+
         };
+
     }
+
     if (confirmCancelBtn) confirmCancelBtn.onclick = hideConfirmModal;
+
     if (confirmOverlay) {
+
         confirmOverlay.onclick = (e) => {
+
             if (e.target === confirmOverlay) hideConfirmModal();
+
         };
+
     }
+
+
 
     // Inicializar outros listeners
+
     initAppUI();
 
+
+
     // Setup de conversas
+
     setupConversations();
+
     
-    // Restaurar conversa anterior se houver (para evitar perda no reload)
+
+    // Restaurar conversa anterior se houver (para evitar perda não reload)
+
     const savedConvId = sessionStorage.getItem('currentConversationId');
+
     if (savedConvId) {
-        console.log("?? Restaurando conversa da sess�o:", savedConvId);
+
+        console.log(" Restaurando conversa da sess�o:", savedConvId);
+
         loadConversation(savedConvId);
+
     }
+
     
+
     // Verificar status inicial IMEDIATAMENTE
-    console.log("?? Executando checkAndUpdateAuthStatus no DOMContentLoaded");
+
+    console.log(" Executando checkAndUpdateAuthStatus não DOMContentLoaded");
+
     checkAndUpdateAuthStatus();
+
 });
+
+
 
 /* ================= CONTROLE DE LOGIN ================= */
+
 function checkAuthStatus() {
+
     // Alias para manter compatibilidade
+
     return checkAndUpdateAuthStatus();
+
 }
+
+
 
 function logout() {
-    console.log("?? Saindo...");
+
+    console.log(" Saindo...");
+
     localStorage.removeItem('access_token');
+
     localStorage.removeItem('user_id');
+
     
+
     userData = { id: null, email: null, name: null, account_type: null, interests: null, gender: null, birth_date: null };
+
     
+
     closeSettings();
+
     checkAndUpdateAuthStatus();
+
     
+
     setTimeout(() => {
+
         window.location.reload();
+
     }, 500);
+
 }
 
+
+
 /* ================= THEME ================= */
+
 const html = document.documentElement;
+
 if (localStorage.getItem("theme") === "dark") html.classList.add("dark");
 
-// Atualizar logos conforme o tema ao carregar a p�gina
+
+
+// Atualizar logos conforme o tema ação carregar a p�gina
+
 document.addEventListener('DOMContentLoaded', function() {
+
     if (typeof updateAllLogos === 'function') {
+
         updateAllLogos();
+
     }
+
 });
 
+
+
 // Fun��o para lidar com submit do form
+
 async function handleFormSubmit(e) {
+
     if (e) {
+
         e.preventDefault();
+
         e.stopPropagation();
+
     }
+
     
-    // Garantir que n�o estamos enviando vazio ou duplicado
+
+    // Garantir que nao estamos enviando vazio ou duplicado
+
     const inputEl = document.getElementById("user-input");
+
     if (!inputEl || inputEl.disabled) return false;
 
+
+
     const text = inputEl.value.trim();
+
     if (!text) return false;
 
-    console.log("?? handleFormSubmit acionado - Texto:", text);
+
+
+    console.log(" handleFormSubmit acionado - Texto:", text);
+
     
+
     // Desabilitar e mostrar typing IMEDIATAMENTE
+
     inputEl.disabled = true;
+
     addUser(text);
+
     inputEl.value = "";
+
     showTyping();
 
+
+
     try {
+
         const token = localStorage.getItem('access_token');
+
         
+
         // 1. Se logado mas sem conversa ativa, cria uma agora
+
         if (token && !currentConversationId) {
-            console.log("?? Criando nova conversa para in�cio de papo...");
+
+            console.log(" Criando nãova conversa para in�cio de papo...");
+
             const conv = await createConversationWithTitle(text);
+
             if (!conv) {
-                throw new Error("Falha ao criar conversa");
+
+                throw new Error("Falha ação criar conversa");
+
             }
+
             // currentConversationId � setado dentro de createConversationWithTitle
+
         }
+
         
+
         // 2. Envia a mensagem (Logado ou An�nimo)
+
         let res;
+
         if (token && currentConversationId) {
+
             console.log("? Enviando para conversa existente ID:", currentConversationId);
+
             res = await fetch(`https://atenaai.onrender.com/conversations/${currentConversationId}/messages`, {
+
                 method: "POST",
+
                 headers: { 
+
                     "Content-Type": "application/json",
+
                     "Authorization": `Bearer ${token}`
+
                 },
+
                 body: JSON.stringify({ text, language: getLanguage && getLanguage() })
+
             });
+
         } else {
-            console.log("?? Enviando como usu�rio an�nimo...");
+
+            console.log(" Enviando como usu�rio an�nimo...");
+
             res = await fetch("https://atenaai.onrender.com/chat/", {
+
                 method: "POST",
+
                 headers: { "Content-Type": "application/json" },
+
                 body: JSON.stringify({ text, language: getLanguage && getLanguage() })
+
             });
+
         }
+
+
 
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
+
+
         const data = await res.json();
+
         removeTyping();
+
         addAI(data.reply || "N�o consegui responder agora.");
+
         
+
     } catch (err) {
+
         removeTyping();
-        console.error("? Erro no envio:", err);
+
+        console.error("? Erro não envio:", err);
+
         addAI("Erro ao conectar com a IA. Por favor, tente novamente.");
+
     } finally {
+
         inputEl.disabled = false;
+
         inputEl.focus();
+
     }
+
     
+
     return false;
+
 }
 
 
-// ??? Gerar t�tulo a partir da primeira mensagem
+
+
+
+// ? Gerar t�tulo a partir da primeira mensagem
+
 function generateTitleFromMessage(text) {
+
     // Pegar os primeiros 50 caracteres
+
     const truncated = text.length > 50 ? text.substring(0, 50) + '...' : text;
+
     return truncateTitle(truncated);
+
 }
 
-// Limita tamanho do t�tulo exibido na sidebar para n�o quebrar layout
+
+
+// Limita tamanho do t�tulo exibido na sidebar para nao quebrar layout
+
 function truncateTitle(text, max = 28) {
+
     if (!text) return '';
+
     return text.length > max ? text.substring(0, max - 1) + '�' : text;
+
 }
+
+
 
 // Fun��es para o avatar da AtenaAI usando o logo do projeto
+
 function getLogoPath() {
+
     const isDark = document.documentElement.classList.contains('dark');
+
     return isDark ? 'assets/logo/logo-icon-dark.png' : 'assets/logo/logo-icon-ligth.png';
+
 }
+
+
 
 function getAIAvatarSrc() {
+
     return getLogoPath();
+
 }
+
+
 
 function createAIAvatar() {
+
     return '';
+
 }
+
+
 
 function updateAllLogos() {
+
     const logoPath = getLogoPath();
+
     document.querySelectorAll('img[data-theme-logo]').forEach(img => {
+
         img.src = logoPath;
+
     });
+
 }
+
+
 
 // Fun��o para criar elemento de avatar da IA
+
 function createAIAvatarElement() {
+
     return document.createElement('div');
+
 }
 
-// ?? Adicionar mensagem do usu�rio
+
+
+//  Adicionar mensagem do usu�rio
+
 function addUser(text) {
+
     const chatEl = document.getElementById("chat-messages");
+
     if (!chatEl) return;
 
+
+
     const container = document.createElement('div');
+
     container.className = 'flex justify-end mb-4';
+
     
+
     const message = document.createElement('div');
+
     message.className = 'message bg-blue-600 text-white p-4 rounded-2xl rounded-tr-sm shadow-sm';
+
     message.textContent = text;
+
     
+
     container.appendChild(message);
+
     chatEl.appendChild(container);
+
     chatEl.scrollTop = chatEl.scrollHeight;
+
 }
 
-// ?? Adicionar mensagem da IA
+
+
+//  Adicionar mensagem da IA
+
 function addAI(text) {
+
     const chatEl = document.getElementById("chat-messages");
+
     if (!chatEl) return;
 
+
+
     const container = document.createElement('div');
+
     container.className = 'flex items-start mb-4';
+
     
+
     const message = document.createElement('div');
+
     message.className = 'message bg-gray-50 dark:bg-gray-800 p-4 rounded-2xl rounded-tl-sm shadow-sm text-gray-800 dark:text-gray-100';
+
     message.textContent = text;
+
     
+
     container.appendChild(message);
+
     chatEl.appendChild(container);
+
     chatEl.scrollTop = chatEl.scrollHeight;
+
 }
 
 
-// ? Mostrar indicador de digita��o
+
+
+
+// ? Mostrar indicador de digitacao
+
 function showTyping() {
+
     const chatEl = document.getElementById("chat-messages");
+
     if (!chatEl) return;
 
+
+
     const container = document.createElement('div');
+
     container.id = 'typing';
+
     container.className = 'flex items-start mb-4';
+
     
+
     const message = document.createElement('div');
+
     message.className = 'message bg-gray-50 dark:bg-gray-800 p-4 rounded-2xl rounded-tl-sm shadow-sm typing-indicator';
+
     message.innerHTML = '<span>.</span><span>.</span><span>.</span>';
+
     
+
     container.appendChild(message);
+
     chatEl.appendChild(container);
+
     chatEl.scrollTop = chatEl.scrollHeight;
+
 }
 
-// ? Remover indicador de digita��o
+
+
+// ? Remover indicador de digitacao
+
 function removeTyping() {
+
     const t = document.getElementById("typing");
+
     if (t) t.remove();
+
 }
 
 
-// ? Criar nova conversa COM t�tulo
+
+
+
+// ? Criar nãova conversa COM t�tulo
+
 async function createConversationWithTitle(title) {
+
     const token = localStorage.getItem('access_token');
+
     if (!token) return null;
+
     
+
     try {
-        console.log("?? Criando conversa com t�tulo:", title);
+
+        console.log(" Criando conversa com t�tulo:", title);
+
         const res = await fetch('https://atenaai.onrender.com/conversations/', {
+
             method: 'POST',
+
             headers: { 
+
                 'Authorization': `Bearer ${token}`,
+
                 'Content-Type': 'application/json'
+
             }
+
         });
+
         
+
         if (!res.ok) {
-            console.error("? Erro ao criar conversa:", res.status);
+
+            console.error("? Erro ação criar conversa:", res.status);
+
             return null;
+
         }
+
         
+
         const conv = await res.json();
-        console.log("?? Conversa criada com ID:", conv.id);
+
+        console.log(" Conversa criada com ID:", conv.id);
+
         
+
         // Atualizar o t�tulo da conversa
+
         const updateRes = await fetch(`https://atenaai.onrender.com/conversations/${conv.id}`, {
+
             method: 'PUT',
+
             headers: {
+
                 'Authorization': `Bearer ${token}`,
+
                 'Content-Type': 'application/json'
+
             },
+
             body: JSON.stringify({ title })
+
         });
+
         
+
         if (updateRes.ok) {
+
             const updated = await updateRes.json();
+
             currentConversationId = updated.id;
+
             sessionStorage.setItem('currentConversationId', updated.id);
+
             console.log("? Nova conversa ID setado:", currentConversationId);
+
             loadConversations();
+
             return updated;
+
         } else {
+
             currentConversationId = conv.id;
+
             sessionStorage.setItem('currentConversationId', conv.id);
-            console.log("?? Conversa criada mas t�tulo n�o atualizado. ID:", currentConversationId);
+
+            console.log(" Conversa criada mas t�tulo nao atualizado. ID:", currentConversationId);
+
             loadConversations();
+
             return conv;
+
         }
+
     } catch (err) {
+
         console.error('? Erro createConversationWithTitle:', err);
+
         return null;
+
     }
+
 }
+
+
+
 
 
 // Confirmar modal functions
+
 let pendingConfirmAction = null;
 
+
+
 function showConfirmModal(title, message, onConfirm) {
-    console.log("?? showConfirmModal chamado com t�tulo:", title);
+
+    console.log(" showConfirmModal chamado com t�tulo:", title);
+
     
+
     const confirmModal = document.getElementById('confirm-modal');
+
     const confirmOverlay = document.getElementById('confirm-modal-overlay');
+
     const confirmTitle = document.getElementById('confirm-title');
+
     const confirmMessage = document.getElementById('confirm-message');
+
     
+
     confirmTitle.textContent = title;
+
     confirmMessage.textContent = message;
+
     
+
     pendingConfirmAction = onConfirm;
+
     
+
     confirmModal.classList.remove('hidden');
+
     confirmOverlay.classList.remove('hidden');
+
 }
+
+
 
 function hideConfirmModal() {
+
     const confirmModal = document.getElementById('confirm-modal');
+
     const confirmOverlay = document.getElementById('confirm-modal-overlay');
+
     
+
     confirmModal.classList.add('hidden');
+
     confirmOverlay.classList.add('hidden');
+
     pendingConfirmAction = null;
+
 }
+
+
 
 /* ================= SETTINGS MODAL ================= */
+
 const settingsBtn = document.getElementById('settings-btn');
+
 const settingsModal = document.getElementById('settings-modal');
+
 const settingsModalOverlay = document.getElementById('settings-modal-overlay');
+
 const closeSettingsBtn = document.getElementById('close-settings');
+
 const cancelSettingsBtn = document.getElementById('cancel-settings');
+
 const settingsForm = document.getElementById('settings-form');
 
+
+
 // Abrir modal de configura��es
+
 function openSettings() {
+
     const settingsModal = document.getElementById('settings-modal');
+
     const settingsModalOverlay = document.getElementById('settings-modal-overlay');
+
     if (settingsModal) settingsModal.classList.add('active');
+
     if (settingsModalOverlay) settingsModalOverlay.classList.add('active');
+
     
+
     // DEBUG: Logar dados do usu�rio
-    console.log('userData ao abrir settings:', userData);
+
+    console.log('userData ação abrir settings:', userData);
+
     
+
     // Preencher campos com dados do usu�rio
+
     document.getElementById('setting-name').value = userData.name || '';
+
     document.getElementById('setting-nickname').value = userData.nickname || '';
+
     document.getElementById('setting-email').value = userData.email || '';
+
     document.getElementById('setting-birth-date').value = userData.birth_date || '';
+
     
+
     // Selecionar g�nero
+
     const genderSelect = document.getElementById('setting-gender');
+
     console.log('G�nero do usu�rio:', userData.gender);
+
     genderSelect.value = userData.gender || '';
+
     
+
     // Selecionar tipo de conta
+
     const accountTypeSelect = document.getElementById('setting-account-type');
+
     console.log('Tipo de conta do usu�rio:', userData.account_type);
+
     accountTypeSelect.value = userData.account_type || 'estudante';
+
     
+
     // Desmarcar todos os checkboxes de interesses primeiro
+
         // Selecionar idioma
+
         const languageSelect = document.getElementById('setting-language');
+
         if (languageSelect) {
+
             languageSelect.value = getLanguage();
+
         }
+
     
+
         // Desmarcar todos os checkboxes de interesses primeiro
+
     document.querySelectorAll('.interest-checkbox').forEach(cb => {
+
         cb.checked = false;
+
     });
+
     
+
     // Marcar os interesses do usu�rio
+
     console.log('Interesses do usu�rio:', userData.interests);
+
     if (userData.interests && userData.interests.length > 0) {
+
         const interests = Array.isArray(userData.interests) ? userData.interests : [];
+
         console.log('Array de interesses:', interests);
+
         
+
         document.querySelectorAll('.interest-checkbox').forEach(checkbox => {
+
             console.log(`Verificando checkbox ${checkbox.value}:`, interests.includes(checkbox.value));
+
             // Verificar se o valor do checkbox est� na lista de interesses
+
             if (interests.includes(checkbox.value)) {
+
                 checkbox.checked = true;
+
                 console.log(`Marcado: ${checkbox.value}`);
+
             }
+
         });
+
     }
+
     
+
     // Mostrar imagem de perfil
+
     const profilePreview = document.getElementById('profile-preview');
+
     if (userData.profile_image) {
+
         profilePreview.src = userData.profile_image;
+
         profilePreview.style.display = 'block';
+
     } else {
+
         profilePreview.style.display = 'none';
+
     }
+
 }
+
+
 
 // Fechar modal de configura��es
+
 function closeSettings() {
+
     const settingsModal = document.getElementById('settings-modal');
+
     const settingsModalOverlay = document.getElementById('settings-modal-overlay');
+
     if (settingsModal) settingsModal.classList.remove('active');
+
     if (settingsModalOverlay) settingsModalOverlay.classList.remove('active');
+
 }
+
+
 
 // Event listeners para abrir/fechar
+
 settingsBtn?.addEventListener('click', openSettings);
+
 closeSettingsBtn?.addEventListener('click', closeSettings);
+
 cancelSettingsBtn?.addEventListener('click', closeSettings);
+
 settingsModalOverlay?.addEventListener('click', closeSettings);
 
+
+
 // Gerenciar upload de foto
+
 const profileImageInput = document.getElementById('profile-image');
+
 profileImageInput?.addEventListener('change', (e) => {
+
     const file = e.target.files[0];
+
     if (file) {
+
         const reader = new FileReader();
+
         reader.onload = (event) => {
+
             const profilePreview = document.getElementById('profile-preview');
+
             profilePreview.src = event.target.result;
+
             profilePreview.style.display = 'block';
+
         };
+
         reader.readAsDataURL(file);
+
     }
+
 });
 
+
+
 // Submeter formul�rio de configura��es
-// Alterar idioma ao mudar o seletor
+
+// Alterar idioma ação mudar o seletor
+
 const languageSelect = document.getElementById('setting-language');
+
 if (languageSelect) {
+
     languageSelect.addEventListener('change', (e) => {
+
         const newLanguage = e.target.value;
+
         setLanguage(newLanguage);
+
     });
+
 }
 
+
+
 // Submeter formul�rio de configura��es
+
 settingsForm?.addEventListener('submit', async (e) => {
+
     e.preventDefault();
+
     
+
     const token = localStorage.getItem('access_token');
+
     if (!token) {
+
         showToastError('N�o autenticado', 'Por favor fa�a login novamente');
+
         return;
+
     }
+
     
+
     // Preparar dados
+
     const formData = new FormData();
+
     formData.append('full_name', document.getElementById('setting-name').value);
+
     formData.append('nickname', document.getElementById('setting-nickname').value);
+
     formData.append('email', document.getElementById('setting-email').value);
+
     formData.append('birth_date', document.getElementById('setting-birth-date').value);
+
     formData.append('gender', document.getElementById('setting-gender').value);
+
     formData.append('account_type', document.getElementById('setting-account-type').value);
+
     
+
     // Recolher interesses dos checkboxes
+
     const interests = [];
+
     document.querySelectorAll('.interest-checkbox:checked').forEach(checkbox => {
+
         interests.push(checkbox.value);
+
     });
+
     formData.append('interests', JSON.stringify(interests));
+
     
-    // Se h� nova foto
+
+    // Se h� nãova foto
+
     const profileImageInput = document.getElementById('profile-image');
+
     if (profileImageInput.files.length > 0) {
+
         formData.append('profile_image', profileImageInput.files[0]);
+
     }
+
     
+
     try {
+
         const res = await fetch('https://atenaai.onrender.com/auth/update-profile', {
+
             method: 'PUT',
+
             headers: {
+
                 'Authorization': `Bearer ${token}`
+
             },
+
             body: formData
+
         });
+
         
+
         if (res.ok) {
+
             const updated = await res.json();
+
             
+
             // Atualizar userData
+
             userData.name = updated.full_name;
+
             userData.nickname = updated.nickname;
+
             userData.email = updated.email;
+
             userData.birth_date = updated.birth_date;
+
             userData.gender = updated.gender;
+
             userData.account_type = updated.account_type;
+
             userData.interests = updated.interests;
+
             if (updated.profile_image) {
+
                 userData.profile_image = updated.profile_image;
+
             }
+
             
-            // Atualizar avatar e nome na sidebar
+
+            // Atualizar avatar e nãome na sidebar
+
             updateAvatar();
+
             document.getElementById('user-name').textContent = userData.nickname || userData.name || 'Usu�rio';
+
             // Traduzir tipo de conta usando chaves i18n
+
             const accountTypeKeyMap = {
+
                 'student': 'auth.student',
+
                 'estudante': 'auth.student',
+
                 'teacher': 'auth.teacher',
+
                 'professor': 'auth.teacher',
+
                 'guardian': 'auth.guardian',
+
                 'responsavel': 'auth.guardian'
+
             };
+
             const roleKey = accountTypeKeyMap[userData.account_type?.toLowerCase()] || 'auth.student';
+
             document.getElementById('user-role').textContent = typeof t === 'function' ? t(roleKey) : 'Estudante';
+
             
+
             // Fechar modal
+
             closeSettings();
+
             showToastSuccess(typeof t === 'function' ? t('settings.profileUpdated') : 'Profile updated successfully!', '');
+
         } else {
+
             const error = await res.json();
-            showToastError('Erro', error.detail || 'Erro ao atualizar perfil');
+
+            showToastError('Erro', error.detail || 'Erro ação atualizar perfil');
+
         }
+
     } catch (err) {
+
         console.error('Erro:', err);
+
         showToastError('Erro', 'Falha ao conectar com o servidor');
+
     }
+
 });
+
+
 
 // Fun��o para mostrar toast de sucesso
+
 function showToastSuccess(title, message) {
+
     const toast = document.getElementById('toast');
+
     const toastTitle = document.getElementById('toast-title');
+
     const toastMessage = document.getElementById('toast-message');
+
     const toastIcon = document.getElementById('toast-icon');
+
     
+
     toastTitle.textContent = title;
+
     toastMessage.textContent = message;
+
     toastIcon.className = 'flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-green-100 text-green-600';
+
     toastIcon.textContent = '?';
+
     
+
     toast.classList.remove('hidden');
+
     
+
     setTimeout(() => toast.classList.add('hidden'), 4000);
+
 }
+
+
 
 // Fun��o para mostrar toast de erro
+
 function showToastError(title, message) {
+
     const toast = document.getElementById('toast');
+
     const toastTitle = document.getElementById('toast-title');
+
     const toastMessage = document.getElementById('toast-message');
+
     const toastIcon = document.getElementById('toast-icon');
+
     
+
     toastTitle.textContent = title;
+
     toastMessage.textContent = message;
+
     toastIcon.className = 'flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-red-100 text-red-600';
+
     toastIcon.textContent = '?';
+
     
+
     toast.classList.remove('hidden');
+
     
+
     setTimeout(() => toast.classList.add('hidden'), 4000);
+
 }
+
+
 
 // Deletar conta
+
 const deleteAccountBtn = document.getElementById('delete-account-btn');
+
 deleteAccountBtn?.addEventListener('click', async (e) => {
+
     e.preventDefault();
+
     
-    const confirmed = confirm('?? Tem certeza que deseja deletar sua conta? Esta a��o � irrevers�vel!');
+
+    const confirmed = confirm(' Tem certeza que deseja deletar sua conta? Esta acao � irreversivel!');
+
     if (!confirmed) return;
+
     
+
     const token = localStorage.getItem('access_token');
+
     if (!token) {
+
         showToastError('Erro', 'N�o autenticado');
+
         return;
+
     }
+
     
+
     try {
+
         const res = await fetch('https://atenaai.onrender.com/auth/delete-account', {
+
             method: 'DELETE',
+
             headers: {
+
                 'Authorization': `Bearer ${token}`
+
             }
+
         });
+
         
+
         if (res.ok) {
+
             // Deletar token imediatamente
+
             localStorage.removeItem('access_token');
+
             localStorage.removeItem('user_id');
+
             
+
             // Limpar dados
+
             userData = {
+
                 id: null,
+
                 email: null,
+
                 name: null,
+
                 account_type: null,
+
                 interests: null,
+
                 gender: null,
+
                 birth_date: null
+
             };
+
             
+
             // Fechar modal
+
             closeSettings();
+
             
+
             // Mostrar toast
+
             showToastSuccess('Conta deletada', 'Sua conta foi deletada com sucesso. Recarregando...');
+
             
+
             // Recarregar a p�gina ap�s 2 segundos para resetar completamente
+
             setTimeout(() => {
+
                 window.location.reload();
+
             }, 2000);
+
         } else {
+
             const error = await res.json();
-            showToastError('Erro', error.detail || 'Erro ao deletar conta');
+
+            showToastError('Erro', error.detail || 'Erro ação deletar conta');
+
         }
+
     } catch (err) {
+
         console.error('Erro:', err);
+
         showToastError('Erro', 'Falha ao conectar com o servidor');
+
     }
+
 });
 
-// ?? Resetar para uma nova conversa (apenas no frontend)
+
+
+//  Resetar para uma nãova conversa (apenas não frontend)
+
 function startNewConversation() {
-    console.log("?? Iniciando nova conversa (sem salvar no backend)");
+
+    console.log(" Iniciando nãova conversa (sem salvar não backend)");
+
     
+
     // Limpar dados da conversa atual
+
     currentConversationId = null;
+
     sessionStorage.removeItem('currentConversationId');
+
     
+
     // Limpar o chat e mostrar mensagem padr�o
+
     const chatEl = document.getElementById('chat-messages');
+
     if (chatEl) {
+
         chatEl.innerHTML = `
+
             <div class="flex items-start">
+
                 <div class="message bg-gray-50 dark:bg-gray-800 p-4 rounded-2xl rounded-tl-sm shadow-sm text-gray-800 dark:text-gray-100">
-                    <p data-i18n="messages.welcome">Ol�! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
+
+                    <p data-i18n="messages.welcome">Ola! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
+
                 </div>
+
             </div>
+
         `;
+
         // Re-apply translations after dynamic content
+
         if (typeof updatePageLanguage === 'function') {
+
             updatePageLanguage();
+
         }
+
     }
-    console.log("?? Conversa resetada. Aguardando primeira mensagem para criar no backend");
+
+    console.log(" Conversa resetada. Aguardando primeira mensagem para criar não backend");
+
 }
 
-// ?? Carregar hist�rico de conversas
+
+
+//  Carregar hist�rico de conversas
+
 async function loadConversations() {
+
     const token = localStorage.getItem('access_token');
+
     if (!token) return;
+
     
+
     try {
+
         const res = await fetch('https://atenaai.onrender.com/conversations/', {
+
             headers: { 'Authorization': `Bearer ${token}` }
+
         });
+
         
+
         if (!res.ok) {
-            console.error("? Erro ao carregar conversas:", res.status);
+
+            console.error("? Erro ação carregar conversas:", res.status);
+
             return;
+
         }
+
         
+
         const conversations = await res.json();
-        console.log("?? Conversas carregadas:", conversations.length);
+
+        console.log(" Conversas carregadas:", conversations.length);
+
         
+
         const listEl = document.getElementById('conversation-list');
+
         
+
         // Limpar completamente
+
         listEl.innerHTML = '';
+
         
+
         conversations.forEach(conv => {
+
             const li = document.createElement('li');
+
             li.className = 'relative group';
+
             li.dataset.convId = conv.id;
+
             
+
             const date = new Date(conv.created_at);
+
             const dateStr = date.toLocaleDateString('pt-BR');
+
             const title = truncateTitle(conv.title || 'Nova conversa');
+
             
+
             li.innerHTML = `
+
                 <div class="flex items-center justify-between p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors group/item">
+
                     <button class="conversation-item flex-1 text-left" data-conv-id="${conv.id}">
+
                         <p class="font-medium text-sm truncate text-gray-900 dark:text-gray-100" title="${conv.title}">${title}</p>
+
                         <p class="text-xs text-gray-500 dark:text-gray-400">${dateStr}</p>
+
                     </button>
+
                     
+
                     <div class="relative">
-                        <button class="conv-menu-btn ml-2 p-1 rounded-md text-gray-300 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200" data-conv-id="${conv.id}" title="Mais op��es">
+
+                        <button class="conv-menu-btn ml-2 p-1 rounded-md text-gray-300 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200" data-conv-id="${conv.id}" title="Mais opcoes" data-i18n-title="chat.moreOptions">
+
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+
                                 <path d="M10.5 1.5H9.5V3.5H10.5V1.5ZM10.5 8.5H9.5V10.5H10.5V8.5ZM10.5 15.5H9.5V17.5H10.5V15.5Z"/>
+
                             </svg>
+
                         </button>
+
                         
+
                         <div class="conv-menu hidden absolute right-0 mt-1 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 py-1" data-conv-id="${conv.id}">
+
                             <button class="edit-conv w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2" data-conv-id="${conv.id}">
+
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+
                                 </svg>
-                                Renomear
+
+                                Renãomear
+
                             </button>
+
                             <button class="copy-conv w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2" data-conv-id="${conv.id}">
+
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+
                                 </svg>
+
                                 Duplicar
+
                             </button>
+
                             <div class="border-t border-gray-200 dark:border-gray-700 my-1"></div>
+
                             <button class="delete-conv w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2" data-conv-id="${conv.id}">
+
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+
                                 </svg>
+
                                 Deletar
+
                             </button>
+
                         </div>
+
                     </div>
+
                 </div>
+
             `;
+
             
+
             listEl.appendChild(li);
+
         });
+
         
+
     } catch (err) {
-        console.error('? Erro ao carregar conversas:', err);
+
+        console.error('? Erro ação carregar conversas:', err);
+
     }
+
 }
+
+
 
 // Event delegation para conversas - adicionar uma �nica vez
+
 const listEl = document.getElementById('conversation-list');
+
 if (listEl && !listEl.hasAttribute('data-listeners-added')) {
+
     listEl.setAttribute('data-listeners-added', 'true');
+
     
+
     listEl.addEventListener('click', (e) => {
-        // Se clicou no bot�o de menu (tr�s pontinhos)
+
+        // Se clicou não bot�o de menu (tr�s pontinhos)
+
         if (e.target.closest('.conv-menu-btn')) {
+
             e.stopPropagation();
+
             const btn = e.target.closest('.conv-menu-btn');
+
             const menu = btn.nextElementSibling;
+
             
+
             // Fechar todos os outros menus
+
             document.querySelectorAll('.conv-menu').forEach(m => {
+
                 if (m !== menu) m.classList.add('hidden');
+
             });
+
             
+
             // Toggle menu atual
+
             menu.classList.toggle('hidden');
+
         }
+
         // Se clicou em editar
+
         else if (e.target.closest('.edit-conv')) {
+
             e.stopPropagation();
+
             const convId = parseInt(e.target.closest('.edit-conv').dataset.convId);
+
             editConversationTitle(convId);
+
         }
+
         // Se clicou em copiar
+
         else if (e.target.closest('.copy-conv')) {
+
             e.stopPropagation();
+
             const convId = parseInt(e.target.closest('.copy-conv').dataset.convId);
+
             copyConversation(convId);
+
         }
+
         // Se clicou em deletar
+
         else if (e.target.closest('.delete-conv')) {
+
             e.stopPropagation();
+
             const convId = parseInt(e.target.closest('.delete-conv').dataset.convId);
+
             deleteConversation(convId);
+
         }
+
         // Se clicou na conversa
+
         else if (e.target.closest('.conversation-item')) {
+
             const convId = e.target.closest('.conversation-item').dataset.convId;
+
             loadConversation(convId);
+
             // Fechar menus quando seleciona conversa
+
             document.querySelectorAll('.conv-menu').forEach(m => m.classList.add('hidden'));
+
         }
+
     });
+
     
-    // Fechar menu ao clicar fora
+
+    // Fechar menu ação clicar fora
+
     document.addEventListener('click', (e) => {
+
         if (!e.target.closest('#conversation-list')) {
+
             document.querySelectorAll('.conv-menu').forEach(m => m.classList.add('hidden'));
+
         }
+
     });
+
 }
 
-// ??? Carregar conversa espec�fica
+
+
+// ? Carregar conversa espec�fica
+
 async function loadConversation(convId) {
+
     const token = localStorage.getItem('access_token');
+
     if (!token) {
-        console.error("? Token n�o encontrado");
+
+        console.error("? Token nao encontrado");
+
         return;
+
     }
+
     
+
     try {
-        console.log("?? Buscando conversa ID:", convId);
+
+        console.log(" Buscando conversa ID:", convId);
+
         const res = await fetch(`https://atenaai.onrender.com/conversations/${convId}`, {
+
             headers: { 'Authorization': `Bearer ${token}` }
+
         });
+
         
-        console.log("?? Resposta do servidor:", res.status);
+
+        console.log(" Resposta do servidor:", res.status);
+
         
+
         if (!res.ok) {
-            console.error("? Erro ao buscar conversa:", res.status);
+
+            console.error("? Erro ação buscar conversa:", res.status);
+
             return;
+
         }
+
         
+
         const conv = await res.json();
-        console.log("?? Conversa recebida:", conv);
+
+        console.log(" Conversa recebida:", conv);
+
         
+
         currentConversationId = conv.id;
+
         sessionStorage.setItem('currentConversationId', conv.id);
-        console.log("?? currentConversationId definido para:", currentConversationId);
+
+        console.log(" currentConversationId definido para:", currentConversationId);
+
         
+
         // Limpar chat completamente
+
         const chatEl = document.getElementById('chat-messages');
+
         if (!chatEl) {
-            console.error("? Elemento chat-messages n�o encontrado");
+
+            console.error("? Elemento chat-messages nao encontrado");
+
             return;
+
         }
+
         
+
         chatEl.innerHTML = '';
-        console.log("?? Chat limpo");
-        // Sempre mostrar a sauda��o inicial da IA no topo
-        addAI('Ol�! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?');
+
+        console.log(" Chat limpo");
+
+        // Sempre mostrar a saudacao inicial da IA não topo
+
+        addAI('Ola! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?');
+
         
+
         if (conv.messages && conv.messages.length > 0) {
-            console.log("?? Adicionando", conv.messages.length, "mensagens");
+
+            console.log(" Adicionando", conv.messages.length, "mensagens");
+
             conv.messages.forEach(msg => {
+
                 const content = msg.content;
+
                 if (msg.role === 'user') {
+
                     addUser(content);
+
                 } else {
+
                     addAI(content);
+
                 }
+
             });
+
         }
+
  else {
-            console.log("?? Nenhuma mensagem encontrada");
+
+            console.log(" Nenhuma mensagem encontrada");
+
         }
+
         
+
         chatEl.scrollTop = chatEl.scrollHeight;
+
         console.log("? Conversa carregada com sucesso");
+
         
+
     } catch (err) {
-        console.error('? Erro ao carregar conversa:', err);
+
+        console.error('? Erro ação carregar conversa:', err);
+
     }
+
 }
 
-// ? Criar nova conversa
-// ?? Editar nome da conversa
+
+
+// ? Criar nãova conversa
+
+//  Editar nãome da conversa
+
 function editConversationTitle(convId) {
+
     const token = localStorage.getItem('access_token');
+
     if (!token) return;
+
     
+
     // Encontrar o t�tulo atual
+
     const listEl = document.getElementById('conversation-list');
+
     const convItem = listEl.querySelector(`[data-conv-id="${convId}"]`);
+
     const currentTitle = convItem?.querySelector('.conversation-item p:first-child')?.textContent || '';
+
     
+
     // Mostrar modal
+
     const modal = document.getElementById('rename-modal');
+
     const overlay = document.getElementById('rename-modal-overlay');
+
     const input = document.getElementById('rename-input');
+
     const saveBtn = document.getElementById('rename-save');
+
     const cancelBtn = document.getElementById('rename-cancel');
+
     const closeBtn = document.getElementById('rename-close');
+
     
+
     input.value = currentTitle;
+
     modal.classList.remove('hidden');
+
     overlay.classList.remove('hidden');
+
     input.focus();
+
     input.select();
+
     
+
     const handleSave = async () => {
+
         const newTitle = input.value.trim();
+
         
+
         if (!newTitle) {
-            showToastError('Erro', 'O nome n�o pode ser vazio');
+
+            showToastError('Erro', 'O nãome nao pode ser vazio');
+
             return;
+
         }
+
         
+
         if (newTitle === currentTitle) {
+
             closeModal();
+
             return;
+
         }
+
         
+
         try {
+
             const res = await fetch(`https://atenaai.onrender.com/conversations/${convId}`, {
+
                 method: 'PUT',
+
                 headers: {
+
                     'Authorization': `Bearer ${token}`,
+
                     'Content-Type': 'application/json'
+
                 },
+
                 body: JSON.stringify({ title: newTitle })
+
             });
+
             
+
             if (res.ok) {
+
                 closeModal();
+
                 loadConversations();
-                showToastSuccess('Sucesso', 'Conversa renomeada com sucesso');
+
+                showToastSuccess('Sucesso', 'Conversa renãomeada com sucesso');
+
             } else {
-                showToastError('Erro', 'Falha ao atualizar nome da conversa');
+
+                showToastError('Erro', 'Falha ação atualizar nãome da conversa');
+
             }
+
         } catch (err) {
-            console.error('Erro ao editar conversa:', err);
+
+            console.error('Erro ação editar conversa:', err);
+
             showToastError('Erro', 'Erro ao conectar com o servidor');
+
         }
+
     };
+
     
+
     const closeModal = () => {
+
         modal.classList.add('hidden');
+
         overlay.classList.add('hidden');
+
         saveBtn.removeEventListener('click', handleSave);
+
         cancelBtn.removeEventListener('click', closeModal);
+
         closeBtn.removeEventListener('click', closeModal);
+
         input.removeEventListener('keydown', handleEnter);
+
     };
+
     
+
     const handleEnter = (e) => {
+
         if (e.key === 'Enter') {
+
             e.preventDefault();
+
             handleSave();
+
         }
+
     };
+
     
+
     saveBtn.addEventListener('click', handleSave);
+
     cancelBtn.addEventListener('click', closeModal);
+
     closeBtn.addEventListener('click', closeModal);
+
     input.addEventListener('keydown', handleEnter);
+
 }
 
-// ?? Copiar conversa (duplicar com novo nome)
+
+
+//  Copiar conversa (duplicar com nãovo nãome)
+
 async function copyConversation(convId) {
+
     const token = localStorage.getItem('access_token');
+
     if (!token) return;
+
     
+
     try {
+
         // 1. Buscar a conversa original
+
         const getRes = await fetch(`https://atenaai.onrender.com/conversations/${convId}`, {
+
             headers: { 'Authorization': `Bearer ${token}` }
+
         });
+
         
+
         if (!getRes.ok) {
+
             showToastError('Erro', 'N�o foi poss�vel buscar a conversa');
+
             return;
+
         }
+
         
+
         const originalConv = await getRes.json();
+
         
-        // 2. Criar nova conversa
+
+        // 2. Criar nãova conversa
+
         const createRes = await fetch('https://atenaai.onrender.com/conversations/', {
+
             method: 'POST',
+
             headers: { 
+
                 'Authorization': `Bearer ${token}`,
+
                 'Content-Type': 'application/json'
+
             }
+
         });
+
         
+
         if (!createRes.ok) {
-            showToastError('Erro', 'N�o foi poss�vel criar nova conversa');
+
+            showToastError('Erro', 'N�o foi poss�vel criar nãova conversa');
+
             return;
+
         }
+
         
+
         const newConv = await createRes.json();
+
         
-        // 3. Atualizar t�tulo da nova conversa
+
+        // 3. Atualizar t�tulo da nãova conversa
+
         const newTitle = `${originalConv.title} (c�pia)`;
+
         const updateRes = await fetch(`https://atenaai.onrender.com/conversations/${newConv.id}`, {
+
             method: 'PUT',
+
             headers: {
+
                 'Authorization': `Bearer ${token}`,
+
                 'Content-Type': 'application/json'
+
             },
+
             body: JSON.stringify({ title: newTitle })
+
         });
+
         
+
         if (!updateRes.ok) {
-            showToastError('Erro', 'N�o foi poss�vel atualizar nome da c�pia');
+
+            showToastError('Erro', 'N�o foi poss�vel atualizar nãome da c�pia');
+
             return;
+
         }
+
         
+
         loadConversations();
+
         showToastSuccess('Conversa copiada', 'A conversa foi duplicada com sucesso');
+
         
+
     } catch (err) {
-        console.error('Erro ao copiar conversa:', err);
+
+        console.error('Erro ação copiar conversa:', err);
+
         showToastError('Erro', 'Erro ao conectar com o servidor');
+
     }
+
 }
 
-// ??? Deletar conversa
+
+
+// ? Deletar conversa
+
 function deleteConversation(convId) {
+
     const token = localStorage.getItem('access_token');
-    console.log("??? Iniciando deleteConversation com convId:", convId, "token:", !!token);
+
+    console.log("? Iniciando deleteConversation com convId:", convId, "token:", !!token);
+
     if (!token) {
+
         console.error("? Sem token!");
+
         return;
+
     }
+
     
-    // Mostrar modal de confirma��o
+
+    // Mostrar modal de confirmacao
+
     showConfirmModal(
+
         'Deletar conversa',
-        'Esta a��o n�o pode ser desfeita. Deseja continuar?',
+
+        'Esta acao nao pode ser desfeita. Deseja continuar?',
+
         () => {
+
             console.log("? Usu�rio confirmou exclus�o de:", convId);
+
             performDeleteConversation(convId, token);
+
         }
+
     );
+
 }
+
+
 
 // Executar exclus�o de conversa
+
 async function performDeleteConversation(convId, token) {
+
     try {
-        console.log("??? Deletando conversa:", convId);
+
+        console.log("? Deletando conversa:", convId);
+
         
+
         const res = await fetch(`https://atenaai.onrender.com/conversations/${convId}`, {
+
             method: 'DELETE',
+
             headers: { 'Authorization': `Bearer ${token}` }
+
         });
+
         
-        console.log("??? Response status:", res.status);
+
+        console.log("? Response status:", res.status);
+
         
+
         if (res.ok) {
+
             console.log("? Conversa deletada com sucesso");
+
             
+
             if (currentConversationId == convId) {
-                console.log("?? Conversa atual foi deletada, limpando chat");
+
+                console.log(" Conversa atual foi deletada, limpando chat");
+
                 currentConversationId = null;
+
                 const chatEl = document.getElementById('chat-messages');
+
                 if (chatEl) {
+
                     chatEl.innerHTML = `
+
                         <div class="flex items-start">
+
                             <div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white shrink-0 shadow-sm">
+
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+
                                     <path d="M10.5 1.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1zM4.5 3.5a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM15.5 3.5a.5.5 0 00-.707 0l-.707.707a.5.5 0 00.707.707l.707-.707a.5.5 0 000-.707zM1.5 10.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1zM18.5 10.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1zM4.5 16.5a.5.5 0 00-.707-.707l-.707.707a.5.5 0 00.707.707l.707-.707zM15.5 16.5a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM10.5 18.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1z"/>
+
                                     <circle cx="10" cy="10" r="3" opacity="0.8"/>
+
                                 </svg>
+
                             </div>
+
                             <div class="message ml-3 bg-white dark:bg-gray-800 p-4 rounded-2xl rounded-tl-sm shadow-sm text-gray-800 dark:text-gray-100">
-                                <p>Selecione uma conversa ou envie uma mensagem para criar uma nova.</p>
+
+                                <p>Selecione uma conversa ou envie uma mensagem para criar uma nãova.</p>
+
                             </div>
+
                         </div>
+
                     `;
+
                 }
+
             }
+
             
+
             // Aguardar um pouco e depois recarregar
+
             await new Promise(resolve => setTimeout(resolve, 500));
-            console.log("?? Recarregando conversas...");
+
+            console.log(" Recarregando conversas...");
+
             await loadConversations();
+
             
+
             showToastSuccess('Conversa deletada', 'A conversa foi removida com sucesso');
+
         } else {
+
             const errorText = await res.text();
-            console.error("? Erro ao deletar:", res.status, errorText);
-            showToastError('Erro', 'Falha ao deletar conversa');
+
+            console.error("? Erro ação deletar:", res.status, errorText);
+
+            showToastError('Erro', 'Falha ação deletar conversa');
+
         }
+
     } catch (err) {
-        console.error('? Erro ao deletar conversa:', err);
+
+        console.error('? Erro ação deletar conversa:', err);
+
         showToastError('Erro', 'Erro ao conectar com o servidor');
+
     }
+
 }
 
-// Carregar conversas ao autenticar
+
+
+// Carregar conversas ação autenticar
+
 let conversationsInterval = null;
+
 function setupConversations() {
+
     const token = localStorage.getItem('access_token');
+
     if (token) {
+
         loadConversations();
+
         // Recarregar a cada 30 segundos, mas apenas uma vez
+
         if (!conversationsInterval) {
+
             conversationsInterval = setInterval(loadConversations, 30000);
+
         }
+
     }
+
 }
+
+
 
 // Inicial setup
+
 setupConversations();
 
-// Ao voltar do quem-somos, iniciar novo chat
+
+
+// Ao voltar do quem-somos, iniciar nãovo chat
+
 if (document.referrer.includes('quem-somos.html')) {
-    console.log('?? Voltando do quem-somos, iniciando novo chat');
+
+    console.log(' Voltando do quem-somos, iniciando nãovo chat');
+
     startNewConversation();
+
 }
 
+
+
 // Verificar status a cada 10 segundos
+
 setInterval(checkAndUpdateAuthStatus, 10000);
+
 </script>
+
 </body>
+
 </html>
+
+
+

@@ -111,7 +111,8 @@
     "deleteSuccess": "Conversa deletada",
     "copyConversation": "Copiar conversa",
     "renameConversation": "Renomear conversa",
-    "myInterests": "Minhas Áreas de Interesse"
+    "myInterests": "Minhas Áreas de Interesse",
+    "moreOptions": "Mais opções"
   },
   "interests": {
     "math": "Matemática",

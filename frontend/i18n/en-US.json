@@ -111,7 +111,8 @@
     "deleteSuccess": "Conversation deleted",
     "copyConversation": "Copy conversation",
     "renameConversation": "Rename conversation",
-    "myInterests": "My Areas of Interest"
+    "myInterests": "My Areas of Interest",
+    "moreOptions": "More options"
   },
   "interests": {
     "math": "Mathematics",
