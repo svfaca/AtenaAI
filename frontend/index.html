@@ -1,4 +1,4 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR" class="light">
 <head>
     <meta charset="UTF-8">
@@ -64,12 +64,12 @@
         .sidebar-collapsed .sidebar-text {
             display: none;
         }
-        /* Mostrar a√ß√µes compactas quando colapsado */
+        /* Mostrar aÁıes compactas quando colapsado */
         .sidebar-collapsed #collapsed-actions {
             display: flex;
         }
         
-        /* √çcones de menu da conversa - design minimalista e moderno */
+        /* Õcones de menu da conversa - design minimalista e moderno */
         .conv-menu-btn {
             transition: all 0.2s ease;
         }
@@ -371,7 +371,7 @@
 <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
 <script>
-// Fun√ß√£o hideToast definida cedo para ser usada no onclick
+// FunÁ„o hideToast definida cedo para ser usada no onclick
 function hideToast() {
     const toast = document.getElementById('toast');
     if (toast) {
@@ -385,7 +385,7 @@ function hideToast() {
   <div class="flex items-start gap-3">
     <div id="toast-icon"
          class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-red-100 text-red-600">
-      ‚ùå
+      ?
     </div>
 
     <div class="flex-1">
@@ -398,7 +398,7 @@ function hideToast() {
     </div>
 
     <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600">
-      ‚úï
+      ?
     </button>
   </div>
 </div>
@@ -406,7 +406,7 @@ function hideToast() {
 <!-- CONTAINER PRINCIPAL -->
 <div id="main-container" class="flex h-screen">
 
-    <!-- SIDEBAR (Apenas para usu√°rios logados) -->
+    <!-- SIDEBAR (Apenas para usu·rios logados) -->
     <aside id="sidebar"
       class="hidden w-64 transition-all duration-300 bg-gray-100 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex-col">
 
@@ -426,7 +426,7 @@ function hideToast() {
 
         <button id="sidebar-toggle"
           class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 absolute right-2 top-1/2 transform -translate-y-1/2 sidebar-text">
-          ‚ò∞
+          ?
         </button>
       </div>
 
@@ -447,12 +447,12 @@ function hideToast() {
 
       </div>
 
-            <!-- A√á√ïES COMPACTAS (vis√≠veis apenas com sidebar colapsada) -->
+            <!-- A«’ES COMPACTAS (visÌveis apenas com sidebar colapsada) -->
             <div id="collapsed-actions" class="hidden flex-col items-center gap-3 py-4">
                 <button id="collapsed-new" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="Nova conversa">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H5a1 1 0 110-2h6V5a1 1 0 011-1z"/></svg>
                 </button>
-                <button id="collapsed-settings" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="Configura√ß√µes">
+                <button id="collapsed-settings" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="ConfiguraÁıes">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
                 </button>
                 <button id="collapsed-logout" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="Sair">
@@ -463,7 +463,7 @@ function hideToast() {
       <!-- FOOTER -->
       <div class="p-3 border-t border-gray-200 dark:border-gray-700 space-y-2">
         <button id="settings-btn" data-i18n="navigation.settings" class="w-full text-left text-sm hover:underline sidebar-text">
-          Configura√ß√µes
+          ConfiguraÁıes
         </button>
 
         <button id="logout-btn"
@@ -474,7 +474,7 @@ function hideToast() {
       </div>
     </aside>
 
-    <!-- CONTE√öDO PRINCIPAL -->
+    <!-- CONTE⁄DO PRINCIPAL -->
     <div class="flex-1 flex flex-col overflow-hidden">
 
         <!-- HEADER -->
@@ -495,7 +495,7 @@ function hideToast() {
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
                     </svg>
                 </button>
-                <!-- Menu n√£o logado -->
+                <!-- Menu n„o logado -->
                 <div id="menu-not-logged" class="items-center space-x-4">
                     <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline">Quem somos</a>
                     <a href="login.html" data-i18n="navigation.login" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Entrar</a>
@@ -510,12 +510,12 @@ function hideToast() {
             </div>
         </header>
 
-        <!-- CHAT (sempre vis√≠vel) -->
+        <!-- CHAT (sempre visÌvel) -->
         <div id="chat-container" class="flex flex-col flex-1 overflow-hidden">
             <div id="chat-messages" class="chat-container flex-1 overflow-y-auto p-4 space-y-6">
                 <div class="flex items-start">
                     <div class="message bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                        <p data-i18n="messages.welcome">Ol√°! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
+                        <p data-i18n="messages.welcome">Ol·! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
                     </div>
                 </div>
             </div>
@@ -538,7 +538,7 @@ function hideToast() {
             </form>
 
             <div class="text-xs text-center text-gray-500 mt-2" data-i18n="messages.versionWarning">
-                Vers√£o limitada. Algumas respostas podem ser restritas.
+                Vers„o limitada. Algumas respostas podem ser restritas.
             </div>
             </div>
         </div>
@@ -570,20 +570,20 @@ function hideToast() {
     <div id="confirm-modal-overlay" class="hidden"></div>
     <div id="confirm-modal" class="hidden">
         <div class="flex flex-col items-center text-center p-8">
-            <!-- √çcone de aviso -->
+            <!-- Õcone de aviso -->
             <div class="w-16 h-16 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mb-6 animate-pulse">
-                <span class="text-4xl">‚ö†Ô∏è</span>
+                <span class="text-4xl">??</span>
             </div>
             
-            <!-- T√≠tulo -->
+            <!-- TÌtulo -->
             <h3 id="confirm-title" class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Deletar conversa</h3>
             
             <!-- Mensagem -->
             <p id="confirm-message" class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                Esta a√ß√£o n√£o pode ser desfeita. Deseja continuar?
+                Esta aÁ„o n„o pode ser desfeita. Deseja continuar?
             </p>
             
-            <!-- Bot√µes -->
+            <!-- Botıes -->
             <div class="flex gap-3 w-full">
                 <button id="confirm-cancel" class="flex-1 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-md">
                     Cancelar
@@ -602,9 +602,9 @@ function hideToast() {
     <div class="p-6">
         <!-- Header -->
         <div class="flex items-center justify-between mb-6">
-            <h2 class="text-xl font-bold" data-i18n="settings.title">Configura√ß√µes</h2>
+            <h2 class="text-xl font-bold" data-i18n="settings.title">ConfiguraÁıes</h2>
             <button id="close-settings" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-                ‚úï
+                ?
             </button>
         </div>
 
@@ -618,16 +618,16 @@ function hideToast() {
                     <img id="profile-preview" class="profile-preview" src="" alt="Foto de perfil">
                     <div class="settings-file-input">
                         <label for="profile-image">
-                            üì∑ <span data-i18n="settings.chooseImage">Escolher imagem</span>
+                            ?? <span data-i18n="settings.chooseImage">Escolher imagem</span>
                         </label>
                         <input type="file" id="profile-image" accept="image/*">
                     </div>
                 </div>
             </div>
 
-            <!-- Informa√ß√µes Pessoais -->
+            <!-- InformaÁıes Pessoais -->
             <div class="settings-section">
-                <h3 class="settings-section-title" data-i18n="settings.personalInfo">Informa√ß√µes Pessoais</h3>
+                <h3 class="settings-section-title" data-i18n="settings.personalInfo">InformaÁıes Pessoais</h3>
                 
                 <div class="settings-form-group">
                     <label for="setting-name" data-i18n="settings.fullName">Nome Completo</label>
@@ -650,7 +650,7 @@ function hideToast() {
                 </div>
 
                 <div class="settings-form-group">
-                    <label for="setting-gender" data-i18n="settings.gender">G√™nero</label>
+                    <label for="setting-gender" data-i18n="settings.gender">GÍnero</label>
                     <select id="setting-gender">
                         <option value="" data-i18n="settings.selectGender">Selecione...</option>
                         <option value="male" data-i18n="settings.male">Masculino</option>
@@ -665,46 +665,46 @@ function hideToast() {
                 <h3 class="settings-section-title" data-i18n="settings.interests">Interesses</h3>
                 
                 <div class="settings-form-group">
-                    <label class="block text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.selectAcademicInterests">Selecione seus interesses acad√™micos</label>
+                    <label class="block text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.selectAcademicInterests">Selecione seus interesses acadÍmicos</label>
                     <div id="interests-container" class="grid grid-cols-2 gap-2">
                         <!-- Exatas e Tecnologia -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2" data-i18n="interests.exactsAndTechnology">üìê Exatas e Tecnologia</div></div>
-                        <div><input type="checkbox" id="interest-math" value="math" class="interest-checkbox hidden peer"><label for="interest-math" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.math">Matem√°tica</span></label></div>
-                        <div><input type="checkbox" id="interest-statistics" value="statistics" class="interest-checkbox hidden peer"><label for="interest-statistics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.statistics">Estat√≠stica</span></label></div>
-                        <div><input type="checkbox" id="interest-physics" value="physics" class="interest-checkbox hidden peer"><label for="interest-physics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physics">F√≠sica</span></label></div>
-                        <div><input type="checkbox" id="interest-chemistry" value="chemistry" class="interest-checkbox hidden peer"><label for="interest-chemistry" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.chemistry">Qu√≠mica</span></label></div>
-                        <div><input type="checkbox" id="interest-programming" value="programming" class="interest-checkbox hidden peer"><label for="interest-programming" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.programming">Programa√ß√£o</span></label></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2" data-i18n="interests.exactsAndTechnology">?? Exatas e Tecnologia</div></div>
+                        <div><input type="checkbox" id="interest-math" value="math" class="interest-checkbox hidden peer"><label for="interest-math" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.math">Matem·tica</span></label></div>
+                        <div><input type="checkbox" id="interest-statistics" value="statistics" class="interest-checkbox hidden peer"><label for="interest-statistics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.statistics">EstatÌstica</span></label></div>
+                        <div><input type="checkbox" id="interest-physics" value="physics" class="interest-checkbox hidden peer"><label for="interest-physics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physics">FÌsica</span></label></div>
+                        <div><input type="checkbox" id="interest-chemistry" value="chemistry" class="interest-checkbox hidden peer"><label for="interest-chemistry" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.chemistry">QuÌmica</span></label></div>
+                        <div><input type="checkbox" id="interest-programming" value="programming" class="interest-checkbox hidden peer"><label for="interest-programming" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.programming">ProgramaÁ„o</span></label></div>
                         <div><input type="checkbox" id="interest-engineering" value="engineering" class="interest-checkbox hidden peer"><label for="interest-engineering" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.engineering">Engenharia</span></label></div>
                         
-                        <!-- Biol√≥gicas e Sa√∫de -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.biologicalAndHealth">üß¨ Biol√≥gicas e Sa√∫de</div></div>
+                        <!-- BiolÛgicas e Sa˙de -->
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.biologicalAndHealth">?? BiolÛgicas e Sa˙de</div></div>
                         <div><input type="checkbox" id="interest-biology" value="biology" class="interest-checkbox hidden peer"><label for="interest-biology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.biology">Biologia</span></label></div>
-                        <div><input type="checkbox" id="interest-health" value="health" class="interest-checkbox hidden peer"><label for="interest-health" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.health">Sa√∫de</span></label></div>
+                        <div><input type="checkbox" id="interest-health" value="health" class="interest-checkbox hidden peer"><label for="interest-health" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.health">Sa˙de</span></label></div>
                         <div><input type="checkbox" id="interest-anatomy" value="anatomy" class="interest-checkbox hidden peer"><label for="interest-anatomy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.anatomy">Anatomia</span></label></div>
-                        <div><input type="checkbox" id="interest-pe" value="physical_education" class="interest-checkbox hidden peer"><label for="interest-pe" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physicalEducation">Ed. F√≠sica</span></label></div>
+                        <div><input type="checkbox" id="interest-pe" value="physical_education" class="interest-checkbox hidden peer"><label for="interest-pe" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physicalEducation">Ed. FÌsica</span></label></div>
                         
                         <!-- Humanas -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.humanities">üèõÔ∏è Humanas</div></div>
-                        <div><input type="checkbox" id="interest-history" value="history" class="interest-checkbox hidden peer"><label for="interest-history" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.history">Hist√≥ria</span></label></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.humanities">??? Humanas</div></div>
+                        <div><input type="checkbox" id="interest-history" value="history" class="interest-checkbox hidden peer"><label for="interest-history" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.history">HistÛria</span></label></div>
                         <div><input type="checkbox" id="interest-geography" value="geography" class="interest-checkbox hidden peer"><label for="interest-geography" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.geography">Geografia</span></label></div>
                         <div><input type="checkbox" id="interest-philosophy" value="philosophy" class="interest-checkbox hidden peer"><label for="interest-philosophy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.philosophy">Filosofia</span></label></div>
                         <div><input type="checkbox" id="interest-sociology" value="sociology" class="interest-checkbox hidden peer"><label for="interest-sociology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.sociology">Sociologia</span></label></div>
                         <div><input type="checkbox" id="interest-psychology" value="psychology" class="interest-checkbox hidden peer"><label for="interest-psychology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.psychology">Psicologia</span></label></div>
                         
                         <!-- Linguagens -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.languages">üìö Linguagens</div></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.languages">?? Linguagens</div></div>
                         <div><input type="checkbox" id="interest-literature" value="literature" class="interest-checkbox hidden peer"><label for="interest-literature" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.literature">Literatura</span></label></div>
                         <div><input type="checkbox" id="interest-languages" value="languages" class="interest-checkbox hidden peer"><label for="interest-languages" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.languages">Idiomas</span></label></div>
-                        <div><input type="checkbox" id="interest-writing" value="writing" class="interest-checkbox hidden peer"><label for="interest-writing" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.writing">Reda√ß√£o</span></label></div>
+                        <div><input type="checkbox" id="interest-writing" value="writing" class="interest-checkbox hidden peer"><label for="interest-writing" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.writing">RedaÁ„o</span></label></div>
                         
                         <!-- Aplicadas e Profissionais -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.appliedAndProfessional">üíº Aplicadas e Profissionais</div></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.appliedAndProfessional">?? Aplicadas e Profissionais</div></div>
                         <div><input type="checkbox" id="interest-law" value="law" class="interest-checkbox hidden peer"><label for="interest-law" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.law">Direito</span></label></div>
                         <div><input type="checkbox" id="interest-economics" value="economics" class="interest-checkbox hidden peer"><label for="interest-economics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.economics">Economia</span></label></div>
                         <div><input type="checkbox" id="interest-arts" value="arts" class="interest-checkbox hidden peer"><label for="interest-arts" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.arts">Artes</span></label></div>
                         
-                        <!-- Acad√™mico e Produtividade -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.academicAndProductivity">üéì Acad√™mico e Produtividade</div></div>
+                        <!-- AcadÍmico e Produtividade -->
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.academicAndProductivity">?? AcadÍmico e Produtividade</div></div>
                         <div><input type="checkbox" id="interest-research" value="research_methodology" class="interest-checkbox hidden peer"><label for="interest-research" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.researchMethodology">Pesquisa</span></label></div>
                         <div><input type="checkbox" id="interest-study" value="study_skills" class="interest-checkbox hidden peer"><label for="interest-study" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.studySkills">Estudos</span></label></div>
                     </div>
@@ -720,9 +720,9 @@ function hideToast() {
                     <select id="setting-account-type" disabled class="opacity-50 cursor-not-allowed">
                         <option value="estudante" data-i18n="auth.student">Estudante</option>
                         <option value="teacher" data-i18n="auth.teacher">Professor</option>
-                        <option value="guardian" data-i18n="auth.guardian">Respons√°vel</option>
+                        <option value="guardian" data-i18n="auth.guardian">Respons·vel</option>
                     </select>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.accountTypeWarning">‚ö†Ô∏è O tipo de conta n√£o pode ser alterado no momento</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.accountTypeWarning">?? O tipo de conta n„o pode ser alterado no momento</p>
 
                             <!-- Idioma -->
                             <div class="settings-section">
@@ -731,25 +731,25 @@ function hideToast() {
                                 <div class="settings-form-group">
                                     <label for="setting-language" data-i18n="settings.selectLanguage">Selecione seu idioma</label>
                                     <select id="setting-language">
-                                        <option value="pt-BR">Portugu√™s (PT-BR) üáßüá∑</option>
-                                        <option value="en-US">English (EN-US) üá∫üá∏</option>
+                                        <option value="pt-BR">PortuguÍs (PT-BR) ????</option>
+                                        <option value="en-US">English (EN-US) ????</option>
                                     </select>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.languageNote">A interface ser√° atualizada imediatamente</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.languageNote">A interface ser· atualizada imediatamente</p>
                                 </div>
                             </div>
                 </div>
             </div>
 
-            <!-- Bot√µes -->
+            <!-- Botıes -->
             <div class="settings-btn-group">
                 <button type="button" id="cancel-settings" class="settings-btn-cancel" data-i18n="settings.cancel">Cancelar</button>
-                <button type="submit" class="settings-btn-save" data-i18n="settings.save">Salvar Altera√ß√µes</button>
+                <button type="submit" class="settings-btn-save" data-i18n="settings.save">Salvar AlteraÁıes</button>
             </div>
 
             <!-- Danger Zone -->
             <div class="settings-danger-zone">
-                <div class="settings-danger-title" data-i18n="settings.dangerZone">‚ö†Ô∏è Zona Perigosa</div>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.dangerZoneWarning">A√ß√µes irrevers√≠veis podem afetar sua conta</p>
+                <div class="settings-danger-title" data-i18n="settings.dangerZone">?? Zona Perigosa</div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.dangerZoneWarning">AÁıes irreversÌveis podem afetar sua conta</p>
                 <button type="button" id="delete-account-btn" class="settings-btn-danger" data-i18n="settings.deleteAccount">Deletar Minha Conta</button>
             </div>
         </form>
@@ -759,7 +759,7 @@ function hideToast() {
 </div>
 
 <script>
-/* ================= CONFIGURA√á√ïES E GLOBAIS ================= */
+/* ================= CONFIGURA«’ES E GLOBAIS ================= */
 let currentConversationId = null;
 let form, input, chat;
 let userData = {
@@ -767,18 +767,18 @@ let userData = {
     interests: null, gender: null, birth_date: null, profile_image: null
 };
 
-// üë§ BUSCAR DADOS DO USU√ÅRIO
+// ?? BUSCAR DADOS DO USU¡RIO
 async function fetchUserData() {
     const token = localStorage.getItem('access_token');
     if (!token) return;
     try {
-        console.log("üë§ Buscando dados do usu√°rio...");
-        const res = await fetch("http://127.0.0.1:8000/auth/me", {
+        console.log("?? Buscando dados do usu·rio...");
+        const res = await fetch("https://atenaai.onrender.com/auth/me", {
             headers: { "Authorization": `Bearer ${token}` }
         });
         if (res.ok) {
             const user = await res.json();
-            console.log("üë§ Dados recebidos:", user);
+            console.log("?? Dados recebidos:", user);
             userData.id = user.id;
             userData.email = user.email;
             userData.name = user.full_name;
@@ -791,7 +791,7 @@ async function fetchUserData() {
             
             updateAvatar();
             const userNameEl = document.getElementById('user-name');
-            if (userNameEl) userNameEl.textContent = userData.nickname || userData.name || 'Usu√°rio';
+            if (userNameEl) userNameEl.textContent = userData.nickname || userData.name || 'Usu·rio';
             
             const userRoleEl = document.getElementById('user-role');
             if (userRoleEl) {
@@ -808,16 +808,16 @@ async function fetchUserData() {
                 userRoleEl.textContent = typeof t === 'function' ? t(key) : 'Estudante';
             }
         } else if (res.status === 401) {
-            console.warn("‚ö†Ô∏è Token expirado ou inv√°lido (401).");
+            console.warn("?? Token expirado ou inv·lido (401).");
             localStorage.removeItem('access_token');
             checkAndUpdateAuthStatus();
         }
     } catch (err) {
-        console.error("‚ùå Erro ao buscar dados do usu√°rio:", err);
+        console.error("? Erro ao buscar dados do usu·rio:", err);
     }
 }
 
-// üñºÔ∏è ATUALIZAR AVATAR
+// ??? ATUALIZAR AVATAR
 function updateAvatar() {
     const avatarImage = document.getElementById('avatar-image');
     const avatarInitial = document.getElementById('avatar-initial');
@@ -833,51 +833,51 @@ function updateAvatar() {
     }
 }
 
-// üîê VERIFICADOR DE AUTENTICA√á√ÉO
+// ?? VERIFICADOR DE AUTENTICA«√O
 function checkAndUpdateAuthStatus() {
     const token = localStorage.getItem('access_token');
     const sidebar = document.getElementById('sidebar');
     const menuNotLogged = document.getElementById('menu-not-logged');
     const menuLogged = document.getElementById('menu-logged');
     
-    console.log("üîç checkAndUpdateAuthStatus called - Token:", !!token);
+    console.log("?? checkAndUpdateAuthStatus called - Token:", !!token);
     
     if (token) {
-        console.log("‚úÖ Token found, showing authenticated UI");
+        console.log("? Token found, showing authenticated UI");
         if (sidebar) {
             sidebar.classList.remove('hidden');
-            console.log("‚úì Sidebar shown");
+            console.log("? Sidebar shown");
         }
         if (menuLogged) {
             menuLogged.classList.remove('hidden');
-            console.log("‚úì Logged menu shown");
+            console.log("? Logged menu shown");
         }
         if (menuNotLogged) {
             menuNotLogged.classList.add('hidden');
-            console.log("‚úì Not logged menu hidden");
+            console.log("? Not logged menu hidden");
         }
         fetchUserData();
         setupConversations();
     } else {
-        console.log("‚ùå No token, showing not-authenticated UI");
+        console.log("? No token, showing not-authenticated UI");
         if (sidebar) {
             sidebar.classList.add('hidden');
-            console.log("‚úì Sidebar hidden");
+            console.log("? Sidebar hidden");
         }
         if (menuLogged) {
             menuLogged.classList.add('hidden');
-            console.log("‚úì Logged menu hidden");
+            console.log("? Logged menu hidden");
         }
         if (menuNotLogged) {
             menuNotLogged.classList.remove('hidden');
-            console.log("‚úì Not logged menu shown");
+            console.log("? Not logged menu shown");
         }
     }
 }
 
-// üîÑ Fun√ß√£o central de inicializa√ß√£o de UI
+// ?? FunÁ„o central de inicializaÁ„o de UI
 function initAppUI() {
-    console.log("üîÑ Inicializando Listeners da UI...");
+    console.log("?? Inicializando Listeners da UI...");
 
     // 1. Logout
     document.getElementById('logout-btn')?.addEventListener('click', logout);
@@ -924,7 +924,7 @@ function initAppUI() {
 
 // Executar quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("‚úÖ DOM Pronto");
+    console.log("? DOM Pronto");
     
     // Configurar componentes do Chat
     form = document.getElementById("chat-form");
@@ -956,7 +956,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Configurar Modal de Confirma√ß√£o
+    // Configurar Modal de ConfirmaÁ„o
     const confirmOkBtn = document.getElementById('confirm-ok');
     const confirmCancelBtn = document.getElementById('confirm-cancel');
     const confirmOverlay = document.getElementById('confirm-modal-overlay');
@@ -983,12 +983,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Restaurar conversa anterior se houver (para evitar perda no reload)
     const savedConvId = sessionStorage.getItem('currentConversationId');
     if (savedConvId) {
-        console.log("üíæ Restaurando conversa da sess√£o:", savedConvId);
+        console.log("?? Restaurando conversa da sess„o:", savedConvId);
         loadConversation(savedConvId);
     }
     
     // Verificar status inicial IMEDIATAMENTE
-    console.log("üîê Executando checkAndUpdateAuthStatus no DOMContentLoaded");
+    console.log("?? Executando checkAndUpdateAuthStatus no DOMContentLoaded");
     checkAndUpdateAuthStatus();
 });
 
@@ -999,7 +999,7 @@ function checkAuthStatus() {
 }
 
 function logout() {
-    console.log("üëã Saindo...");
+    console.log("?? Saindo...");
     localStorage.removeItem('access_token');
     localStorage.removeItem('user_id');
     
@@ -1017,28 +1017,28 @@ function logout() {
 const html = document.documentElement;
 if (localStorage.getItem("theme") === "dark") html.classList.add("dark");
 
-// Atualizar logos conforme o tema ao carregar a p√°gina
+// Atualizar logos conforme o tema ao carregar a p·gina
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof updateAllLogos === 'function') {
         updateAllLogos();
     }
 });
 
-// Fun√ß√£o para lidar com submit do form
+// FunÁ„o para lidar com submit do form
 async function handleFormSubmit(e) {
     if (e) {
         e.preventDefault();
         e.stopPropagation();
     }
     
-    // Garantir que n√£o estamos enviando vazio ou duplicado
+    // Garantir que n„o estamos enviando vazio ou duplicado
     const inputEl = document.getElementById("user-input");
     if (!inputEl || inputEl.disabled) return false;
 
     const text = inputEl.value.trim();
     if (!text) return false;
 
-    console.log("üì® handleFormSubmit acionado - Texto:", text);
+    console.log("?? handleFormSubmit acionado - Texto:", text);
     
     // Desabilitar e mostrar typing IMEDIATAMENTE
     inputEl.disabled = true;
@@ -1051,19 +1051,19 @@ async function handleFormSubmit(e) {
         
         // 1. Se logado mas sem conversa ativa, cria uma agora
         if (token && !currentConversationId) {
-            console.log("üìù Criando nova conversa para in√≠cio de papo...");
+            console.log("?? Criando nova conversa para inÌcio de papo...");
             const conv = await createConversationWithTitle(text);
             if (!conv) {
                 throw new Error("Falha ao criar conversa");
             }
-            // currentConversationId √© setado dentro de createConversationWithTitle
+            // currentConversationId È setado dentro de createConversationWithTitle
         }
         
-        // 2. Envia a mensagem (Logado ou An√¥nimo)
+        // 2. Envia a mensagem (Logado ou AnÙnimo)
         let res;
         if (token && currentConversationId) {
-            console.log("‚úÖ Enviando para conversa existente ID:", currentConversationId);
-            res = await fetch(`http://127.0.0.1:8000/conversations/${currentConversationId}/messages`, {
+            console.log("? Enviando para conversa existente ID:", currentConversationId);
+            res = await fetch(`https://atenaai.onrender.com/conversations/${currentConversationId}/messages`, {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json",
@@ -1072,8 +1072,8 @@ async function handleFormSubmit(e) {
                 body: JSON.stringify({ text, language: getLanguage && getLanguage() })
             });
         } else {
-            console.log("üë§ Enviando como usu√°rio an√¥nimo...");
-            res = await fetch("http://127.0.0.1:8000/chat/", {
+            console.log("?? Enviando como usu·rio anÙnimo...");
+            res = await fetch("https://atenaai.onrender.com/chat/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ text, language: getLanguage && getLanguage() })
@@ -1084,11 +1084,11 @@ async function handleFormSubmit(e) {
 
         const data = await res.json();
         removeTyping();
-        addAI(data.reply || "N√£o consegui responder agora.");
+        addAI(data.reply || "N„o consegui responder agora.");
         
     } catch (err) {
         removeTyping();
-        console.error("‚ùå Erro no envio:", err);
+        console.error("? Erro no envio:", err);
         addAI("Erro ao conectar com a IA. Por favor, tente novamente.");
     } finally {
         inputEl.disabled = false;
@@ -1099,20 +1099,20 @@ async function handleFormSubmit(e) {
 }
 
 
-// üè∑Ô∏è Gerar t√≠tulo a partir da primeira mensagem
+// ??? Gerar tÌtulo a partir da primeira mensagem
 function generateTitleFromMessage(text) {
     // Pegar os primeiros 50 caracteres
     const truncated = text.length > 50 ? text.substring(0, 50) + '...' : text;
     return truncateTitle(truncated);
 }
 
-// Limita tamanho do t√≠tulo exibido na sidebar para n√£o quebrar layout
+// Limita tamanho do tÌtulo exibido na sidebar para n„o quebrar layout
 function truncateTitle(text, max = 28) {
     if (!text) return '';
-    return text.length > max ? text.substring(0, max - 1) + '‚Ä¶' : text;
+    return text.length > max ? text.substring(0, max - 1) + 'Ö' : text;
 }
 
-// Fun√ß√µes para o avatar da AtenaAI usando o logo do projeto
+// FunÁıes para o avatar da AtenaAI usando o logo do projeto
 function getLogoPath() {
     const isDark = document.documentElement.classList.contains('dark');
     return isDark ? 'assets/logo/logo-icon-dark.png' : 'assets/logo/logo-icon-ligth.png';
@@ -1133,12 +1133,12 @@ function updateAllLogos() {
     });
 }
 
-// Fun√ß√£o para criar elemento de avatar da IA
+// FunÁ„o para criar elemento de avatar da IA
 function createAIAvatarElement() {
     return document.createElement('div');
 }
 
-// üí¨ Adicionar mensagem do usu√°rio
+// ?? Adicionar mensagem do usu·rio
 function addUser(text) {
     const chatEl = document.getElementById("chat-messages");
     if (!chatEl) return;
@@ -1155,7 +1155,7 @@ function addUser(text) {
     chatEl.scrollTop = chatEl.scrollHeight;
 }
 
-// ü§ñ Adicionar mensagem da IA
+// ?? Adicionar mensagem da IA
 function addAI(text) {
     const chatEl = document.getElementById("chat-messages");
     if (!chatEl) return;
@@ -1173,7 +1173,7 @@ function addAI(text) {
 }
 
 
-// ‚è≥ Mostrar indicador de digita√ß√£o
+// ? Mostrar indicador de digitaÁ„o
 function showTyping() {
     const chatEl = document.getElementById("chat-messages");
     if (!chatEl) return;
@@ -1191,21 +1191,21 @@ function showTyping() {
     chatEl.scrollTop = chatEl.scrollHeight;
 }
 
-// ‚ùå Remover indicador de digita√ß√£o
+// ? Remover indicador de digitaÁ„o
 function removeTyping() {
     const t = document.getElementById("typing");
     if (t) t.remove();
 }
 
 
-// ‚ûï Criar nova conversa COM t√≠tulo
+// ? Criar nova conversa COM tÌtulo
 async function createConversationWithTitle(title) {
     const token = localStorage.getItem('access_token');
     if (!token) return null;
     
     try {
-        console.log("üîπ Criando conversa com t√≠tulo:", title);
-        const res = await fetch('http://127.0.0.1:8000/conversations/', {
+        console.log("?? Criando conversa com tÌtulo:", title);
+        const res = await fetch('https://atenaai.onrender.com/conversations/', {
             method: 'POST',
             headers: { 
                 'Authorization': `Bearer ${token}`,
@@ -1214,15 +1214,15 @@ async function createConversationWithTitle(title) {
         });
         
         if (!res.ok) {
-            console.error("‚ùå Erro ao criar conversa:", res.status);
+            console.error("? Erro ao criar conversa:", res.status);
             return null;
         }
         
         const conv = await res.json();
-        console.log("üîπ Conversa criada com ID:", conv.id);
+        console.log("?? Conversa criada com ID:", conv.id);
         
-        // Atualizar o t√≠tulo da conversa
-        const updateRes = await fetch(`http://127.0.0.1:8000/conversations/${conv.id}`, {
+        // Atualizar o tÌtulo da conversa
+        const updateRes = await fetch(`https://atenaai.onrender.com/conversations/${conv.id}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -1235,18 +1235,18 @@ async function createConversationWithTitle(title) {
             const updated = await updateRes.json();
             currentConversationId = updated.id;
             sessionStorage.setItem('currentConversationId', updated.id);
-            console.log("‚úÖ Nova conversa ID setado:", currentConversationId);
+            console.log("? Nova conversa ID setado:", currentConversationId);
             loadConversations();
             return updated;
         } else {
             currentConversationId = conv.id;
             sessionStorage.setItem('currentConversationId', conv.id);
-            console.log("‚ö†Ô∏è Conversa criada mas t√≠tulo n√£o atualizado. ID:", currentConversationId);
+            console.log("?? Conversa criada mas tÌtulo n„o atualizado. ID:", currentConversationId);
             loadConversations();
             return conv;
         }
     } catch (err) {
-        console.error('‚ùå Erro createConversationWithTitle:', err);
+        console.error('? Erro createConversationWithTitle:', err);
         return null;
     }
 }
@@ -1256,7 +1256,7 @@ async function createConversationWithTitle(title) {
 let pendingConfirmAction = null;
 
 function showConfirmModal(title, message, onConfirm) {
-    console.log("üì± showConfirmModal chamado com t√≠tulo:", title);
+    console.log("?? showConfirmModal chamado com tÌtulo:", title);
     
     const confirmModal = document.getElementById('confirm-modal');
     const confirmOverlay = document.getElementById('confirm-modal-overlay');
@@ -1289,30 +1289,30 @@ const closeSettingsBtn = document.getElementById('close-settings');
 const cancelSettingsBtn = document.getElementById('cancel-settings');
 const settingsForm = document.getElementById('settings-form');
 
-// Abrir modal de configura√ß√µes
+// Abrir modal de configuraÁıes
 function openSettings() {
     const settingsModal = document.getElementById('settings-modal');
     const settingsModalOverlay = document.getElementById('settings-modal-overlay');
     if (settingsModal) settingsModal.classList.add('active');
     if (settingsModalOverlay) settingsModalOverlay.classList.add('active');
     
-    // DEBUG: Logar dados do usu√°rio
+    // DEBUG: Logar dados do usu·rio
     console.log('userData ao abrir settings:', userData);
     
-    // Preencher campos com dados do usu√°rio
+    // Preencher campos com dados do usu·rio
     document.getElementById('setting-name').value = userData.name || '';
     document.getElementById('setting-nickname').value = userData.nickname || '';
     document.getElementById('setting-email').value = userData.email || '';
     document.getElementById('setting-birth-date').value = userData.birth_date || '';
     
-    // Selecionar g√™nero
+    // Selecionar gÍnero
     const genderSelect = document.getElementById('setting-gender');
-    console.log('G√™nero do usu√°rio:', userData.gender);
+    console.log('GÍnero do usu·rio:', userData.gender);
     genderSelect.value = userData.gender || '';
     
     // Selecionar tipo de conta
     const accountTypeSelect = document.getElementById('setting-account-type');
-    console.log('Tipo de conta do usu√°rio:', userData.account_type);
+    console.log('Tipo de conta do usu·rio:', userData.account_type);
     accountTypeSelect.value = userData.account_type || 'estudante';
     
     // Desmarcar todos os checkboxes de interesses primeiro
@@ -1327,15 +1327,15 @@ function openSettings() {
         cb.checked = false;
     });
     
-    // Marcar os interesses do usu√°rio
-    console.log('Interesses do usu√°rio:', userData.interests);
+    // Marcar os interesses do usu·rio
+    console.log('Interesses do usu·rio:', userData.interests);
     if (userData.interests && userData.interests.length > 0) {
         const interests = Array.isArray(userData.interests) ? userData.interests : [];
         console.log('Array de interesses:', interests);
         
         document.querySelectorAll('.interest-checkbox').forEach(checkbox => {
             console.log(`Verificando checkbox ${checkbox.value}:`, interests.includes(checkbox.value));
-            // Verificar se o valor do checkbox est√° na lista de interesses
+            // Verificar se o valor do checkbox est· na lista de interesses
             if (interests.includes(checkbox.value)) {
                 checkbox.checked = true;
                 console.log(`Marcado: ${checkbox.value}`);
@@ -1353,7 +1353,7 @@ function openSettings() {
     }
 }
 
-// Fechar modal de configura√ß√µes
+// Fechar modal de configuraÁıes
 function closeSettings() {
     const settingsModal = document.getElementById('settings-modal');
     const settingsModalOverlay = document.getElementById('settings-modal-overlay');
@@ -1382,7 +1382,7 @@ profileImageInput?.addEventListener('change', (e) => {
     }
 });
 
-// Submeter formul√°rio de configura√ß√µes
+// Submeter formul·rio de configuraÁıes
 // Alterar idioma ao mudar o seletor
 const languageSelect = document.getElementById('setting-language');
 if (languageSelect) {
@@ -1392,13 +1392,13 @@ if (languageSelect) {
     });
 }
 
-// Submeter formul√°rio de configura√ß√µes
+// Submeter formul·rio de configuraÁıes
 settingsForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const token = localStorage.getItem('access_token');
     if (!token) {
-        showToastError('N√£o autenticado', 'Por favor fa√ßa login novamente');
+        showToastError('N„o autenticado', 'Por favor faÁa login novamente');
         return;
     }
     
@@ -1418,14 +1418,14 @@ settingsForm?.addEventListener('submit', async (e) => {
     });
     formData.append('interests', JSON.stringify(interests));
     
-    // Se h√° nova foto
+    // Se h· nova foto
     const profileImageInput = document.getElementById('profile-image');
     if (profileImageInput.files.length > 0) {
         formData.append('profile_image', profileImageInput.files[0]);
     }
     
     try {
-        const res = await fetch('http://127.0.0.1:8000/auth/update-profile', {
+        const res = await fetch('https://atenaai.onrender.com/auth/update-profile', {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -1450,7 +1450,7 @@ settingsForm?.addEventListener('submit', async (e) => {
             
             // Atualizar avatar e nome na sidebar
             updateAvatar();
-            document.getElementById('user-name').textContent = userData.nickname || userData.name || 'Usu√°rio';
+            document.getElementById('user-name').textContent = userData.nickname || userData.name || 'Usu·rio';
             // Traduzir tipo de conta usando chaves i18n
             const accountTypeKeyMap = {
                 'student': 'auth.student',
@@ -1476,7 +1476,7 @@ settingsForm?.addEventListener('submit', async (e) => {
     }
 });
 
-// Fun√ß√£o para mostrar toast de sucesso
+// FunÁ„o para mostrar toast de sucesso
 function showToastSuccess(title, message) {
     const toast = document.getElementById('toast');
     const toastTitle = document.getElementById('toast-title');
@@ -1486,14 +1486,14 @@ function showToastSuccess(title, message) {
     toastTitle.textContent = title;
     toastMessage.textContent = message;
     toastIcon.className = 'flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-green-100 text-green-600';
-    toastIcon.textContent = '‚úì';
+    toastIcon.textContent = '?';
     
     toast.classList.remove('hidden');
     
     setTimeout(() => toast.classList.add('hidden'), 4000);
 }
 
-// Fun√ß√£o para mostrar toast de erro
+// FunÁ„o para mostrar toast de erro
 function showToastError(title, message) {
     const toast = document.getElementById('toast');
     const toastTitle = document.getElementById('toast-title');
@@ -1503,7 +1503,7 @@ function showToastError(title, message) {
     toastTitle.textContent = title;
     toastMessage.textContent = message;
     toastIcon.className = 'flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-red-100 text-red-600';
-    toastIcon.textContent = '‚ùå';
+    toastIcon.textContent = '?';
     
     toast.classList.remove('hidden');
     
@@ -1515,17 +1515,17 @@ const deleteAccountBtn = document.getElementById('delete-account-btn');
 deleteAccountBtn?.addEventListener('click', async (e) => {
     e.preventDefault();
     
-    const confirmed = confirm('‚ö†Ô∏è Tem certeza que deseja deletar sua conta? Esta a√ß√£o √© irrevers√≠vel!');
+    const confirmed = confirm('?? Tem certeza que deseja deletar sua conta? Esta aÁ„o È irreversÌvel!');
     if (!confirmed) return;
     
     const token = localStorage.getItem('access_token');
     if (!token) {
-        showToastError('Erro', 'N√£o autenticado');
+        showToastError('Erro', 'N„o autenticado');
         return;
     }
     
     try {
-        const res = await fetch('http://127.0.0.1:8000/auth/delete-account', {
+        const res = await fetch('https://atenaai.onrender.com/auth/delete-account', {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -1554,7 +1554,7 @@ deleteAccountBtn?.addEventListener('click', async (e) => {
             // Mostrar toast
             showToastSuccess('Conta deletada', 'Sua conta foi deletada com sucesso. Recarregando...');
             
-            // Recarregar a p√°gina ap√≥s 2 segundos para resetar completamente
+            // Recarregar a p·gina apÛs 2 segundos para resetar completamente
             setTimeout(() => {
                 window.location.reload();
             }, 2000);
@@ -1568,21 +1568,21 @@ deleteAccountBtn?.addEventListener('click', async (e) => {
     }
 });
 
-// üîÑ Resetar para uma nova conversa (apenas no frontend)
+// ?? Resetar para uma nova conversa (apenas no frontend)
 function startNewConversation() {
-    console.log("üîÑ Iniciando nova conversa (sem salvar no backend)");
+    console.log("?? Iniciando nova conversa (sem salvar no backend)");
     
     // Limpar dados da conversa atual
     currentConversationId = null;
     sessionStorage.removeItem('currentConversationId');
     
-    // Limpar o chat e mostrar mensagem padr√£o
+    // Limpar o chat e mostrar mensagem padr„o
     const chatEl = document.getElementById('chat-messages');
     if (chatEl) {
         chatEl.innerHTML = `
             <div class="flex items-start">
                 <div class="message bg-gray-50 dark:bg-gray-800 p-4 rounded-2xl rounded-tl-sm shadow-sm text-gray-800 dark:text-gray-100">
-                    <p data-i18n="messages.welcome">Ol√°! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
+                    <p data-i18n="messages.welcome">Ol·! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
                 </div>
             </div>
         `;
@@ -1591,26 +1591,26 @@ function startNewConversation() {
             updatePageLanguage();
         }
     }
-    console.log("üîÑ Conversa resetada. Aguardando primeira mensagem para criar no backend");
+    console.log("?? Conversa resetada. Aguardando primeira mensagem para criar no backend");
 }
 
-// üìã Carregar hist√≥rico de conversas
+// ?? Carregar histÛrico de conversas
 async function loadConversations() {
     const token = localStorage.getItem('access_token');
     if (!token) return;
     
     try {
-        const res = await fetch('http://127.0.0.1:8000/conversations/', {
+        const res = await fetch('https://atenaai.onrender.com/conversations/', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         
         if (!res.ok) {
-            console.error("‚ùå Erro ao carregar conversas:", res.status);
+            console.error("? Erro ao carregar conversas:", res.status);
             return;
         }
         
         const conversations = await res.json();
-        console.log("üìã Conversas carregadas:", conversations.length);
+        console.log("?? Conversas carregadas:", conversations.length);
         
         const listEl = document.getElementById('conversation-list');
         
@@ -1634,7 +1634,7 @@ async function loadConversations() {
                     </button>
                     
                     <div class="relative">
-                        <button class="conv-menu-btn ml-2 p-1 rounded-md text-gray-300 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200" data-conv-id="${conv.id}" title="Mais op√ß√µes">
+                        <button class="conv-menu-btn ml-2 p-1 rounded-md text-gray-300 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200" data-conv-id="${conv.id}" title="Mais opÁıes">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10.5 1.5H9.5V3.5H10.5V1.5ZM10.5 8.5H9.5V10.5H10.5V8.5ZM10.5 15.5H9.5V17.5H10.5V15.5Z"/>
                             </svg>
@@ -1669,17 +1669,17 @@ async function loadConversations() {
         });
         
     } catch (err) {
-        console.error('‚ùå Erro ao carregar conversas:', err);
+        console.error('? Erro ao carregar conversas:', err);
     }
 }
 
-// Event delegation para conversas - adicionar uma √∫nica vez
+// Event delegation para conversas - adicionar uma ˙nica vez
 const listEl = document.getElementById('conversation-list');
 if (listEl && !listEl.hasAttribute('data-listeners-added')) {
     listEl.setAttribute('data-listeners-added', 'true');
     
     listEl.addEventListener('click', (e) => {
-        // Se clicou no bot√£o de menu (tr√™s pontinhos)
+        // Se clicou no bot„o de menu (trÍs pontinhos)
         if (e.target.closest('.conv-menu-btn')) {
             e.stopPropagation();
             const btn = e.target.closest('.conv-menu-btn');
@@ -1728,48 +1728,48 @@ if (listEl && !listEl.hasAttribute('data-listeners-added')) {
     });
 }
 
-// ÔøΩüí¨ Carregar conversa espec√≠fica
+// ??? Carregar conversa especÌfica
 async function loadConversation(convId) {
     const token = localStorage.getItem('access_token');
     if (!token) {
-        console.error("‚ùå Token n√£o encontrado");
+        console.error("? Token n„o encontrado");
         return;
     }
     
     try {
-        console.log("üí¨ Buscando conversa ID:", convId);
-        const res = await fetch(`http://127.0.0.1:8000/conversations/${convId}`, {
+        console.log("?? Buscando conversa ID:", convId);
+        const res = await fetch(`https://atenaai.onrender.com/conversations/${convId}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         
-        console.log("üí¨ Resposta do servidor:", res.status);
+        console.log("?? Resposta do servidor:", res.status);
         
         if (!res.ok) {
-            console.error("‚ùå Erro ao buscar conversa:", res.status);
+            console.error("? Erro ao buscar conversa:", res.status);
             return;
         }
         
         const conv = await res.json();
-        console.log("üí¨ Conversa recebida:", conv);
+        console.log("?? Conversa recebida:", conv);
         
         currentConversationId = conv.id;
         sessionStorage.setItem('currentConversationId', conv.id);
-        console.log("üí¨ currentConversationId definido para:", currentConversationId);
+        console.log("?? currentConversationId definido para:", currentConversationId);
         
         // Limpar chat completamente
         const chatEl = document.getElementById('chat-messages');
         if (!chatEl) {
-            console.error("‚ùå Elemento chat-messages n√£o encontrado");
+            console.error("? Elemento chat-messages n„o encontrado");
             return;
         }
         
         chatEl.innerHTML = '';
-        console.log("üí¨ Chat limpo");
-        // Sempre mostrar a sauda√ß√£o inicial da IA no topo
-        addAI('Ol√°! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?');
+        console.log("?? Chat limpo");
+        // Sempre mostrar a saudaÁ„o inicial da IA no topo
+        addAI('Ol·! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?');
         
         if (conv.messages && conv.messages.length > 0) {
-            console.log("üí¨ Adicionando", conv.messages.length, "mensagens");
+            console.log("?? Adicionando", conv.messages.length, "mensagens");
             conv.messages.forEach(msg => {
                 const content = msg.content;
                 if (msg.role === 'user') {
@@ -1780,24 +1780,24 @@ async function loadConversation(convId) {
             });
         }
  else {
-            console.log("üí¨ Nenhuma mensagem encontrada");
+            console.log("?? Nenhuma mensagem encontrada");
         }
         
         chatEl.scrollTop = chatEl.scrollHeight;
-        console.log("‚úÖ Conversa carregada com sucesso");
+        console.log("? Conversa carregada com sucesso");
         
     } catch (err) {
-        console.error('‚ùå Erro ao carregar conversa:', err);
+        console.error('? Erro ao carregar conversa:', err);
     }
 }
 
-// ‚ûï Criar nova conversa
-// ‚úèÔ∏è Editar nome da conversa
+// ? Criar nova conversa
+// ?? Editar nome da conversa
 function editConversationTitle(convId) {
     const token = localStorage.getItem('access_token');
     if (!token) return;
     
-    // Encontrar o t√≠tulo atual
+    // Encontrar o tÌtulo atual
     const listEl = document.getElementById('conversation-list');
     const convItem = listEl.querySelector(`[data-conv-id="${convId}"]`);
     const currentTitle = convItem?.querySelector('.conversation-item p:first-child')?.textContent || '';
@@ -1820,7 +1820,7 @@ function editConversationTitle(convId) {
         const newTitle = input.value.trim();
         
         if (!newTitle) {
-            showToastError('Erro', 'O nome n√£o pode ser vazio');
+            showToastError('Erro', 'O nome n„o pode ser vazio');
             return;
         }
         
@@ -1830,7 +1830,7 @@ function editConversationTitle(convId) {
         }
         
         try {
-            const res = await fetch(`http://127.0.0.1:8000/conversations/${convId}`, {
+            const res = await fetch(`https://atenaai.onrender.com/conversations/${convId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -1874,26 +1874,26 @@ function editConversationTitle(convId) {
     input.addEventListener('keydown', handleEnter);
 }
 
-// üìã Copiar conversa (duplicar com novo nome)
+// ?? Copiar conversa (duplicar com novo nome)
 async function copyConversation(convId) {
     const token = localStorage.getItem('access_token');
     if (!token) return;
     
     try {
         // 1. Buscar a conversa original
-        const getRes = await fetch(`http://127.0.0.1:8000/conversations/${convId}`, {
+        const getRes = await fetch(`https://atenaai.onrender.com/conversations/${convId}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         
         if (!getRes.ok) {
-            showToastError('Erro', 'N√£o foi poss√≠vel buscar a conversa');
+            showToastError('Erro', 'N„o foi possÌvel buscar a conversa');
             return;
         }
         
         const originalConv = await getRes.json();
         
         // 2. Criar nova conversa
-        const createRes = await fetch('http://127.0.0.1:8000/conversations/', {
+        const createRes = await fetch('https://atenaai.onrender.com/conversations/', {
             method: 'POST',
             headers: { 
                 'Authorization': `Bearer ${token}`,
@@ -1902,15 +1902,15 @@ async function copyConversation(convId) {
         });
         
         if (!createRes.ok) {
-            showToastError('Erro', 'N√£o foi poss√≠vel criar nova conversa');
+            showToastError('Erro', 'N„o foi possÌvel criar nova conversa');
             return;
         }
         
         const newConv = await createRes.json();
         
-        // 3. Atualizar t√≠tulo da nova conversa
-        const newTitle = `${originalConv.title} (c√≥pia)`;
-        const updateRes = await fetch(`http://127.0.0.1:8000/conversations/${newConv.id}`, {
+        // 3. Atualizar tÌtulo da nova conversa
+        const newTitle = `${originalConv.title} (cÛpia)`;
+        const updateRes = await fetch(`https://atenaai.onrender.com/conversations/${newConv.id}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -1920,7 +1920,7 @@ async function copyConversation(convId) {
         });
         
         if (!updateRes.ok) {
-            showToastError('Erro', 'N√£o foi poss√≠vel atualizar nome da c√≥pia');
+            showToastError('Erro', 'N„o foi possÌvel atualizar nome da cÛpia');
             return;
         }
         
@@ -1933,43 +1933,43 @@ async function copyConversation(convId) {
     }
 }
 
-// üóëÔ∏è Deletar conversa
+// ??? Deletar conversa
 function deleteConversation(convId) {
     const token = localStorage.getItem('access_token');
-    console.log("üóëÔ∏è Iniciando deleteConversation com convId:", convId, "token:", !!token);
+    console.log("??? Iniciando deleteConversation com convId:", convId, "token:", !!token);
     if (!token) {
-        console.error("‚ùå Sem token!");
+        console.error("? Sem token!");
         return;
     }
     
-    // Mostrar modal de confirma√ß√£o
+    // Mostrar modal de confirmaÁ„o
     showConfirmModal(
         'Deletar conversa',
-        'Esta a√ß√£o n√£o pode ser desfeita. Deseja continuar?',
+        'Esta aÁ„o n„o pode ser desfeita. Deseja continuar?',
         () => {
-            console.log("‚úÖ Usu√°rio confirmou exclus√£o de:", convId);
+            console.log("? Usu·rio confirmou exclus„o de:", convId);
             performDeleteConversation(convId, token);
         }
     );
 }
 
-// Executar exclus√£o de conversa
+// Executar exclus„o de conversa
 async function performDeleteConversation(convId, token) {
     try {
-        console.log("üóëÔ∏è Deletando conversa:", convId);
+        console.log("??? Deletando conversa:", convId);
         
-        const res = await fetch(`http://127.0.0.1:8000/conversations/${convId}`, {
+        const res = await fetch(`https://atenaai.onrender.com/conversations/${convId}`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
         
-        console.log("üóëÔ∏è Response status:", res.status);
+        console.log("??? Response status:", res.status);
         
         if (res.ok) {
-            console.log("‚úÖ Conversa deletada com sucesso");
+            console.log("? Conversa deletada com sucesso");
             
             if (currentConversationId == convId) {
-                console.log("üîÑ Conversa atual foi deletada, limpando chat");
+                console.log("?? Conversa atual foi deletada, limpando chat");
                 currentConversationId = null;
                 const chatEl = document.getElementById('chat-messages');
                 if (chatEl) {
@@ -1991,17 +1991,17 @@ async function performDeleteConversation(convId, token) {
             
             // Aguardar um pouco e depois recarregar
             await new Promise(resolve => setTimeout(resolve, 500));
-            console.log("üîÑ Recarregando conversas...");
+            console.log("?? Recarregando conversas...");
             await loadConversations();
             
             showToastSuccess('Conversa deletada', 'A conversa foi removida com sucesso');
         } else {
             const errorText = await res.text();
-            console.error("‚ùå Erro ao deletar:", res.status, errorText);
+            console.error("? Erro ao deletar:", res.status, errorText);
             showToastError('Erro', 'Falha ao deletar conversa');
         }
     } catch (err) {
-        console.error('‚ùå Erro ao deletar conversa:', err);
+        console.error('? Erro ao deletar conversa:', err);
         showToastError('Erro', 'Erro ao conectar com o servidor');
     }
 }
@@ -2024,7 +2024,7 @@ setupConversations();
 
 // Ao voltar do quem-somos, iniciar novo chat
 if (document.referrer.includes('quem-somos.html')) {
-    console.log('üîÑ Voltando do quem-somos, iniciando novo chat');
+    console.log('?? Voltando do quem-somos, iniciando novo chat');
     startNewConversation();
 }
 

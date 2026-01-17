@@ -128,7 +128,7 @@ form.addEventListener("submit", async (e) => {
 
     console.log("📤 Enviando dados:", messageData);
 
-    const res = await authFetch("http://127.0.0.1:8000/chat/", {
+    const res = await authFetch("https://atenaai.onrender.com/chat/", {
       method: "POST",
       body: JSON.stringify(messageData)
     });

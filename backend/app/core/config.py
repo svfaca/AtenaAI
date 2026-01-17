@@ -23,7 +23,12 @@ AI_MODEL = "gpt-4o-mini"
 MAX_INPUT_LENGTH = 500
 MAX_MESSAGE_HISTORY = 10
 
-# OpenAI - Usar valor de os.environ (já carregado do .env)
+# OpenAI - Função para obter chave dinamicamente (importante para Render)
+def get_openai_api_key():
+    """Obtém a chave da OpenAI dinamicamente do ambiente"""
+    return os.getenv("OPENAI_API_KEY")
+
+# Mantém para compatibilidade, mas prefira usar get_openai_api_key()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # CORS

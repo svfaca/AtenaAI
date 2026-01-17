@@ -1,8 +1,9 @@
 from app.ai.llm import get_client
 from app.core.prompts import get_system_prompt
-from app.core.config import AI_MODEL, OPENAI_API_KEY
+from app.core.config import AI_MODEL
 from datetime import date
 import logging
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -37,8 +38,9 @@ def generate_ai_response(
         Resposta gerada pela IA ou mensagem de erro
     """
     try:
-        # Verificar se a chave API está disponível
-        if not OPENAI_API_KEY:
+        # Verificar se a chave API está disponível (buscar dinamicamente)
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
             logger.error("OPENAI_API_KEY não configurada")
             return "Erro: Serviço de IA não configurado corretamente. Chave API ausente."
         

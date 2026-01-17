@@ -105,7 +105,7 @@ def update_profile(
             with open(file_path, "wb") as f:
                 f.write(profile_image.file.read())
             
-            user.profile_image = f"http://127.0.0.1:8000/{file_path}"
+            user.profile_image = f"https://atenaai.onrender.com/{file_path}"
         except Exception as e:
             print(f"Erro ao salvar imagem: {e}")
     
@@ -132,7 +132,7 @@ def delete_account(
         try:
             # Extrair caminho local se for URL
             if user.profile_image.startswith("http"):
-                file_path = user.profile_image.split("http://127.0.0.1:8000/", 1)[-1]
+                file_path = user.profile_image.split("https://atenaai.onrender.com/", 1)[-1]
             else:
                 file_path = user.profile_image
             

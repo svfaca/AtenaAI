@@ -115,7 +115,7 @@ interestsForm.addEventListener("submit", async (e) => {
     // 1️⃣ REGISTRO
     // =====================
     console.log("📤 Enviando dados de registro para servidor...");
-    const registerResponse = await fetch("http://127.0.0.1:8000/register/", {
+    const registerResponse = await fetch("https://atenaai.onrender.com/register/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -142,7 +142,7 @@ interestsForm.addEventListener("submit", async (e) => {
     // 2️⃣ LOGIN AUTOMÁTICO
     // =====================
     console.log("🔐 Fazendo login automático...");
-    const loginResponse = await fetch("http://127.0.0.1:8000/login/", {
+    const loginResponse = await fetch("https://atenaai.onrender.com/login/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         try {
-            const response = await fetch("http://127.0.0.1:8000/auth/check-email", {
+            const response = await fetch("https://atenaai.onrender.com/auth/check-email", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email })

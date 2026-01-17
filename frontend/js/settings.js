@@ -130,7 +130,7 @@ export class SettingsManager {
         }
 
         try {
-            const res = await fetch('http://127.0.0.1:8000/auth/update-profile', {
+            const res = await fetch('https://atenaai.onrender.com/auth/update-profile', {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -186,7 +186,7 @@ export class SettingsManager {
         }
 
         try {
-            const res = await fetch('http://127.0.0.1:8000/auth/delete-account', {
+            const res = await fetch('https://atenaai.onrender.com/auth/delete-account', {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`

@@ -14,13 +14,15 @@ def get_client():
     if client is not None:
         return client
     
-    from app.core.config import OPENAI_API_KEY
+    # Buscar chave dinamicamente do ambiente
+    import os
+    api_key = os.getenv("OPENAI_API_KEY")
     
-    if not OPENAI_API_KEY:
+    if not api_key:
         logger.error("⚠️  OPENAI_API_KEY não está configurada!")
         raise ValueError("OPENAI_API_KEY não está configurada")
     
-    client = OpenAI(api_key=OPENAI_API_KEY)
+    client = OpenAI(api_key=api_key)
     logger.info("✅ Cliente OpenAI inicializado com sucesso")
     return client
 

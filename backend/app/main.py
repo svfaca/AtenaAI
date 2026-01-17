@@ -90,5 +90,10 @@ async def root():
 @app.get("/health")
 async def health():
     """Health check endpoint"""
-    return {"status": "healthy"}
+    api_key = os.getenv("OPENAI_API_KEY")
+    return {
+        "status": "healthy",
+        "openai_configured": bool(api_key),
+        "openai_key_preview": f"{api_key[:8]}...{api_key[-4:]}" if api_key else None
+    }
 
