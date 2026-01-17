@@ -4,7 +4,6 @@ openai
 pydantic
 sqlalchemy
 python-jose[cryptography]
-passlib[bcrypt]
-argon2-cffi
+bcrypt
 python-multipart
 python-dotenv
