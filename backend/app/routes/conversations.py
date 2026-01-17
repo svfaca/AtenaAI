@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from pydantic import BaseModel
+from typing import Optional
 
 from app.models import Conversation, Message
 from app.schemas.message import ChatMessage
@@ -9,6 +11,20 @@ from app.core.prompts import get_system_prompt
 from app.ai.llm import get_client
 
 router = APIRouter(prefix="/conversations", tags=["Conversations"])
+
+
+# ============================
+# SCHEMAS AUXILIARES
+# ============================
+class CreateConversationRequest(BaseModel):
+    title: Optional[str] = "Nova conversa"
+
+class CopyMessageRequest(BaseModel):
+    role: str
+    content: str
+
+class UpdateConversationRequest(BaseModel):
+    title: str
 
 
 # ============================
@@ -56,12 +72,14 @@ def get_conversation(
 # ============================
 @router.post("/", response_model=ConversationResponse)
 def create_conversation(
+    request: CreateConversationRequest = None,
     db: Session = Depends(get_db),
     user=Depends(get_current_user)
 ):
+    title = request.title if request else "Nova conversa"
     conv = Conversation(
         user_id=user.id,
-        title="Nova conversa"
+        title=title
     )
     db.add(conv)
     db.commit()
@@ -144,13 +162,41 @@ def send_message(
 
 
 # ============================
+# COPIAR MENSAGEM (para duplicar conversa)
+# ============================
+@router.post("/{conversation_id}/messages/copy")
+def copy_message(
+    conversation_id: int,
+    request: CopyMessageRequest,
+    db: Session = Depends(get_db),
+    user=Depends(get_current_user)
+):
+    conv = (
+        db.query(Conversation)
+        .filter(
+            Conversation.id == conversation_id,
+            Conversation.user_id == user.id
+        )
+        .first()
+    )
+
+    if not conv:
+        raise HTTPException(status_code=404, detail="Conversa não encontrada")
+
+    msg = Message(
+        conversation_id=conv.id,
+        role=request.role,
+        content=request.content
+    )
+    db.add(msg)
+    db.commit()
+
+    return {"status": "ok"}
+
+
+# ============================
 # ATUALIZAR TÍTULO
 # ============================
-from pydantic import BaseModel
-
-class UpdateConversationRequest(BaseModel):
-    title: str
-
 @router.put("/{conversation_id}", response_model=ConversationResponse)
 def update_conversation(
     conversation_id: int,

@@ -140,7 +140,7 @@
 
         
 
-        /* Desktop menus - esconder não mobile */
+        /* Desktop menus - esconder nao mobile */
 
         .desktop-menu {
 
@@ -160,7 +160,7 @@
 
         
 
-        /* Mobile menu button - mostrar apenas não mobile */
+        /* Mobile menu button - mostrar apenas nao mobile */
 
         #mobile-menu-btn {
 
@@ -209,30 +209,24 @@
             height: 1rem !important;
 
         }
-
         
-
+        /* Menu dropdown da conversa - position fixed para sair do overflow */
+        .conv-menu {
+            position: fixed !important;
+            z-index: 100;
+        }
+        
         /* Settings Modal */
-
         .settings-modal {
-
             position: fixed;
-
             right: 0;
-
             top: 0;
-
             width: 450px;
-
+            max-width: 100vw;
             height: 100vh;
-
             background: white;
-
-            dark: white;
-
             box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-
-            z-index: 40;
+            z-index: 60;
 
             overflow-y: auto;
 
@@ -261,33 +255,19 @@
         }
 
         
-
         .settings-modal-overlay {
-
             position: fixed;
-
             inset: 0;
-
             background: rgba(0,0,0,0);
-
-            z-index: 30;
-
+            z-index: 55;
             transition: background 0.3s ease-in-out;
-
             pointer-events: none;
-
         }
-
         
-
         .settings-modal-overlay.active {
-
             background: rgba(0,0,0,0.5);
-
             pointer-events: auto;
-
         }
-
         
 
         /* Confirmation Modal */
@@ -784,7 +764,7 @@
 
 <script>
 
-// Fun��o hideToast definida cedo para ser usada não onclick
+// Fun��o hideToast definida cedo para ser usada nao onclick
 
 function hideToast() {
 
@@ -803,43 +783,24 @@ function hideToast() {
 
 
 <div id="toast"
-
      class="fixed top-5 right-5 z-50 hidden max-w-sm w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4">
-
   <div class="flex items-start gap-3">
-
     <div id="toast-icon"
-
          class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-red-100 text-red-600">
-
-      ?
-
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
     </div>
-
-
 
     <div class="flex-1">
-
       <p id="toast-title" class="font-medium text-gray-900 dark:text-gray-100">
-
         Erro
-
       </p>
-
       <p id="toast-message" class="text-sm text-gray-600 dark:text-gray-400">
-
         Mensagem aqui
-
       </p>
-
     </div>
 
-
-
     <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600">
-
-      ?
-
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
 
   </div>
@@ -854,7 +815,7 @@ function hideToast() {
 
 
 
-    <!-- SIDEBAR (Apenas para usu�rios logados) -->
+    <!-- SIDEBAR (Apenas para usuarios logados) -->
 
     <aside id="sidebar"
 
@@ -894,7 +855,7 @@ function hideToast() {
 
           class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 absolute right-2 top-1/2 transform -translate-y-1/2 sidebar-text">
 
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
 
         </button>
 
@@ -1050,7 +1011,7 @@ function hideToast() {
 
                 
 
-                <!-- Menu não logado - desktop only -->
+                <!-- Menu nao logado - desktop only -->
 
                 <div id="menu-not-logged" class="desktop-menu items-center gap-2">
 
@@ -1162,7 +1123,7 @@ function hideToast() {
 
             <div class="text-xs text-center text-gray-500 mt-2" data-i18n="messages.versionWarning">
 
-                Versão limitada. Algumas respostas podem ser restritas.
+                Versao limitada. Algumas respostas podem ser restritas.
 
             </div>
 
@@ -1182,7 +1143,7 @@ function hideToast() {
 
         <div class="flex items-center justify-between mb-4">
 
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Renãomear Conversa</h3>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Renomear Conversa</h3>
 
             <button id="rename-close" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors">
 
@@ -1196,7 +1157,7 @@ function hideToast() {
 
         </div>
 
-        <input type="text" id="rename-input" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" placeholder="Novo nãome da conversa...">
+        <input type="text" id="rename-input" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" placeholder="Novo nome da conversa...">
 
         <div class="flex gap-2">
 
@@ -1289,15 +1250,10 @@ function hideToast() {
         <!-- Header -->
 
         <div class="flex items-center justify-between mb-6">
-
-            <h2 class="text-xl font-bold" data-i18n="settings.title">Configura��es</h2>
-
+            <h2 class="text-xl font-bold" data-i18n="settings.title">Configuracoes</h2>
             <button id="close-settings" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-
-                ?
-
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
-
         </div>
 
 
@@ -1348,7 +1304,7 @@ function hideToast() {
 
                     <label for="setting-name" data-i18n="settings.fullName">Nome Completo</label>
 
-                    <input type="text" id="setting-name" data-i18n-placeholder="settings.fullNamePlaceholder" placeholder="Seu nãome completo">
+                    <input type="text" id="setting-name" data-i18n-placeholder="settings.fullNamePlaceholder" placeholder="Seu nome completo">
 
                 </div>
 
@@ -1392,9 +1348,9 @@ function hideToast() {
 
                         <option value="" data-i18n="settings.selectGender">Selecione...</option>
 
-                        <option value="male" data-i18n="settings.male">Masculinão</option>
+                        <option value="male" data-i18n="settings.male">Masculino</option>
 
-                        <option value="female" data-i18n="settings.female">Femininão</option>
+                        <option value="female" data-i18n="settings.female">Feminino</option>
 
                         <option value="other" data-i18n="settings.other">Outro</option>
 
@@ -1416,21 +1372,21 @@ function hideToast() {
 
                 <div class="settings-form-group">
 
-                    <label class="block text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.selectAcademicInterests">Selecione seus interesses acad�micos</label>
+                    <label class="block text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.selectAcademicInterests">Selecione seus interesses academicos</label>
 
                     <div id="interests-container" class="grid grid-cols-2 gap-2">
 
-                        <!-- Exatas e Tecnãologia -->
+                        <!-- Exatas e Tecnologia -->
 
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2" data-i18n="interests.exactsAndTechnãology"> Exatas e Tecnãologia</div></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2" data-i18n="interests.exactsAndTechnology"> Exatas e Tecnologia</div></div>
 
-                        <div><input type="checkbox" id="interest-math" value="math" class="interest-checkbox hidden peer"><label for="interest-math" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.math">Matem�tica</span></label></div>
+                        <div><input type="checkbox" id="interest-math" value="math" class="interest-checkbox hidden peer"><label for="interest-math" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.math">Matematica</span></label></div>
 
-                        <div><input type="checkbox" id="interest-statistics" value="statistics" class="interest-checkbox hidden peer"><label for="interest-statistics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.statistics">Estat�stica</span></label></div>
+                        <div><input type="checkbox" id="interest-statistics" value="statistics" class="interest-checkbox hidden peer"><label for="interest-statistics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.statistics">Estatistica</span></label></div>
 
-                        <div><input type="checkbox" id="interest-physics" value="physics" class="interest-checkbox hidden peer"><label for="interest-physics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physics">F�sica</span></label></div>
+                        <div><input type="checkbox" id="interest-physics" value="physics" class="interest-checkbox hidden peer"><label for="interest-physics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physics">Fisica</span></label></div>
 
-                        <div><input type="checkbox" id="interest-chemistry" value="chemistry" class="interest-checkbox hidden peer"><label for="interest-chemistry" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.chemistry">Qu�mica</span></label></div>
+                        <div><input type="checkbox" id="interest-chemistry" value="chemistry" class="interest-checkbox hidden peer"><label for="interest-chemistry" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.chemistry">Quimica</span></label></div>
 
                         <div><input type="checkbox" id="interest-programming" value="programming" class="interest-checkbox hidden peer"><label for="interest-programming" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.programming">Programacao</span></label></div>
 
@@ -1438,25 +1394,25 @@ function hideToast() {
 
                         
 
-                        <!-- Biol�gicas e Sa�de -->
+                        <!-- Biologicas e Saude -->
 
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.biologicalAndHealth"> Biol�gicas e Sa�de</div></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.biologicalAndHealth"> Biologicas e Saude</div></div>
 
                         <div><input type="checkbox" id="interest-biology" value="biology" class="interest-checkbox hidden peer"><label for="interest-biology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.biology">Biologia</span></label></div>
 
-                        <div><input type="checkbox" id="interest-health" value="health" class="interest-checkbox hidden peer"><label for="interest-health" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.health">Sa�de</span></label></div>
+                        <div><input type="checkbox" id="interest-health" value="health" class="interest-checkbox hidden peer"><label for="interest-health" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.health">Saude</span></label></div>
 
                         <div><input type="checkbox" id="interest-anatomy" value="anatomy" class="interest-checkbox hidden peer"><label for="interest-anatomy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.anatomy">Anatomia</span></label></div>
 
-                        <div><input type="checkbox" id="interest-pe" value="physical_education" class="interest-checkbox hidden peer"><label for="interest-pe" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physicalEducation">Ed. F�sica</span></label></div>
+                        <div><input type="checkbox" id="interest-pe" value="physical_education" class="interest-checkbox hidden peer"><label for="interest-pe" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physicalEducation">Ed. Fisica</span></label></div>
 
                         
 
                         <!-- Humanas -->
 
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.humanities">? Humanas</div></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.humanities">Humanas</div></div>
 
-                        <div><input type="checkbox" id="interest-history" value="history" class="interest-checkbox hidden peer"><label for="interest-history" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.history">Hist�ria</span></label></div>
+                        <div><input type="checkbox" id="interest-history" value="history" class="interest-checkbox hidden peer"><label for="interest-history" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.history">Historia</span></label></div>
 
                         <div><input type="checkbox" id="interest-geography" value="geography" class="interest-checkbox hidden peer"><label for="interest-geography" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.geography">Geografia</span></label></div>
 
@@ -1486,7 +1442,7 @@ function hideToast() {
 
                         <div><input type="checkbox" id="interest-law" value="law" class="interest-checkbox hidden peer"><label for="interest-law" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.law">Direito</span></label></div>
 
-                        <div><input type="checkbox" id="interest-econãomics" value="econãomics" class="interest-checkbox hidden peer"><label for="interest-econãomics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.econãomics">Econãomia</span></label></div>
+                        <div><input type="checkbox" id="interest-economics" value="economics" class="interest-checkbox hidden peer"><label for="interest-economics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.economics">Economia</span></label></div>
 
                         <div><input type="checkbox" id="interest-arts" value="arts" class="interest-checkbox hidden peer"><label for="interest-arts" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.arts">Artes</span></label></div>
 
@@ -1712,7 +1668,7 @@ async function fetchUserData() {
 
     } catch (err) {
 
-        console.error("? Erro ação buscar dados do usu�rio:", err);
+        console.error("? Erro Acao buscar dados do usu�rio:", err);
 
     }
 
@@ -1752,7 +1708,7 @@ function updateAvatar() {
 
 
 
-// 🔐 VERIFICADOR DE AUTENTICAÇÃO
+// 🔐 VERIFICADOR DE AUTENTICAcao
 
 function checkAndUpdateAuthStatus() {
 
@@ -1854,7 +1810,7 @@ function checkAndUpdateAuthStatus() {
 
 
 
-// 🎨 Função central de inicialização de UI
+// 🎨 Funçao central de inicializAcao de UI
 
 function initAppUI() {
 
@@ -2080,7 +2036,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-    // Restaurar conversa anterior se houver (para evitar perda não reload)
+    // Restaurar conversa anterior se houver (para evitar perda nao reload)
 
     const savedConvId = sessionStorage.getItem('currentConversationId');
 
@@ -2096,7 +2052,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Verificar status inicial IMEDIATAMENTE
 
-    console.log(" Executando checkAndUpdateAuthStatus não DOMContentLoaded");
+    console.log(" Executando checkAndUpdateAuthStatus nao DOMContentLoaded");
 
     checkAndUpdateAuthStatus();
 
@@ -2154,7 +2110,7 @@ if (localStorage.getItem("theme") === "dark") html.classList.add("dark");
 
 
 
-// Atualizar logos conforme o tema ação carregar a p�gina
+// Atualizar logos conforme o tema Acao carregar a p�gina
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -2222,13 +2178,13 @@ async function handleFormSubmit(e) {
 
         if (token && !currentConversationId) {
 
-            console.log(" Criando nãova conversa para in�cio de papo...");
+            console.log(" Criando naova conversa para in�cio de papo...");
 
             const conv = await createConversationWithTitle(text);
 
             if (!conv) {
 
-                throw new Error("Falha ação criar conversa");
+                throw new Error("Falha Acao criar conversa");
 
             }
 
@@ -2296,7 +2252,7 @@ async function handleFormSubmit(e) {
 
         removeTyping();
 
-        console.error("? Erro não envio:", err);
+        console.error("? Erro nao envio:", err);
 
         addAI("Erro ao conectar com a IA. Por favor, tente novamente.");
 
@@ -2516,7 +2472,7 @@ function removeTyping() {
 
 
 
-// ? Criar nãova conversa COM t�tulo
+// ? Criar naova conversa COM t�tulo
 
 async function createConversationWithTitle(title) {
 
@@ -2548,7 +2504,7 @@ async function createConversationWithTitle(title) {
 
         if (!res.ok) {
 
-            console.error("? Erro ação criar conversa:", res.status);
+            console.error("? Erro Acao criar conversa:", res.status);
 
             return null;
 
@@ -2714,7 +2670,7 @@ function openSettings() {
 
     // DEBUG: Logar dados do usu�rio
 
-    console.log('userData ação abrir settings:', userData);
+    console.log('userData Acao abrir settings:', userData);
 
     
 
@@ -2886,7 +2842,7 @@ profileImageInput?.addEventListener('change', (e) => {
 
 // Submeter formul�rio de configura��es
 
-// Alterar idioma ação mudar o seletor
+// Alterar idioma Acao mudar o seletor
 
 const languageSelect = document.getElementById('setting-language');
 
@@ -2956,7 +2912,7 @@ settingsForm?.addEventListener('submit', async (e) => {
 
     
 
-    // Se h� nãova foto
+    // Se h� naova foto
 
     const profileImageInput = document.getElementById('profile-image');
 
@@ -3016,7 +2972,7 @@ settingsForm?.addEventListener('submit', async (e) => {
 
             
 
-            // Atualizar avatar e nãome na sidebar
+            // Atualizar avatar e naome na sidebar
 
             updateAvatar();
 
@@ -3056,7 +3012,7 @@ settingsForm?.addEventListener('submit', async (e) => {
 
             const error = await res.json();
 
-            showToastError('Erro', error.detail || 'Erro ação atualizar perfil');
+            showToastError('Erro', error.detail || 'Erro Acao atualizar perfil');
 
         }
 
@@ -3240,7 +3196,7 @@ deleteAccountBtn?.addEventListener('click', async (e) => {
 
             const error = await res.json();
 
-            showToastError('Erro', error.detail || 'Erro ação deletar conta');
+            showToastError('Erro', error.detail || 'Erro Acao deletar conta');
 
         }
 
@@ -3256,11 +3212,11 @@ deleteAccountBtn?.addEventListener('click', async (e) => {
 
 
 
-//  Resetar para uma nãova conversa (apenas não frontend)
+//  Resetar para uma naova conversa (apenas nao frontend)
 
 function startNewConversation() {
 
-    console.log(" Iniciando nãova conversa (sem salvar não backend)");
+    console.log(" Iniciando naova conversa (sem salvar nao backend)");
 
     
 
@@ -3302,7 +3258,7 @@ function startNewConversation() {
 
     }
 
-    console.log(" Conversa resetada. Aguardando primeira mensagem para criar não backend");
+    console.log(" Conversa resetada. Aguardando primeira mensagem para criar nao backend");
 
 }
 
@@ -3330,7 +3286,7 @@ async function loadConversations() {
 
         if (!res.ok) {
 
-            console.error("? Erro ação carregar conversas:", res.status);
+            console.error("? Erro Acao carregar conversas:", res.status);
 
             return;
 
@@ -3409,11 +3365,8 @@ async function loadConversations() {
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
 
                                 </svg>
-
-                                Renãomear
-
+                                Renomear
                             </button>
-
                             <button class="copy-conv w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2" data-conv-id="${conv.id}">
 
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -3458,7 +3411,7 @@ async function loadConversations() {
 
     } catch (err) {
 
-        console.error('? Erro ação carregar conversas:', err);
+        console.error('? Erro Acao carregar conversas:', err);
 
     }
 
@@ -3478,7 +3431,7 @@ if (listEl && !listEl.hasAttribute('data-listeners-added')) {
 
     listEl.addEventListener('click', (e) => {
 
-        // Se clicou não bot�o de menu (tr�s pontinhos)
+        // Se clicou no botao de menu (tres pontinhos)
 
         if (e.target.closest('.conv-menu-btn')) {
 
@@ -3500,6 +3453,11 @@ if (listEl && !listEl.hasAttribute('data-listeners-added')) {
 
             
 
+            // Posicionar menu com fixed
+            const rect = btn.getBoundingClientRect();
+            menu.style.top = `${rect.bottom + 4}px`;
+            menu.style.left = `${rect.left - 150}px`; // Menu largura ~192px, botao ~40px
+            
             // Toggle menu atual
 
             menu.classList.toggle('hidden');
@@ -3560,7 +3518,7 @@ if (listEl && !listEl.hasAttribute('data-listeners-added')) {
 
     
 
-    // Fechar menu ação clicar fora
+    // Fechar menu Acao clicar fora
 
     document.addEventListener('click', (e) => {
 
@@ -3610,7 +3568,7 @@ async function loadConversation(convId) {
 
         if (!res.ok) {
 
-            console.error("? Erro ação buscar conversa:", res.status);
+            console.error("? Erro Acao buscar conversa:", res.status);
 
             return;
 
@@ -3650,7 +3608,7 @@ async function loadConversation(convId) {
 
         console.log(" Chat limpo");
 
-        // Sempre mostrar a saudacao inicial da IA não topo
+        // Sempre mostrar a saudacao inicial da IA nao topo
 
         addAI('Ola! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?');
 
@@ -3694,7 +3652,7 @@ async function loadConversation(convId) {
 
     } catch (err) {
 
-        console.error('? Erro ação carregar conversa:', err);
+        console.error('? Erro Acao carregar conversa:', err);
 
     }
 
@@ -3702,9 +3660,9 @@ async function loadConversation(convId) {
 
 
 
-// ? Criar nãova conversa
+// ? Criar naova conversa
 
-//  Editar nãome da conversa
+//  Editar naome da conversa
 
 function editConversationTitle(convId) {
 
@@ -3760,7 +3718,7 @@ function editConversationTitle(convId) {
 
         if (!newTitle) {
 
-            showToastError('Erro', 'O nãome nao pode ser vazio');
+            showToastError('Erro', 'O naome nao pode ser vazio');
 
             return;
 
@@ -3804,17 +3762,17 @@ function editConversationTitle(convId) {
 
                 loadConversations();
 
-                showToastSuccess('Sucesso', 'Conversa renãomeada com sucesso');
+                showToastSuccess('Sucesso', 'Conversa renaomeada com sucesso');
 
             } else {
 
-                showToastError('Erro', 'Falha ação atualizar nãome da conversa');
+                showToastError('Erro', 'Falha Acao atualizar naome da conversa');
 
             }
 
         } catch (err) {
 
-            console.error('Erro ação editar conversa:', err);
+            console.error('Erro Acao editar conversa:', err);
 
             showToastError('Erro', 'Erro ao conectar com o servidor');
 
@@ -3868,106 +3826,59 @@ function editConversationTitle(convId) {
 
 
 
-//  Copiar conversa (duplicar com nãovo nãome)
-
+//  Copiar conversa (duplicar com novo nome e mensagens)
 async function copyConversation(convId) {
-
     const token = localStorage.getItem('access_token');
-
     if (!token) return;
-
     
-
     try {
-
-        // 1. Buscar a conversa original
-
+        // 1. Buscar a conversa original com mensagens
         const getRes = await fetch(`https://atenaai.onrender.com/conversations/${convId}`, {
-
             headers: { 'Authorization': `Bearer ${token}` }
-
         });
-
         
-
         if (!getRes.ok) {
-
-            showToastError('Erro', 'N�o foi poss�vel buscar a conversa');
-
+            showToastError('Erro', 'Nao foi possivel buscar a conversa');
             return;
-
         }
-
         
-
         const originalConv = await getRes.json();
-
         
-
-        // 2. Criar nãova conversa
-
+        // 2. Criar nova conversa com titulo de copia
+        const newTitle = `${originalConv.title} (copia)`;
         const createRes = await fetch('https://atenaai.onrender.com/conversations/', {
-
             method: 'POST',
-
             headers: { 
-
                 'Authorization': `Bearer ${token}`,
-
                 'Content-Type': 'application/json'
-
-            }
-
-        });
-
-        
-
-        if (!createRes.ok) {
-
-            showToastError('Erro', 'N�o foi poss�vel criar nãova conversa');
-
-            return;
-
-        }
-
-        
-
-        const newConv = await createRes.json();
-
-        
-
-        // 3. Atualizar t�tulo da nãova conversa
-
-        const newTitle = `${originalConv.title} (c�pia)`;
-
-        const updateRes = await fetch(`https://atenaai.onrender.com/conversations/${newConv.id}`, {
-
-            method: 'PUT',
-
-            headers: {
-
-                'Authorization': `Bearer ${token}`,
-
-                'Content-Type': 'application/json'
-
             },
-
             body: JSON.stringify({ title: newTitle })
-
         });
-
         
-
-        if (!updateRes.ok) {
-
-            showToastError('Erro', 'N�o foi poss�vel atualizar nãome da c�pia');
-
+        if (!createRes.ok) {
+            showToastError('Erro', 'Nao foi possivel criar nova conversa');
             return;
-
         }
-
         
-
+        const newConv = await createRes.json();
+        
+        // 3. Copiar todas as mensagens da conversa original
+        if (originalConv.messages && originalConv.messages.length > 0) {
+            for (const msg of originalConv.messages) {
+                await fetch(`https://atenaai.onrender.com/conversations/${newConv.id}/messages/copy`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        role: msg.role, 
+                        content: msg.content 
+                    })
+                });
+            }
+        }
+        
         loadConversations();
 
         showToastSuccess('Conversa copiada', 'A conversa foi duplicada com sucesso');
@@ -3976,7 +3887,7 @@ async function copyConversation(convId) {
 
     } catch (err) {
 
-        console.error('Erro ação copiar conversa:', err);
+        console.error('Erro Acao copiar conversa:', err);
 
         showToastError('Erro', 'Erro ao conectar com o servidor');
 
@@ -4052,7 +3963,7 @@ async function performDeleteConversation(convId, token) {
 
         if (res.ok) {
 
-            console.log("? Conversa deletada com sucesso");
+            console.log("? ConverSaudeletada com sucesso");
 
             
 
@@ -4084,7 +3995,7 @@ async function performDeleteConversation(convId, token) {
 
                             <div class="message ml-3 bg-white dark:bg-gray-800 p-4 rounded-2xl rounded-tl-sm shadow-sm text-gray-800 dark:text-gray-100">
 
-                                <p>Selecione uma conversa ou envie uma mensagem para criar uma nãova.</p>
+                                <p>Selecione uma conversa ou envie uma mensagem para criar uma naova.</p>
 
                             </div>
 
@@ -4108,21 +4019,21 @@ async function performDeleteConversation(convId, token) {
 
             
 
-            showToastSuccess('Conversa deletada', 'A conversa foi removida com sucesso');
+            showToastSuccess('ConverSaudeletada', 'A conversa foi removida com sucesso');
 
         } else {
 
             const errorText = await res.text();
 
-            console.error("? Erro ação deletar:", res.status, errorText);
+            console.error("? Erro Acao deletar:", res.status, errorText);
 
-            showToastError('Erro', 'Falha ação deletar conversa');
+            showToastError('Erro', 'Falha Acao deletar conversa');
 
         }
 
     } catch (err) {
 
-        console.error('? Erro ação deletar conversa:', err);
+        console.error('? Erro Acao deletar conversa:', err);
 
         showToastError('Erro', 'Erro ao conectar com o servidor');
 
@@ -4132,7 +4043,7 @@ async function performDeleteConversation(convId, token) {
 
 
 
-// Carregar conversas ação autenticar
+// Carregar conversas Acao autenticar
 
 let conversationsInterval = null;
 
@@ -4164,11 +4075,11 @@ setupConversations();
 
 
 
-// Ao voltar do quem-somos, iniciar nãovo chat
+// Ao voltar do quem-somos, iniciar naovo chat
 
 if (document.referrer.includes('quem-somos.html')) {
 
-    console.log(' Voltando do quem-somos, iniciando nãovo chat');
+    console.log(' Voltando do quem-somos, iniciando naovo chat');
 
     startNewConversation();
 
@@ -4185,6 +4096,11 @@ setInterval(checkAndUpdateAuthStatus, 10000);
 </body>
 
 </html>
+
+
+
+
+
 
 
 
