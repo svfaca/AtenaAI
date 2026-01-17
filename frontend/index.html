@@ -207,7 +207,7 @@
 
         
 
-        /* Desktop menus - esconder por padrão, mostrar com auth-show */
+        /* Desktop menus - esconder no mobile, mostrar no desktop apenas com auth-show */
 
         .desktop-menu {
 
@@ -221,15 +221,6 @@
 
                 display: flex !important;
 
-            }
-            
-            /* Garantir que menu não logado fica escondido quando logado */
-            #menu-not-logged:not(.auth-show) {
-                display: none !important;
-            }
-            
-            #menu-logged:not(.auth-show) {
-                display: none !important;
             }
 
         }
@@ -627,9 +618,11 @@
 
             border-radius: 50%;
 
-            object-fit: cover;
+            overflow: hidden;
 
             border: 3px solid #E5E7EB;
+
+            flex-shrink: 0;
 
         }
 
@@ -1824,12 +1817,9 @@ function checkAndUpdateAuthStatus() {
     const mobileMenuLogged = document.getElementById('mobile-menu-logged');
     
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-
-        console.log("🔍 checkAndUpdateAuthStatus called - Token:", !!token);
-
-    
-
     const mobileSidebarBtn = document.getElementById('mobile-sidebar-btn');
+
+    console.log("🔍 checkAndUpdateAuthStatus called - Token:", !!token);
     
     if (token) {
 
