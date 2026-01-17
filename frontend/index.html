@@ -150,10 +150,6 @@
             #sidebar-toggle {
                 display: none !important;
             }
-            /* Esconder hamburger do header direito no mobile */
-            #mobile-menu-btn {
-                display: none !important;
-            }
         }
         @media (min-width: 768px) {
             #mobile-sidebar-btn {
@@ -1769,10 +1765,10 @@ function checkAndUpdateAuthStatus() {
     const mobileMenuNotLogged = document.getElementById('mobile-menu-not-logged');
 
     const mobileMenuLogged = document.getElementById('mobile-menu-logged');
-
     
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
-    console.log("🔍 checkAndUpdateAuthStatus called - Token:", !!token);
+        console.log("🔍 checkAndUpdateAuthStatus called - Token:", !!token);
 
     
 
@@ -1812,11 +1808,14 @@ function checkAndUpdateAuthStatus() {
 
         if (mobileMenuNotLogged) mobileMenuNotLogged.classList.add('hidden');
         
-        // Mostrar botao hamburger sidebar no mobile
+        // Mostrar botao hamburger sidebar no mobile (logado)
         if (mobileSidebarBtn) {
             mobileSidebarBtn.classList.remove('hidden');
             mobileSidebarBtn.classList.add('flex');
         }
+        
+        // Esconder hamburger direito no mobile quando logado
+        if (mobileMenuBtn) mobileMenuBtn.classList.add('hidden');
 
         
 
@@ -1863,6 +1862,9 @@ function checkAndUpdateAuthStatus() {
             mobileSidebarBtn.classList.add('hidden');
             mobileSidebarBtn.classList.remove('flex');
         }
+        
+        // Mostrar hamburger direito no mobile quando deslogado
+        if (mobileMenuBtn) mobileMenuBtn.classList.remove('hidden');
 
     }
 
