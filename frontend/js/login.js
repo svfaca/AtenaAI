@@ -8,10 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const togglePasswordBtn = document.getElementById("toggle-password");
   const passwordInput = document.getElementById("password");
-  // Seleciona os ícones SVG pelo seletor de classe, sem depender de IDs
-  const icons = togglePasswordBtn ? togglePasswordBtn.querySelectorAll("svg.h-5.w-5") : [];
-  const eyeIcon = icons[0] || null;
-  const eyeOffIcon = icons[1] || null;
+  const eyeIcon = document.getElementById("eye-icon");
+  const eyeOffIcon = document.getElementById("eye-off-icon");
 
   if (togglePasswordBtn && passwordInput && eyeIcon && eyeOffIcon) {
     togglePasswordBtn.addEventListener("click", function (e) {
