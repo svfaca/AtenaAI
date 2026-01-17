@@ -72,11 +72,11 @@ def get_conversation(
 # ============================
 @router.post("/", response_model=ConversationResponse)
 def create_conversation(
-    request: CreateConversationRequest = None,
+    request: CreateConversationRequest = CreateConversationRequest(),
     db: Session = Depends(get_db),
     user=Depends(get_current_user)
 ):
-    title = request.title if request else "Nova conversa"
+    title = request.title if request and request.title else "Nova conversa"
     conv = Conversation(
         user_id=user.id,
         title=title

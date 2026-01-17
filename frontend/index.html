@@ -3978,29 +3978,11 @@ async function performDeleteConversation(convId, token) {
                 if (chatEl) {
 
                     chatEl.innerHTML = `
-
                         <div class="flex items-start">
-
-                            <div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white shrink-0 shadow-sm">
-
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-
-                                    <path d="M10.5 1.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1zM4.5 3.5a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM15.5 3.5a.5.5 0 00-.707 0l-.707.707a.5.5 0 00.707.707l.707-.707a.5.5 0 000-.707zM1.5 10.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1zM18.5 10.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1zM4.5 16.5a.5.5 0 00-.707-.707l-.707.707a.5.5 0 00.707.707l.707-.707zM15.5 16.5a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM10.5 18.5a.5.5 0 00-1 0v1a.5.5 0 001 0v-1z"/>
-
-                                    <circle cx="10" cy="10" r="3" opacity="0.8"/>
-
-                                </svg>
-
+                            <div class="message bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+                                <p data-i18n="messages.welcome">Ola! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
                             </div>
-
-                            <div class="message ml-3 bg-white dark:bg-gray-800 p-4 rounded-2xl rounded-tl-sm shadow-sm text-gray-800 dark:text-gray-100">
-
-                                <p>Selecione uma conversa ou envie uma mensagem para criar uma naova.</p>
-
-                            </div>
-
                         </div>
-
                     `;
 
                 }
