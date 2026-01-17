@@ -87,7 +87,10 @@
 
         .chat-container {
 
-            height: calc(100vh - 180px);
+        .chat-container {
+
+            flex: 1;
+            overflow-y: auto;
 
         }
 
@@ -103,6 +106,9 @@
         @media (max-width: 480px) {
             .message {
                 max-width: 95%;
+            }
+            .chat-container {
+                height: auto;
             }
         }
 
@@ -1034,7 +1040,7 @@ function hideToast() {
 
         <!-- HEADER -->
 
-        <header class="border-b border-gray-200 dark:border-gray-700 py-2 px-3 flex justify-between items-center">
+        <header class="flex-shrink-0 border-b border-gray-200 dark:border-gray-700 py-2 px-3 flex justify-between items-center">
 
             <div class="flex items-center gap-2">
                 <!-- Botao hamburger sidebar mobile (apenas para logados) -->
@@ -1172,7 +1178,7 @@ function hideToast() {
 
         <!-- INPUT -->
 
-        <div id="chat-input-section" class="border-t border-gray-200 dark:border-gray-700 p-2 sm:p-4">
+        <div id="chat-input-section" class="flex-shrink-0 border-t border-gray-200 dark:border-gray-700 p-2 sm:p-4">
 
             <form id="chat-form" class="flex gap-2" onsubmit="return false;">
 
