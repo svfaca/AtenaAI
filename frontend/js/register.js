@@ -65,8 +65,8 @@ interestsForm.addEventListener("submit", async (e) => {
 
   if (interestsArray.length === 0) {
     showToast({
-      title: "Interesses",
-      message: "Selecione ao menos uma área."
+      title: t('auth.interests'),
+      message: t('auth.selectAtLeastOneArea')
     });
     return;
   }
@@ -77,8 +77,8 @@ interestsForm.addEventListener("submit", async (e) => {
   const terms = document.getElementById("terms");
   if (!terms.checked) {
     showToast({
-      title: "Termos",
-      message: "Você precisa aceitar os termos."
+      title: t('auth.terms'),
+      message: t('auth.acceptTerms')
     });
     return;
   }
@@ -169,8 +169,8 @@ interestsForm.addEventListener("submit", async (e) => {
     // =====================
     console.log("🎉 Exibindo toast de sucesso...");
     showToast({
-      title: "Conta criada com sucesso!",
-      message: `Bem-vindo, ${fullName}! Redirecionando...`,
+      title: t('auth.accountCreatedSuccess'),
+      message: `${t('auth.accountCreatedWelcome').replace('{name}', fullName)}`,
       type: "success"
     });
 
@@ -189,7 +189,7 @@ interestsForm.addEventListener("submit", async (e) => {
     console.error("Stack trace:", err.stack);
     showToast({
       title: "Erro",
-      message: err.message || "Ocorreu um erro inesperado"
+      message: err.message || t('auth.unexpectedError')
     });
   } finally {
     buttonText.classList.remove("hidden");
@@ -220,118 +220,118 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmPasswordInput = document.getElementById("confirm-password");
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let isEmailValid = false;
 
-    /* ================= STEP 1 ================= */
+    /* ================= GOOGLE/FACEBOOK ================= */
+    const googleBtn = document.getElementById("google-signup");
+    const facebookBtn = document.getElementById("facebook-signup");
 
-const googleBtn = document.getElementById("google-signup");
-const facebookBtn = document.getElementById("facebook-signup");
-
-if (googleBtn) {
-  googleBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    showToast({
-      title: "Funcionalidade não disponível",
-      message: "Cadastro com Google ainda não foi implementado.",
-      type: "error"
-    });
-  });
-}
-
-if (facebookBtn) {
-  facebookBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    showToast({
-      title: "Funcionalidade não disponível",
-      message: "Cadastro com Facebook ainda não foi implementado.",
-      type: "error"
-    });
-  });
-}
-
-// 🔍 VALIDAÇÃO DE EMAIL EM TEMPO REAL
-let isEmailValid = false;
-
-emailInput?.addEventListener("blur", async () => {
-    const email = emailInput.value.trim();
-    const emailError = document.getElementById("email-error");
-    
-    if (!email) {
-        emailError.classList.add("hidden");
-        isEmailValid = false;
-        return;
-    }
-    
-    if (!emailRegex.test(email)) {
-        emailError.textContent = "Email inválido.";
-        emailError.classList.remove("hidden");
-        isEmailValid = false;
-        return;
-    }
-    
-    try {
-        const response = await fetch("http://127.0.0.1:8000/auth/check-email", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email })
+    if (googleBtn) {
+        googleBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            showToast({
+                title: t('auth.notAvailable'),
+                message: t('auth.googleNotImplemented'),
+                type: "error"
+            });
         });
+    }
+
+    if (facebookBtn) {
+        facebookBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            showToast({
+                title: t('auth.notAvailable'),
+                message: t('auth.facebookNotImplemented'),
+                type: "error"
+            });
+        });
+    }
+
+    // 🔍 VALIDAÇÃO DE EMAIL EM TEMPO REAL
+    emailInput?.addEventListener("blur", async () => {
+        const email = emailInput.value.trim();
+        const emailError = document.getElementById("email-error");
         
-        const data = await response.json();
+        if (!email) {
+            emailError.classList.add("hidden");
+            isEmailValid = false;
+            return;
+        }
         
-        if (!data.available) {
-            emailError.textContent = data.message;
+        if (!emailRegex.test(email)) {
+            emailError.textContent = t('auth.invalidEmail');
             emailError.classList.remove("hidden");
             isEmailValid = false;
-        } else {
-            emailError.classList.add("hidden");
-            isEmailValid = true;
-        }
-    } catch (err) {
-        console.error("Erro ao validar email:", err);
-        isEmailValid = false;
-    }
-});
-
-
-    continueBtn1?.addEventListener("click", () => {
-        const email = emailInput.value.trim();
-        const password = passwordInput.value;
-        const confirmPassword = confirmPasswordInput.value;
-
-        if (!email || !password || !confirmPassword) {
-            showToast({
-                title: "Campos obrigatórios",
-                message: "Preencha email e senha para continuar."
-            });
             return;
         }
-
-        if (!emailRegex.test(email)) {
-            showToast({
-                title: "Email inválido",
-                message: "Informe um email válido."
+        
+        try {
+            const response = await fetch("http://127.0.0.1:8000/auth/check-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email })
             });
-            return;
+            
+            const data = await response.json();
+            
+            if (!data.available) {
+                emailError.textContent = data.message;
+                emailError.classList.remove("hidden");
+                isEmailValid = false;
+            } else {
+                emailError.classList.add("hidden");
+                isEmailValid = true;
+            }
+        } catch (err) {
+            console.error("Erro ao validar email:", err);
+            isEmailValid = false;
         }
-
-        if (!isEmailValid) {
-            showToast({
-                title: "Email não disponível",
-                message: "Este email já está cadastrado. Tente outro."
-            });
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            showToast({
-                title: "Senhas diferentes",
-                message: "As senhas não coincidem."
-            });
-            return;
-        }
-
-        step1.classList.add("hidden");
-        step2.classList.remove("hidden");
     });
+
+    /* ================= STEP 1: CONTINUAR ================= */
+    if (continueBtn1) {
+        continueBtn1.addEventListener("click", () => {
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            if (!email || !password || !confirmPassword) {
+                showToast({
+                    title: t('auth.requiredFields'),
+                    message: t('auth.fillEmailPassword')
+                });
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                showToast({
+                    title: t('auth.invalidEmail'),
+                    message: t('auth.provideValidEmail')
+                });
+                return;
+            }
+
+            if (!isEmailValid) {
+                showToast({
+                    title: t('auth.emailNotAvailable'),
+                    message: t('auth.emailAlreadyRegistered')
+                });
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showToast({
+                    title: t('auth.passwordsDifferent'),
+                    message: t('auth.passwordsMismatch')
+                });
+                return;
+            }
+
+            step1.classList.add("hidden");
+            step2.classList.remove("hidden");
+        });
+    }
 
     /* ================= STEP 2 ================= */
     continueBtn2?.addEventListener("click", (e) => {
@@ -343,24 +343,24 @@ emailInput?.addEventListener("blur", async () => {
 
         if (!fullName) {
             showToast({
-                title: "Nome obrigatório",
-                message: "Informe seu nome completo."
+                title: t('auth.requiredName'),
+                message: t('auth.provideFullName')
             });
             return;
         }
 
         if (!birthdate) {
             showToast({
-                title: "Data de nascimento",
-                message: "Informe sua data de nascimento."
+                title: t('auth.requiredBirthdate'),
+                message: t('auth.provideBirthdate')
             });
             return;
         }
 
         if (!gender) {
             showToast({
-                title: "Sexo",
-                message: "Selecione uma opção."
+                title: t('auth.requiredGender'),
+                message: t('auth.selectGenderOption')
             });
             return;
         }
@@ -377,16 +377,16 @@ emailInput?.addEventListener("blur", async () => {
 
         if (!accountType) {
             showToast({
-                title: "Tipo de conta",
-                message: "Selecione um tipo de conta."
+                title: t('auth.requiredAccountType'),
+                message: t('auth.selectAccountType')
             });
             return;
         }
 
         if (accountType.value !== "student") {
             showToast({
-                title: "Em desenvolvimento",
-                message: "Apenas contas de estudante estão disponíveis."
+                title: t('auth.inDevelopment'),
+                message: t('auth.onlyStudentAvailable')
             });
             return;
         }

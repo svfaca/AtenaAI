@@ -93,27 +93,27 @@
                 </svg>
             </button>
 
-            <a href="quem-somos.html" class="text-sm font-medium hover:underline">Quem somos</a>
+            <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline">Quem somos</a>
             
             <!-- Opções para usuário NÃO logado -->
             <div id="menu-not-logged" class="flex items-center space-x-3">
-                <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Entrar</a>
-                <a href="cadastro.html" class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 rounded-md text-sm font-medium">
+                <a href="login.html" data-i18n="navigation.login" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Entrar</a>
+                <a href="cadastro.html" data-i18n="navigation.register" class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 rounded-md text-sm font-medium">
                     Criar Conta
                 </a>
             </div>
 
             <!-- Opções para usuário logado -->
             <div id="menu-logged" class="hidden flex items-center space-x-4">
-                <a href="index.html" class="text-primary-600 hover:text-primary-700 text-sm font-medium">Voltar ao Chat</a>
-                <button id="logout-header-btn" class="text-red-600 hover:text-red-700 text-sm font-medium">Sair</button>
+                <a href="index.html" data-i18n="about.backToChat" class="text-primary-600 hover:text-primary-700 text-sm font-medium">Voltar ao Chat</a>
+                <button id="logout-header-btn" data-i18n="navigation.logout" class="text-red-600 hover:text-red-700 text-sm font-medium">Sair</button>
             </div>
         </div>
     </header>
 
     <!-- CONTEÚDO -->
     <main class="flex-1 container mx-auto px-4 py-10 max-w-4xl">
-        <h2 class="text-3xl font-bold mb-10 text-center">Quem Somos</h2>
+        <h2 class="text-3xl font-bold mb-10 text-center" data-i18n="about.title">Quem Somos</h2>
 
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-700">
 
@@ -125,13 +125,11 @@
                 </div>
 
                 <div class="w-full md:w-2/3">
-                    <h3 class="text-2xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
-                        Olá!
-                    </h3>
-                    <p class="mb-4 text-lg">
+                    <h3 class="text-2xl font-semibold mb-4 text-primary-600 dark:text-primary-400" data-i18n="about.greeting">Olá!</h3>
+                    <p class="mb-4 text-lg" data-i18n="about.introName">
                         Meu nome é <strong>Sávio Emmanuel</strong>, estudante de Ciência da Computação, com interesse em desenvolvimento de software, inteligência artificial e educação.
                     </p>
-                    <p class="text-lg">
+                    <p class="text-lg" data-i18n="about.introBelief">
                         Acredito que a IA deve ser uma ferramenta de apoio ao aprendizado — nunca um atalho para evitá-lo.
                         Este projeto nasce dessa visão: unir tecnologia, ética e educação de forma responsável e transparente.
                     </p>
@@ -141,23 +139,21 @@
             <div class="space-y-10">
 
                 <section>
-                    <h3 class="text-2xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
-                        🎓 Por que este projeto existe?
-                    </h3>
+                    <h3 class="text-2xl font-semibold mb-4 text-primary-600 dark:text-primary-400" data-i18n="about.whyTitle">🎓 Por que este projeto existe?</h3>
                     <div class="space-y-4 text-lg">
-                        <p>
+                        <p data-i18n="about.whyPara1">
                             A Inteligência Artificial generativa é uma tecnologia recente e ainda em processo de adaptação,
                             especialmente em ambientes tradicionais como o acadêmico.
                         </p>
-                        <p>
+                        <p data-i18n="about.whyPara2">
                             No contexto universitário, seu uso pode ser ignorado, proibido ou penalizado,
                             dependendo da instituição, da disciplina ou da abordagem do professor.
                         </p>
-                        <p>
+                        <p data-i18n="about.whyPara3">
                             Muitos chatbots ultrapassam o limite entre apoiar o aprendizado e realizar o trabalho por completo,
                             o que gera desconfiança e resistência por parte de educadores.
                         </p>
-                        <p>
+                        <p data-i18n="about.whyPara4">
                             Este projeto surge como uma alternativa equilibrada:
                             uma IA educativa, ética e transparente, que respeita o papel do professor,
                             incentiva o pensamento crítico do aluno e promove aprendizado real.
@@ -166,42 +162,38 @@
                 </section>
 
                 <section>
-                    <h3 class="text-2xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
-                        🧠 O que é a AtenaAI?
-                    </h3>
+                    <h3 class="text-2xl font-semibold mb-4 text-primary-600 dark:text-primary-400" data-i18n="about.whatTitle">🧠 O que é a AtenaAI?</h3>
 
-                    <p class="mb-6 text-lg">
+                    <p class="mb-6 text-lg" data-i18n="about.whatIntro">
                         Um assistente acadêmico com IA, desenvolvido para apoiar — e não substituir — o processo de aprendizagem.
                         A proposta é oferecer auxílio responsável, adaptado a diferentes contextos educacionais.
                     </p>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg border">
-                            <h4 class="font-semibold text-lg mb-2">Estudantes livres</h4>
-                            <p>Acesso controlado à IA para estudos independentes e revisão de conteúdos.</p>
+                            <h4 class="font-semibold text-lg mb-2" data-i18n="about.freeStudents">Estudantes livres</h4>
+                            <p data-i18n="about.freeStudentsDesc">Acesso controlado à IA para estudos independentes e revisão de conteúdos.</p>
                         </div>
 
                         <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg border">
-                            <h4 class="font-semibold text-lg mb-2">Alunos de turma</h4>
-                            <p>Uso da IA como explicadora, com limites definidos pelo professor.</p>
+                            <h4 class="font-semibold text-lg mb-2" data-i18n="about.classStudents">Alunos de turma</h4>
+                            <p data-i18n="about.classStudentsDesc">Uso da IA como explicadora, com limites definidos pelo professor.</p>
                         </div>
 
                         <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg border">
-                            <h4 class="font-semibold text-lg mb-2">Professores</h4>
-                            <p>Visão de controle e acompanhamento do uso da IA no processo educacional.</p>
+                            <h4 class="font-semibold text-lg mb-2" data-i18n="about.teachers">Professores</h4>
+                            <p data-i18n="about.teachersDesc">Visão de controle e acompanhamento do uso da IA no processo educacional.</p>
                         </div>
                     </div>
 
-                    <p class="mt-6 text-lg font-medium text-center">
-                        Aprender com autonomia, mas nunca sozinho.
-                    </p>
+                    <p class="mt-6 text-lg font-medium text-center" data-i18n="about.motto">Aprender com autonomia, mas nunca sozinho.</p>
                 </section>
 
                 <section>
-                    <h3 class="text-2xl font-semibold mb-6 text-center text-primary-600 dark:text-primary-400">
+                    <h3 class="text-2xl font-semibold mb-6 text-center text-primary-600 dark:text-primary-400" data-i18n="about.contactTitle">
                         📬 Entre em contato
                     </h3>
-                    <p class="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                    <p class="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto" data-i18n="about.contactSubtitle">
                         Dúvidas, sugestões ou interesse em colaborar? Escolha o melhor canal para conversarmos!
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
@@ -289,27 +281,19 @@
 
                 <!-- CTAs de Login/Cadastro -->
                 <section id="cta-signup" class="text-center bg-primary-50 dark:bg-primary-900/30 p-8 rounded-xl border-2 border-primary-200 dark:border-primary-700">
-                    <h3 class="text-2xl font-semibold mb-4 text-primary-700 dark:text-primary-300">
-                        🚀 Junte-se a esta ideia
-                    </h3>
-                    <p class="mb-6 text-gray-700 dark:text-gray-300">
-                        Crie sua conta para começar a usar a AtenaAI agora mesmo e descubra uma nova forma de aprender.
-                    </p>
+                    <h3 class="text-2xl font-semibold mb-4 text-primary-700 dark:text-primary-300" data-i18n="cta.joinTitle">🚀 Junte-se a esta ideia</h3>
+                    <p class="mb-6 text-gray-700 dark:text-gray-300" data-i18n="cta.joinText">Crie sua conta para começar a usar a AtenaAI agora mesmo e descubra uma nova forma de aprender.</p>
                     <a href="cadastro.html"
-                        class="inline-block px-6 py-3 bg-primary-600 dark:bg-primary-700 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors font-medium">
+                        class="inline-block px-6 py-3 bg-primary-600 dark:bg-primary-700 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors font-medium" data-i18n="cta.startNow">
                         Comece Agora
                     </a>
                 </section>
 
                 <section id="cta-login" class="text-center bg-secondary-50 dark:bg-secondary-900/30 p-8 rounded-xl border-2 border-secondary-200 dark:border-secondary-700">
-                    <h3 class="text-2xl font-semibold mb-4 text-secondary-700 dark:text-secondary-300">
-                        👋 Bem-vindo!
-                    </h3>
-                    <p class="mb-6 text-gray-700 dark:text-gray-300">
-                        Já é estudante da plataforma? Clique no botão abaixo para acessar sua conta.
-                    </p>
+                    <h3 class="text-2xl font-semibold mb-4 text-secondary-700 dark:text-secondary-300" data-i18n="cta.welcomeTitle">👋 Bem-vindo!</h3>
+                    <p class="mb-6 text-gray-700 dark:text-gray-300" data-i18n="cta.welcomeText">Já é estudante da plataforma? Clique no botão abaixo para acessar sua conta.</p>
                     <a href="login.html"
-                        class="inline-block px-6 py-3 bg-secondary-600 dark:bg-secondary-700 text-white rounded-lg hover:bg-secondary-700 dark:hover:bg-secondary-600 transition-colors font-medium">
+                        class="inline-block px-6 py-3 bg-secondary-600 dark:bg-secondary-700 text-white rounded-lg hover:bg-secondary-700 dark:hover:bg-secondary-600 transition-colors font-medium" data-i18n="cta.loginNow">
                         Fazer Login
                     </a>
                 </section>
@@ -319,7 +303,7 @@
     </main>
 
     <footer class="border-t border-gray-200 dark:border-gray-700 py-6 px-4">
-        <div class="container mx-auto max-w-4xl text-center text-sm text-gray-500 dark:text-gray-400">
+        <div class="container mx-auto max-w-4xl text-center text-sm text-gray-500 dark:text-gray-400" data-i18n="footer.copyright">
             © 2026 AtenaAI — Projeto educacional e experimental.
         </div>
     </footer>
@@ -375,6 +359,7 @@
     // Executar ao carregar a página
     checkAuthStatus();
 </script>
+<script src="js/i18n.js"></script>
 <script type="module" src="js/ui.js"></script>
 </body>
 </html>

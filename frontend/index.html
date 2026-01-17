@@ -421,7 +421,7 @@ function hideToast() {
 
         <div class="sidebar-text flex-1">
           <p id="user-name" class="font-semibold">Carregando...</p>
-          <p id="user-role" class="text-sm text-gray-500">Estudante</p>
+          <p id="user-role" class="text-sm text-gray-500" data-i18n="auth.student">Estudante</p>
         </div>
 
         <button id="sidebar-toggle"
@@ -537,7 +537,7 @@ function hideToast() {
                 </button>
             </form>
 
-            <div class="text-xs text-center text-gray-500 mt-2">
+            <div class="text-xs text-center text-gray-500 mt-2" data-i18n="messages.versionWarning">
                 Versão limitada. Algumas respostas podem ser restritas.
             </div>
             </div>
@@ -602,7 +602,7 @@ function hideToast() {
     <div class="p-6">
         <!-- Header -->
         <div class="flex items-center justify-between mb-6">
-            <h2 class="text-xl font-bold">Configurações</h2>
+            <h2 class="text-xl font-bold" data-i18n="settings.title">Configurações</h2>
             <button id="close-settings" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
                 ✕
             </button>
@@ -612,13 +612,13 @@ function hideToast() {
         <form id="settings-form">
             <!-- Foto de Perfil -->
             <div class="settings-section">
-                <h3 class="settings-section-title">Foto de Perfil</h3>
+                <h3 class="settings-section-title" data-i18n="settings.profilePicture">Foto de Perfil</h3>
                 
                 <div class="flex items-center gap-4 mb-4">
                     <img id="profile-preview" class="profile-preview" src="" alt="Foto de perfil">
                     <div class="settings-file-input">
                         <label for="profile-image">
-                            📷 Escolher imagem
+                            📷 <span data-i18n="settings.chooseImage">Escolher imagem</span>
                         </label>
                         <input type="file" id="profile-image" accept="image/*">
                     </div>
@@ -627,114 +627,114 @@ function hideToast() {
 
             <!-- Informações Pessoais -->
             <div class="settings-section">
-                <h3 class="settings-section-title">Informações Pessoais</h3>
+                <h3 class="settings-section-title" data-i18n="settings.personalInfo">Informações Pessoais</h3>
                 
                 <div class="settings-form-group">
-                    <label for="setting-name">Nome Completo</label>
-                    <input type="text" id="setting-name" placeholder="Seu nome completo">
+                    <label for="setting-name" data-i18n="settings.fullName">Nome Completo</label>
+                    <input type="text" id="setting-name" data-i18n-placeholder="settings.fullNamePlaceholder" placeholder="Seu nome completo">
                 </div>
 
                 <div class="settings-form-group">
-                    <label for="setting-nickname">Apelido</label>
-                    <input type="text" id="setting-nickname" placeholder="Seu apelido (opcional)">
+                    <label for="setting-nickname" data-i18n="settings.nickname">Apelido</label>
+                    <input type="text" id="setting-nickname" data-i18n-placeholder="settings.nicknamePlaceholder" placeholder="Seu apelido (opcional)">
                 </div>
 
                 <div class="settings-form-group">
-                    <label for="setting-email">Email</label>
-                    <input type="email" id="setting-email" placeholder="seu@email.com">
+                    <label for="setting-email" data-i18n="settings.email">Email</label>
+                    <input type="email" id="setting-email" data-i18n-placeholder="settings.emailPlaceholder" placeholder="seu@email.com">
                 </div>
 
                 <div class="settings-form-group">
-                    <label for="setting-birth-date">Data de Nascimento</label>
+                    <label for="setting-birth-date" data-i18n="settings.birthDate">Data de Nascimento</label>
                     <input type="date" id="setting-birth-date">
                 </div>
 
                 <div class="settings-form-group">
-                    <label for="setting-gender">Gênero</label>
+                    <label for="setting-gender" data-i18n="settings.gender">Gênero</label>
                     <select id="setting-gender">
-                        <option value="">Selecione...</option>
-                        <option value="male">Masculino</option>
-                        <option value="female">Feminino</option>
-                        <option value="other">Outro</option>
+                        <option value="" data-i18n="settings.selectGender">Selecione...</option>
+                        <option value="male" data-i18n="settings.male">Masculino</option>
+                        <option value="female" data-i18n="settings.female">Feminino</option>
+                        <option value="other" data-i18n="settings.other">Outro</option>
                     </select>
                 </div>
             </div>
 
             <!-- Interesses -->
             <div class="settings-section">
-                <h3 class="settings-section-title">Interesses</h3>
+                <h3 class="settings-section-title" data-i18n="settings.interests">Interesses</h3>
                 
                 <div class="settings-form-group">
-                    <label class="block text-sm text-gray-600 dark:text-gray-400 mb-3">Selecione seus interesses acadêmicos</label>
+                    <label class="block text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.selectAcademicInterests">Selecione seus interesses acadêmicos</label>
                     <div id="interests-container" class="grid grid-cols-2 gap-2">
                         <!-- Exatas e Tecnologia -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2">📐 Exatas e Tecnologia</div></div>
-                        <div><input type="checkbox" id="interest-math" value="math" class="interest-checkbox hidden peer"><label for="interest-math" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Matemática</span></label></div>
-                        <div><input type="checkbox" id="interest-statistics" value="statistics" class="interest-checkbox hidden peer"><label for="interest-statistics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Estatística</span></label></div>
-                        <div><input type="checkbox" id="interest-physics" value="physics" class="interest-checkbox hidden peer"><label for="interest-physics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Física</span></label></div>
-                        <div><input type="checkbox" id="interest-chemistry" value="chemistry" class="interest-checkbox hidden peer"><label for="interest-chemistry" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Química</span></label></div>
-                        <div><input type="checkbox" id="interest-programming" value="programming" class="interest-checkbox hidden peer"><label for="interest-programming" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Programação</span></label></div>
-                        <div><input type="checkbox" id="interest-engineering" value="engineering" class="interest-checkbox hidden peer"><label for="interest-engineering" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Engenharia</span></label></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2" data-i18n="interests.exactsAndTechnology">📐 Exatas e Tecnologia</div></div>
+                        <div><input type="checkbox" id="interest-math" value="math" class="interest-checkbox hidden peer"><label for="interest-math" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.math">Matemática</span></label></div>
+                        <div><input type="checkbox" id="interest-statistics" value="statistics" class="interest-checkbox hidden peer"><label for="interest-statistics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.statistics">Estatística</span></label></div>
+                        <div><input type="checkbox" id="interest-physics" value="physics" class="interest-checkbox hidden peer"><label for="interest-physics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physics">Física</span></label></div>
+                        <div><input type="checkbox" id="interest-chemistry" value="chemistry" class="interest-checkbox hidden peer"><label for="interest-chemistry" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.chemistry">Química</span></label></div>
+                        <div><input type="checkbox" id="interest-programming" value="programming" class="interest-checkbox hidden peer"><label for="interest-programming" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.programming">Programação</span></label></div>
+                        <div><input type="checkbox" id="interest-engineering" value="engineering" class="interest-checkbox hidden peer"><label for="interest-engineering" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.engineering">Engenharia</span></label></div>
                         
                         <!-- Biológicas e Saúde -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2">🧬 Biológicas e Saúde</div></div>
-                        <div><input type="checkbox" id="interest-biology" value="biology" class="interest-checkbox hidden peer"><label for="interest-biology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Biologia</span></label></div>
-                        <div><input type="checkbox" id="interest-health" value="health" class="interest-checkbox hidden peer"><label for="interest-health" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Saúde</span></label></div>
-                        <div><input type="checkbox" id="interest-anatomy" value="anatomy" class="interest-checkbox hidden peer"><label for="interest-anatomy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Anatomia</span></label></div>
-                        <div><input type="checkbox" id="interest-pe" value="physical_education" class="interest-checkbox hidden peer"><label for="interest-pe" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Ed. Física</span></label></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.biologicalAndHealth">🧬 Biológicas e Saúde</div></div>
+                        <div><input type="checkbox" id="interest-biology" value="biology" class="interest-checkbox hidden peer"><label for="interest-biology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.biology">Biologia</span></label></div>
+                        <div><input type="checkbox" id="interest-health" value="health" class="interest-checkbox hidden peer"><label for="interest-health" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.health">Saúde</span></label></div>
+                        <div><input type="checkbox" id="interest-anatomy" value="anatomy" class="interest-checkbox hidden peer"><label for="interest-anatomy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.anatomy">Anatomia</span></label></div>
+                        <div><input type="checkbox" id="interest-pe" value="physical_education" class="interest-checkbox hidden peer"><label for="interest-pe" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physicalEducation">Ed. Física</span></label></div>
                         
                         <!-- Humanas -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2">🏛️ Humanas</div></div>
-                        <div><input type="checkbox" id="interest-history" value="history" class="interest-checkbox hidden peer"><label for="interest-history" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">História</span></label></div>
-                        <div><input type="checkbox" id="interest-geography" value="geography" class="interest-checkbox hidden peer"><label for="interest-geography" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Geografia</span></label></div>
-                        <div><input type="checkbox" id="interest-philosophy" value="philosophy" class="interest-checkbox hidden peer"><label for="interest-philosophy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Filosofia</span></label></div>
-                        <div><input type="checkbox" id="interest-sociology" value="sociology" class="interest-checkbox hidden peer"><label for="interest-sociology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Sociologia</span></label></div>
-                        <div><input type="checkbox" id="interest-psychology" value="psychology" class="interest-checkbox hidden peer"><label for="interest-psychology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Psicologia</span></label></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.humanities">🏛️ Humanas</div></div>
+                        <div><input type="checkbox" id="interest-history" value="history" class="interest-checkbox hidden peer"><label for="interest-history" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.history">História</span></label></div>
+                        <div><input type="checkbox" id="interest-geography" value="geography" class="interest-checkbox hidden peer"><label for="interest-geography" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.geography">Geografia</span></label></div>
+                        <div><input type="checkbox" id="interest-philosophy" value="philosophy" class="interest-checkbox hidden peer"><label for="interest-philosophy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.philosophy">Filosofia</span></label></div>
+                        <div><input type="checkbox" id="interest-sociology" value="sociology" class="interest-checkbox hidden peer"><label for="interest-sociology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.sociology">Sociologia</span></label></div>
+                        <div><input type="checkbox" id="interest-psychology" value="psychology" class="interest-checkbox hidden peer"><label for="interest-psychology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.psychology">Psicologia</span></label></div>
                         
                         <!-- Linguagens -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2">📚 Linguagens</div></div>
-                        <div><input type="checkbox" id="interest-literature" value="literature" class="interest-checkbox hidden peer"><label for="interest-literature" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Literatura</span></label></div>
-                        <div><input type="checkbox" id="interest-languages" value="languages" class="interest-checkbox hidden peer"><label for="interest-languages" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Idiomas</span></label></div>
-                        <div><input type="checkbox" id="interest-writing" value="writing" class="interest-checkbox hidden peer"><label for="interest-writing" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Redação</span></label></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.languages">📚 Linguagens</div></div>
+                        <div><input type="checkbox" id="interest-literature" value="literature" class="interest-checkbox hidden peer"><label for="interest-literature" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.literature">Literatura</span></label></div>
+                        <div><input type="checkbox" id="interest-languages" value="languages" class="interest-checkbox hidden peer"><label for="interest-languages" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.languages">Idiomas</span></label></div>
+                        <div><input type="checkbox" id="interest-writing" value="writing" class="interest-checkbox hidden peer"><label for="interest-writing" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.writing">Redação</span></label></div>
                         
                         <!-- Aplicadas e Profissionais -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2">💼 Aplicadas e Profissionais</div></div>
-                        <div><input type="checkbox" id="interest-law" value="law" class="interest-checkbox hidden peer"><label for="interest-law" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Direito</span></label></div>
-                        <div><input type="checkbox" id="interest-economics" value="economics" class="interest-checkbox hidden peer"><label for="interest-economics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Economia</span></label></div>
-                        <div><input type="checkbox" id="interest-arts" value="arts" class="interest-checkbox hidden peer"><label for="interest-arts" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Artes</span></label></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.appliedAndProfessional">💼 Aplicadas e Profissionais</div></div>
+                        <div><input type="checkbox" id="interest-law" value="law" class="interest-checkbox hidden peer"><label for="interest-law" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.law">Direito</span></label></div>
+                        <div><input type="checkbox" id="interest-economics" value="economics" class="interest-checkbox hidden peer"><label for="interest-economics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.economics">Economia</span></label></div>
+                        <div><input type="checkbox" id="interest-arts" value="arts" class="interest-checkbox hidden peer"><label for="interest-arts" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.arts">Artes</span></label></div>
                         
                         <!-- Acadêmico e Produtividade -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2">🎓 Acadêmico e Produtividade</div></div>
-                        <div><input type="checkbox" id="interest-research" value="research_methodology" class="interest-checkbox hidden peer"><label for="interest-research" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Pesquisa</span></label></div>
-                        <div><input type="checkbox" id="interest-study" value="study_skills" class="interest-checkbox hidden peer"><label for="interest-study" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium">Estudos</span></label></div>
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.academicAndProductivity">🎓 Acadêmico e Produtividade</div></div>
+                        <div><input type="checkbox" id="interest-research" value="research_methodology" class="interest-checkbox hidden peer"><label for="interest-research" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.researchMethodology">Pesquisa</span></label></div>
+                        <div><input type="checkbox" id="interest-study" value="study_skills" class="interest-checkbox hidden peer"><label for="interest-study" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.studySkills">Estudos</span></label></div>
                     </div>
                 </div>
             </div>
 
             <!-- Tipo de Conta -->
             <div class="settings-section">
-                <h3 class="settings-section-title">Tipo de Conta</h3>
+                <h3 class="settings-section-title" data-i18n="settings.accountType">Tipo de Conta</h3>
                 
                 <div class="settings-form-group">
-                    <label for="setting-account-type">Tipo de Conta</label>
+                    <label for="setting-account-type" data-i18n="settings.accountType">Tipo de Conta</label>
                     <select id="setting-account-type" disabled class="opacity-50 cursor-not-allowed">
-                        <option value="estudante">Estudante</option>
-                        <option value="teacher">Professor</option>
-                        <option value="guardian">Responsável</option>
+                        <option value="estudante" data-i18n="auth.student">Estudante</option>
+                        <option value="teacher" data-i18n="auth.teacher">Professor</option>
+                        <option value="guardian" data-i18n="auth.guardian">Responsável</option>
                     </select>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">⚠️ O tipo de conta não pode ser alterado no momento</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.accountTypeWarning">⚠️ O tipo de conta não pode ser alterado no momento</p>
 
                             <!-- Idioma -->
                             <div class="settings-section">
-                                <h3 class="settings-section-title">Idioma</h3>
+                                <h3 class="settings-section-title" data-i18n="settings.language">Idioma</h3>
                 
                                 <div class="settings-form-group">
-                                    <label for="setting-language">Selecione seu idioma</label>
+                                    <label for="setting-language" data-i18n="settings.selectLanguage">Selecione seu idioma</label>
                                     <select id="setting-language">
                                         <option value="pt-BR">Português (PT-BR) 🇧🇷</option>
                                         <option value="en-US">English (EN-US) 🇺🇸</option>
                                     </select>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">A interface será atualizada imediatamente</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.languageNote">A interface será atualizada imediatamente</p>
                                 </div>
                             </div>
                 </div>
@@ -742,15 +742,15 @@ function hideToast() {
 
             <!-- Botões -->
             <div class="settings-btn-group">
-                <button type="button" id="cancel-settings" class="settings-btn-cancel">Cancelar</button>
-                <button type="submit" class="settings-btn-save">Salvar Alterações</button>
+                <button type="button" id="cancel-settings" class="settings-btn-cancel" data-i18n="settings.cancel">Cancelar</button>
+                <button type="submit" class="settings-btn-save" data-i18n="settings.save">Salvar Alterações</button>
             </div>
 
             <!-- Danger Zone -->
             <div class="settings-danger-zone">
-                <div class="settings-danger-title">⚠️ Zona Perigosa</div>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Ações irreversíveis podem afetar sua conta</p>
-                <button type="button" id="delete-account-btn" class="settings-btn-danger">Deletar Minha Conta</button>
+                <div class="settings-danger-title" data-i18n="settings.dangerZone">⚠️ Zona Perigosa</div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.dangerZoneWarning">Ações irreversíveis podem afetar sua conta</p>
+                <button type="button" id="delete-account-btn" class="settings-btn-danger" data-i18n="settings.deleteAccount">Deletar Minha Conta</button>
             </div>
         </form>
     </div>
@@ -795,9 +795,17 @@ async function fetchUserData() {
             
             const userRoleEl = document.getElementById('user-role');
             if (userRoleEl) {
-                userRoleEl.textContent = userData.account_type 
-                    ? userData.account_type.charAt(0).toUpperCase() + userData.account_type.slice(1) 
-                    : 'Usuário';
+                // Traduzir tipo de conta usando chaves i18n
+                const accountTypeKey = {
+                    'student': 'auth.student',
+                    'estudante': 'auth.student',
+                    'teacher': 'auth.teacher',
+                    'professor': 'auth.teacher',
+                    'guardian': 'auth.guardian',
+                    'responsavel': 'auth.guardian'
+                };
+                const key = accountTypeKey[userData.account_type?.toLowerCase()] || 'auth.student';
+                userRoleEl.textContent = typeof t === 'function' ? t(key) : 'Estudante';
             }
         } else if (res.status === 401) {
             console.warn("⚠️ Token expirado ou inválido (401).");
@@ -1061,14 +1069,14 @@ async function handleFormSubmit(e) {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
-                body: JSON.stringify({ text })
+                body: JSON.stringify({ text, language: getLanguage && getLanguage() })
             });
         } else {
             console.log("👤 Enviando como usuário anônimo...");
             res = await fetch("http://127.0.0.1:8000/chat/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ text })
+                body: JSON.stringify({ text, language: getLanguage && getLanguage() })
             });
         }
 
@@ -1375,18 +1383,17 @@ profileImageInput?.addEventListener('change', (e) => {
 });
 
 // Submeter formulário de configurações
-settingsForm?.addEventListener('submit', async (e) => {
-    // Mudar idioma quando seletor é alterado
-    const languageSelect = document.getElementById('setting-language');
-    if (languageSelect) {
-        languageSelect.addEventListener('change', (e) => {
-            const newLanguage = e.target.value;
-            setLanguage(newLanguage);
-        });
-    }
+// Alterar idioma ao mudar o seletor
+const languageSelect = document.getElementById('setting-language');
+if (languageSelect) {
+    languageSelect.addEventListener('change', (e) => {
+        const newLanguage = e.target.value;
+        setLanguage(newLanguage);
+    });
+}
 
-    // Submeter formulário de configurações
-    settingsForm?.addEventListener('submit', async (e) => {
+// Submeter formulário de configurações
+settingsForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const token = localStorage.getItem('access_token');
@@ -1444,11 +1451,21 @@ settingsForm?.addEventListener('submit', async (e) => {
             // Atualizar avatar e nome na sidebar
             updateAvatar();
             document.getElementById('user-name').textContent = userData.nickname || userData.name || 'Usuário';
-            document.getElementById('user-role').textContent = userData.account_type ? userData.account_type.charAt(0).toUpperCase() + userData.account_type.slice(1) : 'Estudante';
+            // Traduzir tipo de conta usando chaves i18n
+            const accountTypeKeyMap = {
+                'student': 'auth.student',
+                'estudante': 'auth.student',
+                'teacher': 'auth.teacher',
+                'professor': 'auth.teacher',
+                'guardian': 'auth.guardian',
+                'responsavel': 'auth.guardian'
+            };
+            const roleKey = accountTypeKeyMap[userData.account_type?.toLowerCase()] || 'auth.student';
+            document.getElementById('user-role').textContent = typeof t === 'function' ? t(roleKey) : 'Estudante';
             
             // Fechar modal
             closeSettings();
-            showToastSuccess('Sucesso', 'Perfil atualizado com sucesso!');
+            showToastSuccess(typeof t === 'function' ? t('settings.profileUpdated') : 'Profile updated successfully!', '');
         } else {
             const error = await res.json();
             showToastError('Erro', error.detail || 'Erro ao atualizar perfil');
@@ -1565,10 +1582,14 @@ function startNewConversation() {
         chatEl.innerHTML = `
             <div class="flex items-start">
                 <div class="message bg-gray-50 dark:bg-gray-800 p-4 rounded-2xl rounded-tl-sm shadow-sm text-gray-800 dark:text-gray-100">
-                    <p>Olá! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
+                    <p data-i18n="messages.welcome">Olá! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
                 </div>
             </div>
         `;
+        // Re-apply translations after dynamic content
+        if (typeof updatePageLanguage === 'function') {
+            updatePageLanguage();
+        }
     }
     console.log("🔄 Conversa resetada. Aguardando primeira mensagem para criar no backend");
 }

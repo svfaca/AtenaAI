@@ -14,6 +14,7 @@ class MessageCreate(BaseModel):
     user_interests: Optional[str] = None
     user_gender: Optional[str] = None
     user_birth_date: Optional[date] = None
+    language: Optional[str] = None
 
     class Config:
         populate_by_name = True

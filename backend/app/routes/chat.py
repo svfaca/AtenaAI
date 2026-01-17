@@ -40,7 +40,8 @@ async def chat(message: MessageCreate):
         user_account_type=message.user_account_type,
         user_interests=message.user_interests,
         user_gender=message.user_gender,
-        user_birth_date=message.user_birth_date
+        user_birth_date=message.user_birth_date,
+        language=message.language
     )
     
     return {"reply": ai_response}

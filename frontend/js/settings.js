@@ -6,6 +6,16 @@ export class SettingsManager {
         this.init();
     }
 
+    // Helper function to get translations (compatible with i18n.js)
+    t(key) {
+        // Check if window.i18nInstance exists (from i18n.js)
+        if (typeof window !== 'undefined' && window.i18nInstance && window.i18nInstance.t) {
+            return window.i18nInstance.t(key);
+        }
+        // Fallback: return the key itself
+        return key;
+    }
+
     init() {
         this.attachEventListeners();
     }
@@ -18,6 +28,7 @@ export class SettingsManager {
         const settingsModalOverlay = document.getElementById('settings-modal-overlay');
         const profileImageInput = document.getElementById('profile-image');
         const deleteAccountBtn = document.getElementById('delete-account-btn');
+        const languageSelector = document.getElementById('setting-language');
 
         settingsBtn?.addEventListener('click', () => this.openSettings());
         closeSettingsBtn?.addEventListener('click', () => this.closeSettings());
@@ -26,6 +37,7 @@ export class SettingsManager {
         settingsForm?.addEventListener('submit', (e) => this.handleSubmit(e));
         profileImageInput?.addEventListener('change', (e) => this.handleImageUpload(e));
         deleteAccountBtn?.addEventListener('click', (e) => this.handleDeleteAccount(e));
+        languageSelector?.addEventListener('change', (e) => this.handleLanguageChange(e));
     }
 
     openSettings() {
@@ -47,6 +59,10 @@ export class SettingsManager {
                 ? this.userData.interests.join(', ')
                 : this.userData.interests
             : '';
+
+        // Restaurar idioma selecionado
+        const savedLanguage = localStorage.getItem('language') || 'pt-BR';
+        document.getElementById('setting-language').value = savedLanguage;
 
         // Mostrar imagem de perfil
         const profilePreview = document.getElementById('profile-preview');
@@ -90,7 +106,7 @@ export class SettingsManager {
 
         const token = localStorage.getItem('access_token');
         if (!token) {
-            this.showToastError('Não autenticado', 'Por favor faça login novamente');
+            this.showToastError(this.t('settings.notAuthenticated'), this.t('settings.loginAgain'));
             return;
         }
 
@@ -146,26 +162,26 @@ export class SettingsManager {
 
                 // Fechar modal
                 this.closeSettings();
-                this.showToastSuccess('Sucesso', 'Perfil atualizado com sucesso!');
+                this.showToastSuccess(this.t('settings.profileUpdated'), '');
             } else {
                 const error = await res.json();
-                this.showToastError('Erro', error.detail || 'Erro ao atualizar perfil');
+                this.showToastError(this.t('settings.updateError'), error.detail || this.t('settings.updateError'));
             }
         } catch (err) {
             console.error('Erro:', err);
-            this.showToastError('Erro', 'Falha ao conectar com o servidor');
+            this.showToastError(this.t('settings.updateError'), this.t('settings.connectionError'));
         }
     }
 
     async handleDeleteAccount(e) {
         e.preventDefault();
 
-        const confirmed = confirm('⚠️ Tem certeza que deseja deletar sua conta? Esta ação é irreversível!');
+        const confirmed = confirm(this.t('settings.deleteAccountConfirm'));
         if (!confirmed) return;
 
         const token = localStorage.getItem('access_token');
         if (!token) {
-            this.showToastError('Erro', 'Não autenticado');
+            this.showToastError(this.t('settings.deleteError'), this.t('settings.notAuthenticated'));
             return;
         }
 
@@ -178,18 +194,26 @@ export class SettingsManager {
             });
 
             if (res.ok) {
-                this.showToastSuccess('Conta deletada', 'Sua conta foi deletada com sucesso');
+                this.showToastSuccess(this.t('settings.accountDeleted'), this.t('settings.accountDeletedMessage'));
                 setTimeout(() => {
                     localStorage.removeItem('access_token');
                     location.reload();
                 }, 2000);
             } else {
                 const error = await res.json();
-                this.showToastError('Erro', error.detail || 'Erro ao deletar conta');
+                this.showToastError(this.t('settings.deleteError'), error.detail || this.t('settings.deleteError'));
             }
         } catch (err) {
             console.error('Erro:', err);
-            this.showToastError('Erro', 'Falha ao conectar com o servidor');
+            this.showToastError(this.t('settings.deleteError'), this.t('settings.connectionError'));
+        }
+    }
+
+    handleLanguageChange(e) {
+        const selectedLanguage = e.target.value;
+        // Call the global setLanguage function from i18n.js
+        if (typeof window.setLanguage === 'function') {
+            window.setLanguage(selectedLanguage);
         }
     }
 

@@ -5,7 +5,7 @@ from app.models import Conversation, Message
 from app.schemas.message import ChatMessage
 from app.schemas.chat import ConversationResponse, MessageResponse
 from app.core.dependencies import get_current_user, get_db
-from app.core.prompts import SYSTEM_PROMPT
+from app.core.prompts import get_system_prompt
 from app.ai.llm import get_client
 
 router = APIRouter(prefix="/conversations", tags=["Conversations"])
@@ -103,7 +103,7 @@ def send_message(
 
     # 2️⃣ monta contexto da IA
     history = [
-        {"role": "system", "content": SYSTEM_PROMPT}
+        {"role": "system", "content": get_system_prompt(payload.language)}
     ]
 
     messages = (

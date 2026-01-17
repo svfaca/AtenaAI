@@ -1,5 +1,5 @@
 from app.ai.llm import get_client
-from app.core.prompts import SYSTEM_PROMPT
+from app.core.prompts import get_system_prompt
 from app.core.config import AI_MODEL, OPENAI_API_KEY
 from datetime import date
 import logging
@@ -16,7 +16,8 @@ def generate_ai_response(
     user_account_type: str = None,
     user_interests: str = None,
     user_gender: str = None,
-    user_birth_date: date = None
+    user_birth_date: date = None,
+    language: str | None = None
 ):
     """
     Gera resposta da IA usando OpenAI com informações completas do usuário.
@@ -42,7 +43,7 @@ def generate_ai_response(
             return "Erro: Serviço de IA não configurado corretamente. Chave API ausente."
         
         # Construir prompt do sistema com informações do usuário se disponível
-        system_prompt = SYSTEM_PROMPT
+        system_prompt = get_system_prompt(language)
         
         # Adicionar contexto do usuário ao prompt se houver dados
         if any([user_name, user_email, user_interests, user_gender, user_birth_date, user_account_type, user_nickname]):
