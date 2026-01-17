@@ -1816,18 +1816,12 @@ function checkAndUpdateAuthStatus() {
         setupConversations();
 
     } else {
-
         console.log("❌ No token, showing not-authenticated UI");
-
         if (sidebar) {
-
             sidebar.classList.add('hidden');
-
             console.log("❌ Sidebar hidden");
-
         }
 
-        if (menuLogged) {
         // Desktop menus - esconder logado, mostrar não logado
         if (menuLogged) {
             menuLogged.classList.add('hidden');
@@ -1841,9 +1835,7 @@ function checkAndUpdateAuthStatus() {
         }
 
         // Mobile menus
-
         if (mobileMenuLogged) mobileMenuLogged.classList.add('hidden');
-
         if (mobileMenuNotLogged) mobileMenuNotLogged.classList.remove('hidden');
         
         // Esconder botao hamburger sidebar no mobile quando nao logado
@@ -1854,9 +1846,7 @@ function checkAndUpdateAuthStatus() {
         
         // Mostrar hamburger direito no mobile quando deslogado
         if (mobileMenuBtn) mobileMenuBtn.classList.remove('hidden');
-
     }
-
 }
 
 
