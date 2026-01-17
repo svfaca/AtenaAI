@@ -85,11 +85,24 @@
                 display: none;
             }
         }
+        /* Responsividade */
+        html, body {
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+        @media (max-width: 640px) {
+            .text-4xl { font-size: 1.75rem; }
+            .text-2xl { font-size: 1.25rem; }
+            .text-lg { font-size: 1rem; }
+            .p-8 { padding: 1rem; }
+            .p-5 { padding: 0.75rem; }
+            .gap-5 { gap: 0.75rem; }
+        }
     </style>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-<div class="min-h-screen flex flex-col">
+<div class="min-h-screen min-h-[100dvh] flex flex-col">
 
     <!-- HEADER -->
     <header class="border-b border-gray-200 dark:border-gray-700 py-3 px-4 flex justify-between items-center">
@@ -154,14 +167,14 @@
     </div>
 
     <!-- CONTEÚDO -->
-    <main class="flex-1 container mx-auto px-4 py-10 max-w-4xl">
-        <h2 class="text-3xl font-bold mb-10 text-center" data-i18n="about.title">Quem Somos</h2>
+    <main class="flex-1 container mx-auto px-3 sm:px-4 py-6 sm:py-10 max-w-4xl">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-10 text-center" data-i18n="about.title">Quem Somos</h2>
 
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-700">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-8 border border-gray-200 dark:border-gray-700">
 
-            <div class="flex flex-col md:flex-row gap-8 mb-10">
+            <div class="flex flex-col md:flex-row gap-6 sm:gap-8 mb-8 sm:mb-10">
                 <div class="w-full md:w-1/3 flex justify-center">
-                    <div class="w-64 h-64 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden border-4 border-primary-200 dark:border-primary-800">
+                    <div class="w-40 h-40 sm:w-64 sm:h-64 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden border-4 border-primary-200 dark:border-primary-800">
                         <img src="assets/images/pic.png" alt="Sávio Emmanuel" class="w-full h-full object-cover">
                     </div>
                 </div>

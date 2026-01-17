@@ -74,12 +74,22 @@
                 display: none;
             }
         }
+        /* Responsividade */
+        html, body {
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+        @media (max-width: 480px) {
+            .max-w-md {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen min-h-[100dvh] flex flex-col">
 <!-- TOAST -->
-<div id="toast" class="fixed top-5 right-5 z-50 hidden">
-  <div class="flex items-start gap-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-4 w-80">
+<div id="toast" class="fixed top-3 right-3 sm:top-5 sm:right-5 z-50 hidden">
+  <div class="flex items-start gap-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-3 sm:p-4 w-[calc(100vw-1.5rem)] sm:w-80 max-w-sm">
     
     <div id="toast-icon"
       class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-red-100 text-red-600">
@@ -144,8 +154,8 @@
         </div>
     </div>
 
-    <div class="flex-1 flex flex-col items-center justify-center p-4 py-8">
-        <div class="w-full max-w-md">
+    <div class="flex-1 flex flex-col items-center justify-start sm:justify-center p-4 py-6 sm:py-8 overflow-y-auto">
+        <div class="w-full max-w-md px-2 sm:px-0">
             <div class="text-center mb-6">
                 <p class="text-gray-600 dark:text-gray-400" data-i18n="auth.signupSubtitle">Crie sua conta para acessar todos os recursos</p>
             </div>
