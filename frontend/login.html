@@ -55,6 +55,26 @@
             }
         });
     </script>
+    <style>
+        /* Desktop menus - esconder no mobile */
+        .desktop-menu {
+            display: none !important;
+        }
+        @media (min-width: 768px) {
+            .desktop-menu {
+                display: flex !important;
+            }
+        }
+        /* Mobile menu button - mostrar apenas no mobile */
+        #mobile-menu-btn {
+            display: block;
+        }
+        @media (min-width: 768px) {
+            #mobile-menu-btn {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
     <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
@@ -62,43 +82,51 @@
         <header class="border-b border-gray-200 dark:border-gray-700 py-3 px-4 flex justify-between items-center">
             <!-- Logo e Beta -->
             <div class="flex items-center">
-                <a href="index.html" class="flex items-center text-2xl font-semibold leading-tight text-gray-900 dark:text-gray-100">
-                    <img src="assets/logo/logo-icon-ligth.png" alt="Logo AtenaAI" class="h-9 w-9 mr-2" data-theme-logo>
+                <a href="index.html" class="flex items-center text-xl font-semibold leading-tight text-gray-900 dark:text-gray-100">
+                    <img src="assets/logo/logo-icon-ligth.png" alt="Logo AtenaAI" class="h-8 w-8 mr-1" data-theme-logo>
                     AtenaAI
                 </a>
-                <span class="ml-2 px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">
+                <span class="ml-2 px-2 py-0.5 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">
                     Beta
                 </span>
             </div>
 
             <!-- Botões e Links -->
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center gap-1">
                 <!-- Botão de tema -->
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
-                    <!-- Ícone claro -->
                     <svg id="light-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
                     </svg>
-                    <!-- Ícone escuro -->
                     <svg id="dark-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
                     </svg>
                 </button>
 
-                <!-- Links de navegação -->
-                <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline">
-                    Quem somos
-                </a>
+                <!-- Menu hamburger mobile -->
+                <button id="mobile-menu-btn" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
 
-                <a href="login.html" data-i18n="navigation.login" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">
-                    Entrar
-                </a>
-
-                <a href="cadastro.html" data-i18n="navigation.register" class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-md text-sm font-medium">
-                    Criar Conta
-                </a>
+                <!-- Links de navegação - desktop only -->
+                <div class="desktop-menu items-center gap-2">
+                    <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline px-2">Quem somos</a>
+                    <a href="login.html" data-i18n="navigation.login" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md text-sm font-medium">Entrar</a>
+                    <a href="cadastro.html" data-i18n="navigation.register" class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-1.5 rounded-md text-sm font-medium">Criar Conta</a>
+                </div>
             </div>
         </header>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-3 md:hidden">
+            <div class="flex flex-col gap-2">
+                <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium py-2 border-b border-gray-100 dark:border-gray-700">Quem somos</a>
+                <a href="login.html" data-i18n="navigation.login" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium text-center">Entrar</a>
+                <a href="cadastro.html" data-i18n="navigation.register" class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-4 py-2 rounded-md text-sm font-medium text-center">Criar Conta</a>
+            </div>
+        </div>
 
         <div class="min-h-screen flex flex-col items-center justify-center p-4">
             <div class="w-full max-w-md">
@@ -220,10 +248,16 @@
             </div>
         </div>
 
-        <script type="module" src="js/ui.js"></script>
+        <script src="js/ui.js"></script>
         <script type="module" src="js/api.js"></script>
         <script type="module" src="js/auth.js"></script>
         <script type="module" src="js/login.js"></script>
         <script type="module" src="js/register.js"></script>
+        <script>
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+                document.getElementById('mobile-menu')?.classList.toggle('hidden');
+            });
+        </script>
 </body>
 </html>
