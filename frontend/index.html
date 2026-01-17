@@ -799,7 +799,7 @@
 
 
 
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 h-screen overflow-hidden">
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 h-screen flex flex-col">
 
 
 
@@ -853,7 +853,7 @@ function hideToast() {
 
 <!-- CONTAINER PRINCIPAL -->
 
-<div id="main-container" class="flex h-full">
+<div id="main-container" class="flex flex-1 overflow-hidden">
 
 
 
@@ -1166,8 +1166,6 @@ function hideToast() {
             <div class="text-xs text-center text-gray-500 mt-2" data-i18n="messages.versionWarning">
 
                 Versao limitada. Algumas respostas podem ser restritas.
-
-            </div>
 
             </div>
 
@@ -2147,7 +2145,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
+// Garantir que o estado seja verificado quando a página é restaurada do cache (back/forward)
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        console.log("📄 Página restaurada do cache, verificando auth status");
+        checkAndUpdateAuthStatus();
+    }
+});
 
 /* ================= CONTROLE DE LOGIN ================= */
 
