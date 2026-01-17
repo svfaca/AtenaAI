@@ -94,11 +94,126 @@ Style:
 - No filler.
 """
 
-def get_system_prompt(language: str | None) -> str:
-    """Return a system prompt based on the language (default pt-BR)."""
+
+def _build_user_context(user_data: dict, language: str) -> str:
+    """Build user context string from user data."""
+    if not user_data:
+        return ""
+    
+    name = user_data.get("name") or user_data.get("full_name") or ""
+    nickname = user_data.get("nickname") or ""
+    birth_date = user_data.get("birth_date") or ""
+    gender = user_data.get("gender") or ""
+    interests = user_data.get("interests") or ""
+    account_type = user_data.get("account_type") or "student"
+    
+    # Calcular idade se tiver data de nascimento
+    age = ""
+    if birth_date:
+        try:
+            from datetime import date, datetime
+            if isinstance(birth_date, str):
+                birth = datetime.strptime(birth_date, "%Y-%m-%d").date()
+            else:
+                birth = birth_date
+            today = date.today()
+            age = str(today.year - birth.year - ((today.month, today.day) < (birth.month, birth.day)))
+        except:
+            pass
+    
+    # Traduzir genero
+    gender_map_pt = {"male": "masculino", "female": "feminino", "other": "outro"}
+    gender_map_en = {"male": "male", "female": "female", "other": "other"}
+    
+    # Traduzir interesses
+    interests_map = {
+        "math": ("matematica", "math"),
+        "statistics": ("estatistica", "statistics"),
+        "physics": ("fisica", "physics"),
+        "chemistry": ("quimica", "chemistry"),
+        "programming": ("programacao", "programming"),
+        "engineering": ("engenharia", "engineering"),
+        "biology": ("biologia", "biology"),
+        "health": ("saude", "health"),
+        "anatomy": ("anatomia", "anatomy"),
+        "physical_education": ("educacao fisica", "physical education"),
+        "history": ("historia", "history"),
+        "geography": ("geografia", "geography"),
+        "philosophy": ("filosofia", "philosophy"),
+        "sociology": ("sociologia", "sociology"),
+        "psychology": ("psicologia", "psychology"),
+        "economics": ("economia", "economics"),
+        "literature": ("literatura", "literature"),
+        "languages": ("idiomas", "languages"),
+        "writing": ("redacao", "writing"),
+        "arts": ("artes", "arts"),
+        "music": ("musica", "music")
+    }
+    
+    is_english = language and language.lower().startswith("en")
+    
+    # Processar interesses
+    interests_list = []
+    if interests:
+        for interest in interests.split(","):
+            interest = interest.strip()
+            if interest in interests_map:
+                interests_list.append(interests_map[interest][1 if is_english else 0])
+            else:
+                interests_list.append(interest)
+    
+    if is_english:
+        context = "\n\n--- USER INFORMATION ---\n"
+        context += "Use this information to personalize your responses:\n"
+        if name:
+            context += f"- Full name: {name}\n"
+        if nickname:
+            context += f"- Preferred name/nickname: {nickname} (use this to address the user)\n"
+        if age:
+            context += f"- Age: {age} years old\n"
+        if gender:
+            context += f"- Gender: {gender_map_en.get(gender, gender)}\n"
+        if interests_list:
+            context += f"- Areas of interest: {', '.join(interests_list)}\n"
+        if account_type == "teacher":
+            context += "- Role: TEACHER (can request pedagogical analyses)\n"
+        else:
+            context += "- Role: Student\n"
+        context += "--- END USER INFORMATION ---\n"
+    else:
+        context = "\n\n--- INFORMACOES DO USUARIO ---\n"
+        context += "Use estas informacoes para personalizar suas respostas:\n"
+        if name:
+            context += f"- Nome completo: {name}\n"
+        if nickname:
+            context += f"- Apelido: {nickname} (use este nome para se dirigir ao usuario)\n"
+        if age:
+            context += f"- Idade: {age} anos\n"
+        if gender:
+            context += f"- Genero: {gender_map_pt.get(gender, gender)}\n"
+        if interests_list:
+            context += f"- Areas de interesse: {', '.join(interests_list)}\n"
+        if account_type == "teacher":
+            context += "- Funcao: PROFESSOR (pode solicitar analises pedagogicas)\n"
+        else:
+            context += "- Funcao: Estudante\n"
+        context += "--- FIM INFORMACOES DO USUARIO ---\n"
+    
+    return context
+
+
+def get_system_prompt(language: str | None, user_data: dict = None) -> str:
+    """Return a system prompt based on the language (default pt-BR) with optional user context."""
     if not language:
-        return SYSTEM_PROMPT
-    lang = language.lower()
-    if lang.startswith("en"):
-        return SYSTEM_PROMPT_EN
-    return SYSTEM_PROMPT
+        base_prompt = SYSTEM_PROMPT
+    else:
+        lang = language.lower()
+        if lang.startswith("en"):
+            base_prompt = SYSTEM_PROMPT_EN
+        else:
+            base_prompt = SYSTEM_PROMPT
+    
+    # Adicionar contexto do usuario se disponivel
+    user_context = _build_user_context(user_data, language or "pt")
+    
+    return base_prompt + user_context

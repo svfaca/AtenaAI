@@ -119,9 +119,18 @@ def send_message(
     db.add(user_msg)
     db.commit()
 
-    # 2️⃣ monta contexto da IA
+    # 2️⃣ monta contexto da IA com dados do usuario
+    user_data = {
+        "name": user.full_name,
+        "nickname": user.nickname,
+        "birth_date": user.birth_date,
+        "gender": user.gender,
+        "interests": user.interests,
+        "account_type": user.account_type
+    }
+    
     history = [
-        {"role": "system", "content": get_system_prompt(payload.language)}
+        {"role": "system", "content": get_system_prompt(payload.language, user_data)}
     ]
 
     messages = (
