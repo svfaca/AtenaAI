@@ -207,7 +207,7 @@
 
         
 
-        /* Desktop menus - esconder nao mobile */
+        /* Desktop menus - esconder por padrão, mostrar com auth-show */
 
         .desktop-menu {
 
@@ -221,6 +221,15 @@
 
                 display: flex !important;
 
+            }
+            
+            /* Garantir que menu não logado fica escondido quando logado */
+            #menu-not-logged:not(.auth-show) {
+                display: none !important;
+            }
+            
+            #menu-logged:not(.auth-show) {
+                display: none !important;
             }
 
         }
@@ -1098,9 +1107,9 @@ function hideToast() {
 
                 
 
-                <!-- Menu nao logado - desktop only -->
+                <!-- Menu nao logado - desktop only (visivel por padrao) -->
 
-                <div id="menu-not-logged" class="desktop-menu items-center gap-2">
+                <div id="menu-not-logged" class="desktop-menu auth-show items-center gap-2">
 
                     <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline px-2">Quem somos</a>
 
@@ -1357,7 +1366,12 @@ function hideToast() {
 
                 <div class="flex items-center gap-4 mb-4">
 
-                    <img id="profile-preview" class="profile-preview" src="" alt="Foto de perfil">
+                    <div id="profile-preview-container" class="profile-preview flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400">
+                        <svg id="profile-preview-placeholder" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        <img id="profile-preview" class="w-full h-full object-cover rounded-full hidden" src="" alt="Foto de perfil">
+                    </div>
 
                     <div class="settings-file-input">
 
@@ -2963,10 +2977,12 @@ profileImageInput?.addEventListener('change', (e) => {
         reader.onload = (event) => {
 
             const profilePreview = document.getElementById('profile-preview');
+            const placeholder = document.getElementById('profile-preview-placeholder');
 
             profilePreview.src = event.target.result;
 
-            profilePreview.style.display = 'block';
+            profilePreview.classList.remove('hidden');
+            if (placeholder) placeholder.classList.add('hidden');
 
         };
 
