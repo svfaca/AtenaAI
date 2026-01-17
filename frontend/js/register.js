@@ -57,7 +57,8 @@ const submitBtn = document.getElementById("submit-btn");
 const buttonText = document.getElementById("button-text");
 const loadingSpinner = document.getElementById("loading-spinner");
 
-interestsForm.addEventListener("submit", async (e) => {
+if (interestsForm) {
+  interestsForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   console.log("SUBMIT DISPARADO");
 
@@ -194,11 +195,12 @@ interestsForm.addEventListener("submit", async (e) => {
       message: err.message || t('auth.unexpectedError')
     });
   } finally {
-    buttonText.classList.remove("hidden");
-    loadingSpinner.classList.add("hidden");
-    submitBtn.disabled = false;
+    buttonText?.classList.remove("hidden");
+    loadingSpinner?.classList.add("hidden");
+    if (submitBtn) submitBtn.disabled = false;
   }
 });
+} // Fecha o if (interestsForm)
 
 document.addEventListener("DOMContentLoaded", () => {
     /* ===== STEPS ===== */
