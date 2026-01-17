@@ -64,12 +64,12 @@
         .sidebar-collapsed .sidebar-text {
             display: none;
         }
-        /* Mostrar ações compactas quando colapsado */
+        /* Mostrar aï¿½ï¿½es compactas quando colapsado */
         .sidebar-collapsed #collapsed-actions {
             display: flex;
         }
         
-        /* Ícones de menu da conversa - design minimalista e moderno */
+        /* ï¿½cones de menu da conversa - design minimalista e moderno */
         .conv-menu-btn {
             transition: all 0.2s ease;
         }
@@ -371,7 +371,7 @@
 <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
 <script>
-// Função hideToast definida cedo para ser usada no onclick
+// Funï¿½ï¿½o hideToast definida cedo para ser usada no onclick
 function hideToast() {
     const toast = document.getElementById('toast');
     if (toast) {
@@ -406,7 +406,7 @@ function hideToast() {
 <!-- CONTAINER PRINCIPAL -->
 <div id="main-container" class="flex h-screen">
 
-    <!-- SIDEBAR (Apenas para usuários logados) -->
+    <!-- SIDEBAR (Apenas para usuï¿½rios logados) -->
     <aside id="sidebar"
       class="hidden w-64 transition-all duration-300 bg-gray-100 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex-col">
 
@@ -447,12 +447,12 @@ function hideToast() {
 
       </div>
 
-            <!-- AÇÕES COMPACTAS (visíveis apenas com sidebar colapsada) -->
+            <!-- Aï¿½ï¿½ES COMPACTAS (visï¿½veis apenas com sidebar colapsada) -->
             <div id="collapsed-actions" class="hidden flex-col items-center gap-3 py-4">
                 <button id="collapsed-new" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="Nova conversa">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H5a1 1 0 110-2h6V5a1 1 0 011-1z"/></svg>
                 </button>
-                <button id="collapsed-settings" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="Configurações">
+                <button id="collapsed-settings" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="Configuraï¿½ï¿½es">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
                 </button>
                 <button id="collapsed-logout" class="p-2.5 rounded-lg bg-white dark:bg-gray-700 text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200 transform hover:scale-110 shadow-sm" title="Sair">
@@ -463,7 +463,7 @@ function hideToast() {
       <!-- FOOTER -->
       <div class="p-3 border-t border-gray-200 dark:border-gray-700 space-y-2">
         <button id="settings-btn" data-i18n="navigation.settings" class="w-full text-left text-sm hover:underline sidebar-text">
-          Configurações
+          Configuraï¿½ï¿½es
         </button>
 
         <button id="logout-btn"
@@ -474,7 +474,7 @@ function hideToast() {
       </div>
     </aside>
 
-    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- CONTEï¿½DO PRINCIPAL -->
     <div class="flex-1 flex flex-col overflow-hidden">
 
         <!-- HEADER -->
@@ -482,11 +482,11 @@ function hideToast() {
             <div class="flex items-center">
                 <button onclick="window.location.href='index.html'" class="flex items-center text-xl font-semibold hover:opacity-80 transition-opacity cursor-pointer">
                     <img src="assets/logo/logo-icon-ligth.png" alt="Logo AtenaAI" class="h-9 w-9 mr-2" data-theme-logo>
-                    AtenaAI
+                    <span class="hidden sm:inline">AtenaAI</span>
                 </button>
                 <span class="ml-2 px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Beta</span>
             </div>
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-2 sm:space-x-4">
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
                     <svg id="light-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
@@ -495,27 +495,48 @@ function hideToast() {
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
                     </svg>
                 </button>
-                <!-- Menu não logado -->
-                <div id="menu-not-logged" class="items-center space-x-4">
+                
+                <!-- Menu hamburger mobile -->
+                <button id="mobile-menu-btn" class="sm:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                
+                <!-- Menu nÃ£o logado - desktop -->
+                <div id="menu-not-logged" class="hidden sm:flex items-center space-x-4">
                     <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline">Quem somos</a>
                     <a href="login.html" data-i18n="navigation.login" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Entrar</a>
                     <a href="cadastro.html" data-i18n="navigation.register" class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 rounded-md text-sm font-medium">Criar Conta</a>
                 </div>
                 
-                <!-- Menu logado -->
-                <div id="menu-logged" class="hidden flex items-center space-x-4">
+                <!-- Menu logado - desktop -->
+                <div id="menu-logged" class="hidden sm:flex items-center space-x-4">
                     <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline">Quem somos</a>
                     <button id="logout-header" data-i18n="navigation.logout" class="text-red-600 hover:text-red-700 text-sm font-medium">Sair</button>
                 </div>
             </div>
         </header>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden sm:hidden bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 space-y-3">
+            <div id="mobile-menu-not-logged" class="space-y-2">
+                <a href="quem-somos.html" data-i18n="navigation.about" class="block text-sm font-medium hover:underline py-2">Quem somos</a>
+                <a href="login.html" data-i18n="navigation.login" class="block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium text-center">Entrar</a>
+                <a href="cadastro.html" data-i18n="navigation.register" class="block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-4 py-2 rounded-md text-sm font-medium text-center">Criar Conta</a>
+            </div>
+            <div id="mobile-menu-logged" class="hidden space-y-2">
+                <a href="quem-somos.html" data-i18n="navigation.about" class="block text-sm font-medium hover:underline py-2">Quem somos</a>
+                <button id="mobile-logout" data-i18n="navigation.logout" class="w-full text-left text-red-600 hover:text-red-700 text-sm font-medium py-2">Sair</button>
+            </div>
+        </div>
 
-        <!-- CHAT (sempre visível) -->
+        <!-- CHAT (sempre visï¿½vel) -->
         <div id="chat-container" class="flex flex-col flex-1 overflow-hidden">
             <div id="chat-messages" class="chat-container flex-1 overflow-y-auto p-4 space-y-6">
                 <div class="flex items-start">
                     <div class="message bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                        <p data-i18n="messages.welcome">Olá! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
+                        <p data-i18n="messages.welcome">Olï¿½! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
                     </div>
                 </div>
             </div>
@@ -538,7 +559,7 @@ function hideToast() {
             </form>
 
             <div class="text-xs text-center text-gray-500 mt-2" data-i18n="messages.versionWarning">
-                Versão limitada. Algumas respostas podem ser restritas.
+                Versï¿½o limitada. Algumas respostas podem ser restritas.
             </div>
             </div>
         </div>
@@ -570,20 +591,20 @@ function hideToast() {
     <div id="confirm-modal-overlay" class="hidden"></div>
     <div id="confirm-modal" class="hidden">
         <div class="flex flex-col items-center text-center p-8">
-            <!-- Ícone de aviso -->
+            <!-- ï¿½cone de aviso -->
             <div class="w-16 h-16 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mb-6 animate-pulse">
                 <span class="text-4xl">??</span>
             </div>
             
-            <!-- Título -->
+            <!-- Tï¿½tulo -->
             <h3 id="confirm-title" class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Deletar conversa</h3>
             
             <!-- Mensagem -->
             <p id="confirm-message" class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                Esta ação não pode ser desfeita. Deseja continuar?
+                Esta aï¿½ï¿½o nï¿½o pode ser desfeita. Deseja continuar?
             </p>
             
-            <!-- Botões -->
+            <!-- Botï¿½es -->
             <div class="flex gap-3 w-full">
                 <button id="confirm-cancel" class="flex-1 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-md">
                     Cancelar
@@ -602,7 +623,7 @@ function hideToast() {
     <div class="p-6">
         <!-- Header -->
         <div class="flex items-center justify-between mb-6">
-            <h2 class="text-xl font-bold" data-i18n="settings.title">Configurações</h2>
+            <h2 class="text-xl font-bold" data-i18n="settings.title">Configuraï¿½ï¿½es</h2>
             <button id="close-settings" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
                 ?
             </button>
@@ -625,9 +646,9 @@ function hideToast() {
                 </div>
             </div>
 
-            <!-- Informações Pessoais -->
+            <!-- Informaï¿½ï¿½es Pessoais -->
             <div class="settings-section">
-                <h3 class="settings-section-title" data-i18n="settings.personalInfo">Informações Pessoais</h3>
+                <h3 class="settings-section-title" data-i18n="settings.personalInfo">Informaï¿½ï¿½es Pessoais</h3>
                 
                 <div class="settings-form-group">
                     <label for="setting-name" data-i18n="settings.fullName">Nome Completo</label>
@@ -650,7 +671,7 @@ function hideToast() {
                 </div>
 
                 <div class="settings-form-group">
-                    <label for="setting-gender" data-i18n="settings.gender">Gênero</label>
+                    <label for="setting-gender" data-i18n="settings.gender">Gï¿½nero</label>
                     <select id="setting-gender">
                         <option value="" data-i18n="settings.selectGender">Selecione...</option>
                         <option value="male" data-i18n="settings.male">Masculino</option>
@@ -665,27 +686,27 @@ function hideToast() {
                 <h3 class="settings-section-title" data-i18n="settings.interests">Interesses</h3>
                 
                 <div class="settings-form-group">
-                    <label class="block text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.selectAcademicInterests">Selecione seus interesses acadêmicos</label>
+                    <label class="block text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.selectAcademicInterests">Selecione seus interesses acadï¿½micos</label>
                     <div id="interests-container" class="grid grid-cols-2 gap-2">
                         <!-- Exatas e Tecnologia -->
                         <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2" data-i18n="interests.exactsAndTechnology">?? Exatas e Tecnologia</div></div>
-                        <div><input type="checkbox" id="interest-math" value="math" class="interest-checkbox hidden peer"><label for="interest-math" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.math">Matemática</span></label></div>
-                        <div><input type="checkbox" id="interest-statistics" value="statistics" class="interest-checkbox hidden peer"><label for="interest-statistics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.statistics">Estatística</span></label></div>
-                        <div><input type="checkbox" id="interest-physics" value="physics" class="interest-checkbox hidden peer"><label for="interest-physics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physics">Física</span></label></div>
-                        <div><input type="checkbox" id="interest-chemistry" value="chemistry" class="interest-checkbox hidden peer"><label for="interest-chemistry" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.chemistry">Química</span></label></div>
-                        <div><input type="checkbox" id="interest-programming" value="programming" class="interest-checkbox hidden peer"><label for="interest-programming" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.programming">Programação</span></label></div>
+                        <div><input type="checkbox" id="interest-math" value="math" class="interest-checkbox hidden peer"><label for="interest-math" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.math">Matemï¿½tica</span></label></div>
+                        <div><input type="checkbox" id="interest-statistics" value="statistics" class="interest-checkbox hidden peer"><label for="interest-statistics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.statistics">Estatï¿½stica</span></label></div>
+                        <div><input type="checkbox" id="interest-physics" value="physics" class="interest-checkbox hidden peer"><label for="interest-physics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physics">Fï¿½sica</span></label></div>
+                        <div><input type="checkbox" id="interest-chemistry" value="chemistry" class="interest-checkbox hidden peer"><label for="interest-chemistry" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.chemistry">Quï¿½mica</span></label></div>
+                        <div><input type="checkbox" id="interest-programming" value="programming" class="interest-checkbox hidden peer"><label for="interest-programming" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.programming">Programaï¿½ï¿½o</span></label></div>
                         <div><input type="checkbox" id="interest-engineering" value="engineering" class="interest-checkbox hidden peer"><label for="interest-engineering" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.engineering">Engenharia</span></label></div>
                         
-                        <!-- Biológicas e Saúde -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.biologicalAndHealth">?? Biológicas e Saúde</div></div>
+                        <!-- Biolï¿½gicas e Saï¿½de -->
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.biologicalAndHealth">?? Biolï¿½gicas e Saï¿½de</div></div>
                         <div><input type="checkbox" id="interest-biology" value="biology" class="interest-checkbox hidden peer"><label for="interest-biology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.biology">Biologia</span></label></div>
-                        <div><input type="checkbox" id="interest-health" value="health" class="interest-checkbox hidden peer"><label for="interest-health" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.health">Saúde</span></label></div>
+                        <div><input type="checkbox" id="interest-health" value="health" class="interest-checkbox hidden peer"><label for="interest-health" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.health">Saï¿½de</span></label></div>
                         <div><input type="checkbox" id="interest-anatomy" value="anatomy" class="interest-checkbox hidden peer"><label for="interest-anatomy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.anatomy">Anatomia</span></label></div>
-                        <div><input type="checkbox" id="interest-pe" value="physical_education" class="interest-checkbox hidden peer"><label for="interest-pe" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physicalEducation">Ed. Física</span></label></div>
+                        <div><input type="checkbox" id="interest-pe" value="physical_education" class="interest-checkbox hidden peer"><label for="interest-pe" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.physicalEducation">Ed. Fï¿½sica</span></label></div>
                         
                         <!-- Humanas -->
                         <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.humanities">??? Humanas</div></div>
-                        <div><input type="checkbox" id="interest-history" value="history" class="interest-checkbox hidden peer"><label for="interest-history" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.history">História</span></label></div>
+                        <div><input type="checkbox" id="interest-history" value="history" class="interest-checkbox hidden peer"><label for="interest-history" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.history">Histï¿½ria</span></label></div>
                         <div><input type="checkbox" id="interest-geography" value="geography" class="interest-checkbox hidden peer"><label for="interest-geography" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.geography">Geografia</span></label></div>
                         <div><input type="checkbox" id="interest-philosophy" value="philosophy" class="interest-checkbox hidden peer"><label for="interest-philosophy" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.philosophy">Filosofia</span></label></div>
                         <div><input type="checkbox" id="interest-sociology" value="sociology" class="interest-checkbox hidden peer"><label for="interest-sociology" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.sociology">Sociologia</span></label></div>
@@ -695,7 +716,7 @@ function hideToast() {
                         <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.languages">?? Linguagens</div></div>
                         <div><input type="checkbox" id="interest-literature" value="literature" class="interest-checkbox hidden peer"><label for="interest-literature" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.literature">Literatura</span></label></div>
                         <div><input type="checkbox" id="interest-languages" value="languages" class="interest-checkbox hidden peer"><label for="interest-languages" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.languages">Idiomas</span></label></div>
-                        <div><input type="checkbox" id="interest-writing" value="writing" class="interest-checkbox hidden peer"><label for="interest-writing" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.writing">Redação</span></label></div>
+                        <div><input type="checkbox" id="interest-writing" value="writing" class="interest-checkbox hidden peer"><label for="interest-writing" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.writing">Redaï¿½ï¿½o</span></label></div>
                         
                         <!-- Aplicadas e Profissionais -->
                         <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.appliedAndProfessional">?? Aplicadas e Profissionais</div></div>
@@ -703,8 +724,8 @@ function hideToast() {
                         <div><input type="checkbox" id="interest-economics" value="economics" class="interest-checkbox hidden peer"><label for="interest-economics" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.economics">Economia</span></label></div>
                         <div><input type="checkbox" id="interest-arts" value="arts" class="interest-checkbox hidden peer"><label for="interest-arts" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.arts">Artes</span></label></div>
                         
-                        <!-- Acadêmico e Produtividade -->
-                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.academicAndProductivity">?? Acadêmico e Produtividade</div></div>
+                        <!-- Acadï¿½mico e Produtividade -->
+                        <div class="col-span-2"><div class="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2 mt-2" data-i18n="interests.academicAndProductivity">?? Acadï¿½mico e Produtividade</div></div>
                         <div><input type="checkbox" id="interest-research" value="research_methodology" class="interest-checkbox hidden peer"><label for="interest-research" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.researchMethodology">Pesquisa</span></label></div>
                         <div><input type="checkbox" id="interest-study" value="study_skills" class="interest-checkbox hidden peer"><label for="interest-study" class="flex items-center justify-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 cursor-pointer peer-checked:bg-blue-100 dark:peer-checked:bg-blue-900 peer-checked:border-blue-500 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"><span class="text-sm font-medium" data-i18n="interests.studySkills">Estudos</span></label></div>
                     </div>
@@ -720,9 +741,9 @@ function hideToast() {
                     <select id="setting-account-type" disabled class="opacity-50 cursor-not-allowed">
                         <option value="estudante" data-i18n="auth.student">Estudante</option>
                         <option value="teacher" data-i18n="auth.teacher">Professor</option>
-                        <option value="guardian" data-i18n="auth.guardian">Responsável</option>
+                        <option value="guardian" data-i18n="auth.guardian">Responsï¿½vel</option>
                     </select>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.accountTypeWarning">?? O tipo de conta não pode ser alterado no momento</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.accountTypeWarning">?? O tipo de conta nï¿½o pode ser alterado no momento</p>
 
                             <!-- Idioma -->
                             <div class="settings-section">
@@ -731,25 +752,25 @@ function hideToast() {
                                 <div class="settings-form-group">
                                     <label for="setting-language" data-i18n="settings.selectLanguage">Selecione seu idioma</label>
                                     <select id="setting-language">
-                                        <option value="pt-BR">Português (PT-BR) ????</option>
+                                        <option value="pt-BR">Portuguï¿½s (PT-BR) ????</option>
                                         <option value="en-US">English (EN-US) ????</option>
                                     </select>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.languageNote">A interface será atualizada imediatamente</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-i18n="settings.languageNote">A interface serï¿½ atualizada imediatamente</p>
                                 </div>
                             </div>
                 </div>
             </div>
 
-            <!-- Botões -->
+            <!-- Botï¿½es -->
             <div class="settings-btn-group">
                 <button type="button" id="cancel-settings" class="settings-btn-cancel" data-i18n="settings.cancel">Cancelar</button>
-                <button type="submit" class="settings-btn-save" data-i18n="settings.save">Salvar Alterações</button>
+                <button type="submit" class="settings-btn-save" data-i18n="settings.save">Salvar Alteraï¿½ï¿½es</button>
             </div>
 
             <!-- Danger Zone -->
             <div class="settings-danger-zone">
                 <div class="settings-danger-title" data-i18n="settings.dangerZone">?? Zona Perigosa</div>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.dangerZoneWarning">Ações irreversíveis podem afetar sua conta</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3" data-i18n="settings.dangerZoneWarning">Aï¿½ï¿½es irreversï¿½veis podem afetar sua conta</p>
                 <button type="button" id="delete-account-btn" class="settings-btn-danger" data-i18n="settings.deleteAccount">Deletar Minha Conta</button>
             </div>
         </form>
@@ -759,7 +780,7 @@ function hideToast() {
 </div>
 
 <script>
-/* ================= CONFIGURAÇÕES E GLOBAIS ================= */
+/* ================= CONFIGURAï¿½ï¿½ES E GLOBAIS ================= */
 let currentConversationId = null;
 let form, input, chat;
 let userData = {
@@ -767,12 +788,12 @@ let userData = {
     interests: null, gender: null, birth_date: null, profile_image: null
 };
 
-// ?? BUSCAR DADOS DO USUÁRIO
+// ?? BUSCAR DADOS DO USUï¿½RIO
 async function fetchUserData() {
     const token = localStorage.getItem('access_token');
     if (!token) return;
     try {
-        console.log("?? Buscando dados do usuário...");
+        console.log("?? Buscando dados do usuï¿½rio...");
         const res = await fetch("https://atenaai.onrender.com/auth/me", {
             headers: { "Authorization": `Bearer ${token}` }
         });
@@ -791,7 +812,7 @@ async function fetchUserData() {
             
             updateAvatar();
             const userNameEl = document.getElementById('user-name');
-            if (userNameEl) userNameEl.textContent = userData.nickname || userData.name || 'Usuário';
+            if (userNameEl) userNameEl.textContent = userData.nickname || userData.name || 'Usuï¿½rio';
             
             const userRoleEl = document.getElementById('user-role');
             if (userRoleEl) {
@@ -808,12 +829,12 @@ async function fetchUserData() {
                 userRoleEl.textContent = typeof t === 'function' ? t(key) : 'Estudante';
             }
         } else if (res.status === 401) {
-            console.warn("?? Token expirado ou inválido (401).");
+            console.warn("?? Token expirado ou invï¿½lido (401).");
             localStorage.removeItem('access_token');
             checkAndUpdateAuthStatus();
         }
     } catch (err) {
-        console.error("? Erro ao buscar dados do usuário:", err);
+        console.error("? Erro ao buscar dados do usuï¿½rio:", err);
     }
 }
 
@@ -833,57 +854,74 @@ function updateAvatar() {
     }
 }
 
-// ?? VERIFICADOR DE AUTENTICAÇÃO
+// ðŸ” VERIFICADOR DE AUTENTICAÃ‡ÃƒO
 function checkAndUpdateAuthStatus() {
     const token = localStorage.getItem('access_token');
     const sidebar = document.getElementById('sidebar');
     const menuNotLogged = document.getElementById('menu-not-logged');
     const menuLogged = document.getElementById('menu-logged');
+    const mobileMenuNotLogged = document.getElementById('mobile-menu-not-logged');
+    const mobileMenuLogged = document.getElementById('mobile-menu-logged');
     
-    console.log("?? checkAndUpdateAuthStatus called - Token:", !!token);
+    console.log("ðŸ” checkAndUpdateAuthStatus called - Token:", !!token);
     
     if (token) {
-        console.log("? Token found, showing authenticated UI");
+        console.log("âœ… Token found, showing authenticated UI");
         if (sidebar) {
             sidebar.classList.remove('hidden');
-            console.log("? Sidebar shown");
+            console.log("âœ… Sidebar shown");
         }
         if (menuLogged) {
             menuLogged.classList.remove('hidden');
-            console.log("? Logged menu shown");
+            console.log("âœ… Logged menu shown");
         }
         if (menuNotLogged) {
             menuNotLogged.classList.add('hidden');
-            console.log("? Not logged menu hidden");
+            console.log("âœ… Not logged menu hidden");
         }
+        // Mobile menus
+        if (mobileMenuLogged) mobileMenuLogged.classList.remove('hidden');
+        if (mobileMenuNotLogged) mobileMenuNotLogged.classList.add('hidden');
+        
         fetchUserData();
         setupConversations();
     } else {
-        console.log("? No token, showing not-authenticated UI");
+        console.log("âŒ No token, showing not-authenticated UI");
         if (sidebar) {
             sidebar.classList.add('hidden');
-            console.log("? Sidebar hidden");
+            console.log("âŒ Sidebar hidden");
         }
         if (menuLogged) {
             menuLogged.classList.add('hidden');
-            console.log("? Logged menu hidden");
+            console.log("âŒ Logged menu hidden");
         }
         if (menuNotLogged) {
             menuNotLogged.classList.remove('hidden');
-            console.log("? Not logged menu shown");
+            console.log("âŒ Not logged menu shown");
         }
+        // Mobile menus
+        if (mobileMenuLogged) mobileMenuLogged.classList.add('hidden');
+        if (mobileMenuNotLogged) mobileMenuNotLogged.classList.remove('hidden');
     }
 }
 
-// ?? Função central de inicialização de UI
+// ðŸŽ¨ FunÃ§Ã£o central de inicializaÃ§Ã£o de UI
 function initAppUI() {
-    console.log("?? Inicializando Listeners da UI...");
+    console.log("ðŸŽ¨ Inicializando Listeners da UI...");
 
     // 1. Logout
     document.getElementById('logout-btn')?.addEventListener('click', logout);
     document.getElementById('logout-header')?.addEventListener('click', logout);
+    document.getElementById('mobile-logout')?.addEventListener('click', logout);
 
-    // 2. Sidebar Toggle
+    // 2. Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+    });
+
+    // 3. Sidebar Toggle
     const sidebarToggle = document.getElementById('sidebar-toggle');
     sidebarToggle?.addEventListener('click', () => {
         document.getElementById('sidebar')?.classList.toggle('sidebar-collapsed');
@@ -894,7 +932,7 @@ function initAppUI() {
         document.getElementById('sidebar')?.classList.toggle('sidebar-collapsed');
     });
 
-    // 3. Theme Toggle
+    // 4. Theme Toggle
     const themeToggle = document.getElementById("theme-toggle");
     if (themeToggle) {
         themeToggle.onclick = () => {
@@ -956,7 +994,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Configurar Modal de Confirmação
+    // Configurar Modal de Confirmaï¿½ï¿½o
     const confirmOkBtn = document.getElementById('confirm-ok');
     const confirmCancelBtn = document.getElementById('confirm-cancel');
     const confirmOverlay = document.getElementById('confirm-modal-overlay');
@@ -983,7 +1021,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Restaurar conversa anterior se houver (para evitar perda no reload)
     const savedConvId = sessionStorage.getItem('currentConversationId');
     if (savedConvId) {
-        console.log("?? Restaurando conversa da sessão:", savedConvId);
+        console.log("?? Restaurando conversa da sessï¿½o:", savedConvId);
         loadConversation(savedConvId);
     }
     
@@ -1017,21 +1055,21 @@ function logout() {
 const html = document.documentElement;
 if (localStorage.getItem("theme") === "dark") html.classList.add("dark");
 
-// Atualizar logos conforme o tema ao carregar a página
+// Atualizar logos conforme o tema ao carregar a pï¿½gina
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof updateAllLogos === 'function') {
         updateAllLogos();
     }
 });
 
-// Função para lidar com submit do form
+// Funï¿½ï¿½o para lidar com submit do form
 async function handleFormSubmit(e) {
     if (e) {
         e.preventDefault();
         e.stopPropagation();
     }
     
-    // Garantir que não estamos enviando vazio ou duplicado
+    // Garantir que nï¿½o estamos enviando vazio ou duplicado
     const inputEl = document.getElementById("user-input");
     if (!inputEl || inputEl.disabled) return false;
 
@@ -1051,15 +1089,15 @@ async function handleFormSubmit(e) {
         
         // 1. Se logado mas sem conversa ativa, cria uma agora
         if (token && !currentConversationId) {
-            console.log("?? Criando nova conversa para início de papo...");
+            console.log("?? Criando nova conversa para inï¿½cio de papo...");
             const conv = await createConversationWithTitle(text);
             if (!conv) {
                 throw new Error("Falha ao criar conversa");
             }
-            // currentConversationId é setado dentro de createConversationWithTitle
+            // currentConversationId ï¿½ setado dentro de createConversationWithTitle
         }
         
-        // 2. Envia a mensagem (Logado ou Anônimo)
+        // 2. Envia a mensagem (Logado ou Anï¿½nimo)
         let res;
         if (token && currentConversationId) {
             console.log("? Enviando para conversa existente ID:", currentConversationId);
@@ -1072,7 +1110,7 @@ async function handleFormSubmit(e) {
                 body: JSON.stringify({ text, language: getLanguage && getLanguage() })
             });
         } else {
-            console.log("?? Enviando como usuário anônimo...");
+            console.log("?? Enviando como usuï¿½rio anï¿½nimo...");
             res = await fetch("https://atenaai.onrender.com/chat/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -1084,7 +1122,7 @@ async function handleFormSubmit(e) {
 
         const data = await res.json();
         removeTyping();
-        addAI(data.reply || "Não consegui responder agora.");
+        addAI(data.reply || "Nï¿½o consegui responder agora.");
         
     } catch (err) {
         removeTyping();
@@ -1099,20 +1137,20 @@ async function handleFormSubmit(e) {
 }
 
 
-// ??? Gerar título a partir da primeira mensagem
+// ??? Gerar tï¿½tulo a partir da primeira mensagem
 function generateTitleFromMessage(text) {
     // Pegar os primeiros 50 caracteres
     const truncated = text.length > 50 ? text.substring(0, 50) + '...' : text;
     return truncateTitle(truncated);
 }
 
-// Limita tamanho do título exibido na sidebar para não quebrar layout
+// Limita tamanho do tï¿½tulo exibido na sidebar para nï¿½o quebrar layout
 function truncateTitle(text, max = 28) {
     if (!text) return '';
-    return text.length > max ? text.substring(0, max - 1) + '…' : text;
+    return text.length > max ? text.substring(0, max - 1) + 'ï¿½' : text;
 }
 
-// Funções para o avatar da AtenaAI usando o logo do projeto
+// Funï¿½ï¿½es para o avatar da AtenaAI usando o logo do projeto
 function getLogoPath() {
     const isDark = document.documentElement.classList.contains('dark');
     return isDark ? 'assets/logo/logo-icon-dark.png' : 'assets/logo/logo-icon-ligth.png';
@@ -1133,12 +1171,12 @@ function updateAllLogos() {
     });
 }
 
-// Função para criar elemento de avatar da IA
+// Funï¿½ï¿½o para criar elemento de avatar da IA
 function createAIAvatarElement() {
     return document.createElement('div');
 }
 
-// ?? Adicionar mensagem do usuário
+// ?? Adicionar mensagem do usuï¿½rio
 function addUser(text) {
     const chatEl = document.getElementById("chat-messages");
     if (!chatEl) return;
@@ -1173,7 +1211,7 @@ function addAI(text) {
 }
 
 
-// ? Mostrar indicador de digitação
+// ? Mostrar indicador de digitaï¿½ï¿½o
 function showTyping() {
     const chatEl = document.getElementById("chat-messages");
     if (!chatEl) return;
@@ -1191,20 +1229,20 @@ function showTyping() {
     chatEl.scrollTop = chatEl.scrollHeight;
 }
 
-// ? Remover indicador de digitação
+// ? Remover indicador de digitaï¿½ï¿½o
 function removeTyping() {
     const t = document.getElementById("typing");
     if (t) t.remove();
 }
 
 
-// ? Criar nova conversa COM título
+// ? Criar nova conversa COM tï¿½tulo
 async function createConversationWithTitle(title) {
     const token = localStorage.getItem('access_token');
     if (!token) return null;
     
     try {
-        console.log("?? Criando conversa com título:", title);
+        console.log("?? Criando conversa com tï¿½tulo:", title);
         const res = await fetch('https://atenaai.onrender.com/conversations/', {
             method: 'POST',
             headers: { 
@@ -1221,7 +1259,7 @@ async function createConversationWithTitle(title) {
         const conv = await res.json();
         console.log("?? Conversa criada com ID:", conv.id);
         
-        // Atualizar o título da conversa
+        // Atualizar o tï¿½tulo da conversa
         const updateRes = await fetch(`https://atenaai.onrender.com/conversations/${conv.id}`, {
             method: 'PUT',
             headers: {
@@ -1241,7 +1279,7 @@ async function createConversationWithTitle(title) {
         } else {
             currentConversationId = conv.id;
             sessionStorage.setItem('currentConversationId', conv.id);
-            console.log("?? Conversa criada mas título não atualizado. ID:", currentConversationId);
+            console.log("?? Conversa criada mas tï¿½tulo nï¿½o atualizado. ID:", currentConversationId);
             loadConversations();
             return conv;
         }
@@ -1256,7 +1294,7 @@ async function createConversationWithTitle(title) {
 let pendingConfirmAction = null;
 
 function showConfirmModal(title, message, onConfirm) {
-    console.log("?? showConfirmModal chamado com título:", title);
+    console.log("?? showConfirmModal chamado com tï¿½tulo:", title);
     
     const confirmModal = document.getElementById('confirm-modal');
     const confirmOverlay = document.getElementById('confirm-modal-overlay');
@@ -1289,30 +1327,30 @@ const closeSettingsBtn = document.getElementById('close-settings');
 const cancelSettingsBtn = document.getElementById('cancel-settings');
 const settingsForm = document.getElementById('settings-form');
 
-// Abrir modal de configurações
+// Abrir modal de configuraï¿½ï¿½es
 function openSettings() {
     const settingsModal = document.getElementById('settings-modal');
     const settingsModalOverlay = document.getElementById('settings-modal-overlay');
     if (settingsModal) settingsModal.classList.add('active');
     if (settingsModalOverlay) settingsModalOverlay.classList.add('active');
     
-    // DEBUG: Logar dados do usuário
+    // DEBUG: Logar dados do usuï¿½rio
     console.log('userData ao abrir settings:', userData);
     
-    // Preencher campos com dados do usuário
+    // Preencher campos com dados do usuï¿½rio
     document.getElementById('setting-name').value = userData.name || '';
     document.getElementById('setting-nickname').value = userData.nickname || '';
     document.getElementById('setting-email').value = userData.email || '';
     document.getElementById('setting-birth-date').value = userData.birth_date || '';
     
-    // Selecionar gênero
+    // Selecionar gï¿½nero
     const genderSelect = document.getElementById('setting-gender');
-    console.log('Gênero do usuário:', userData.gender);
+    console.log('Gï¿½nero do usuï¿½rio:', userData.gender);
     genderSelect.value = userData.gender || '';
     
     // Selecionar tipo de conta
     const accountTypeSelect = document.getElementById('setting-account-type');
-    console.log('Tipo de conta do usuário:', userData.account_type);
+    console.log('Tipo de conta do usuï¿½rio:', userData.account_type);
     accountTypeSelect.value = userData.account_type || 'estudante';
     
     // Desmarcar todos os checkboxes de interesses primeiro
@@ -1327,15 +1365,15 @@ function openSettings() {
         cb.checked = false;
     });
     
-    // Marcar os interesses do usuário
-    console.log('Interesses do usuário:', userData.interests);
+    // Marcar os interesses do usuï¿½rio
+    console.log('Interesses do usuï¿½rio:', userData.interests);
     if (userData.interests && userData.interests.length > 0) {
         const interests = Array.isArray(userData.interests) ? userData.interests : [];
         console.log('Array de interesses:', interests);
         
         document.querySelectorAll('.interest-checkbox').forEach(checkbox => {
             console.log(`Verificando checkbox ${checkbox.value}:`, interests.includes(checkbox.value));
-            // Verificar se o valor do checkbox está na lista de interesses
+            // Verificar se o valor do checkbox estï¿½ na lista de interesses
             if (interests.includes(checkbox.value)) {
                 checkbox.checked = true;
                 console.log(`Marcado: ${checkbox.value}`);
@@ -1353,7 +1391,7 @@ function openSettings() {
     }
 }
 
-// Fechar modal de configurações
+// Fechar modal de configuraï¿½ï¿½es
 function closeSettings() {
     const settingsModal = document.getElementById('settings-modal');
     const settingsModalOverlay = document.getElementById('settings-modal-overlay');
@@ -1382,7 +1420,7 @@ profileImageInput?.addEventListener('change', (e) => {
     }
 });
 
-// Submeter formulário de configurações
+// Submeter formulï¿½rio de configuraï¿½ï¿½es
 // Alterar idioma ao mudar o seletor
 const languageSelect = document.getElementById('setting-language');
 if (languageSelect) {
@@ -1392,13 +1430,13 @@ if (languageSelect) {
     });
 }
 
-// Submeter formulário de configurações
+// Submeter formulï¿½rio de configuraï¿½ï¿½es
 settingsForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const token = localStorage.getItem('access_token');
     if (!token) {
-        showToastError('Não autenticado', 'Por favor faça login novamente');
+        showToastError('Nï¿½o autenticado', 'Por favor faï¿½a login novamente');
         return;
     }
     
@@ -1418,7 +1456,7 @@ settingsForm?.addEventListener('submit', async (e) => {
     });
     formData.append('interests', JSON.stringify(interests));
     
-    // Se há nova foto
+    // Se hï¿½ nova foto
     const profileImageInput = document.getElementById('profile-image');
     if (profileImageInput.files.length > 0) {
         formData.append('profile_image', profileImageInput.files[0]);
@@ -1450,7 +1488,7 @@ settingsForm?.addEventListener('submit', async (e) => {
             
             // Atualizar avatar e nome na sidebar
             updateAvatar();
-            document.getElementById('user-name').textContent = userData.nickname || userData.name || 'Usuário';
+            document.getElementById('user-name').textContent = userData.nickname || userData.name || 'Usuï¿½rio';
             // Traduzir tipo de conta usando chaves i18n
             const accountTypeKeyMap = {
                 'student': 'auth.student',
@@ -1476,7 +1514,7 @@ settingsForm?.addEventListener('submit', async (e) => {
     }
 });
 
-// Função para mostrar toast de sucesso
+// Funï¿½ï¿½o para mostrar toast de sucesso
 function showToastSuccess(title, message) {
     const toast = document.getElementById('toast');
     const toastTitle = document.getElementById('toast-title');
@@ -1493,7 +1531,7 @@ function showToastSuccess(title, message) {
     setTimeout(() => toast.classList.add('hidden'), 4000);
 }
 
-// Função para mostrar toast de erro
+// Funï¿½ï¿½o para mostrar toast de erro
 function showToastError(title, message) {
     const toast = document.getElementById('toast');
     const toastTitle = document.getElementById('toast-title');
@@ -1515,12 +1553,12 @@ const deleteAccountBtn = document.getElementById('delete-account-btn');
 deleteAccountBtn?.addEventListener('click', async (e) => {
     e.preventDefault();
     
-    const confirmed = confirm('?? Tem certeza que deseja deletar sua conta? Esta ação é irreversível!');
+    const confirmed = confirm('?? Tem certeza que deseja deletar sua conta? Esta aï¿½ï¿½o ï¿½ irreversï¿½vel!');
     if (!confirmed) return;
     
     const token = localStorage.getItem('access_token');
     if (!token) {
-        showToastError('Erro', 'Não autenticado');
+        showToastError('Erro', 'Nï¿½o autenticado');
         return;
     }
     
@@ -1554,7 +1592,7 @@ deleteAccountBtn?.addEventListener('click', async (e) => {
             // Mostrar toast
             showToastSuccess('Conta deletada', 'Sua conta foi deletada com sucesso. Recarregando...');
             
-            // Recarregar a página após 2 segundos para resetar completamente
+            // Recarregar a pï¿½gina apï¿½s 2 segundos para resetar completamente
             setTimeout(() => {
                 window.location.reload();
             }, 2000);
@@ -1576,13 +1614,13 @@ function startNewConversation() {
     currentConversationId = null;
     sessionStorage.removeItem('currentConversationId');
     
-    // Limpar o chat e mostrar mensagem padrão
+    // Limpar o chat e mostrar mensagem padrï¿½o
     const chatEl = document.getElementById('chat-messages');
     if (chatEl) {
         chatEl.innerHTML = `
             <div class="flex items-start">
                 <div class="message bg-gray-50 dark:bg-gray-800 p-4 rounded-2xl rounded-tl-sm shadow-sm text-gray-800 dark:text-gray-100">
-                    <p data-i18n="messages.welcome">Olá! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
+                    <p data-i18n="messages.welcome">Olï¿½! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?</p>
                 </div>
             </div>
         `;
@@ -1594,7 +1632,7 @@ function startNewConversation() {
     console.log("?? Conversa resetada. Aguardando primeira mensagem para criar no backend");
 }
 
-// ?? Carregar histórico de conversas
+// ?? Carregar histï¿½rico de conversas
 async function loadConversations() {
     const token = localStorage.getItem('access_token');
     if (!token) return;
@@ -1634,7 +1672,7 @@ async function loadConversations() {
                     </button>
                     
                     <div class="relative">
-                        <button class="conv-menu-btn ml-2 p-1 rounded-md text-gray-300 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200" data-conv-id="${conv.id}" title="Mais opções">
+                        <button class="conv-menu-btn ml-2 p-1 rounded-md text-gray-300 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200" data-conv-id="${conv.id}" title="Mais opï¿½ï¿½es">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10.5 1.5H9.5V3.5H10.5V1.5ZM10.5 8.5H9.5V10.5H10.5V8.5ZM10.5 15.5H9.5V17.5H10.5V15.5Z"/>
                             </svg>
@@ -1673,13 +1711,13 @@ async function loadConversations() {
     }
 }
 
-// Event delegation para conversas - adicionar uma única vez
+// Event delegation para conversas - adicionar uma ï¿½nica vez
 const listEl = document.getElementById('conversation-list');
 if (listEl && !listEl.hasAttribute('data-listeners-added')) {
     listEl.setAttribute('data-listeners-added', 'true');
     
     listEl.addEventListener('click', (e) => {
-        // Se clicou no botão de menu (três pontinhos)
+        // Se clicou no botï¿½o de menu (trï¿½s pontinhos)
         if (e.target.closest('.conv-menu-btn')) {
             e.stopPropagation();
             const btn = e.target.closest('.conv-menu-btn');
@@ -1728,11 +1766,11 @@ if (listEl && !listEl.hasAttribute('data-listeners-added')) {
     });
 }
 
-// ??? Carregar conversa específica
+// ??? Carregar conversa especï¿½fica
 async function loadConversation(convId) {
     const token = localStorage.getItem('access_token');
     if (!token) {
-        console.error("? Token não encontrado");
+        console.error("? Token nï¿½o encontrado");
         return;
     }
     
@@ -1759,14 +1797,14 @@ async function loadConversation(convId) {
         // Limpar chat completamente
         const chatEl = document.getElementById('chat-messages');
         if (!chatEl) {
-            console.error("? Elemento chat-messages não encontrado");
+            console.error("? Elemento chat-messages nï¿½o encontrado");
             return;
         }
         
         chatEl.innerHTML = '';
         console.log("?? Chat limpo");
-        // Sempre mostrar a saudação inicial da IA no topo
-        addAI('Olá! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?');
+        // Sempre mostrar a saudaï¿½ï¿½o inicial da IA no topo
+        addAI('Olï¿½! Sou a AtenaAI. Como posso ajudar nos seus estudos hoje?');
         
         if (conv.messages && conv.messages.length > 0) {
             console.log("?? Adicionando", conv.messages.length, "mensagens");
@@ -1797,7 +1835,7 @@ function editConversationTitle(convId) {
     const token = localStorage.getItem('access_token');
     if (!token) return;
     
-    // Encontrar o título atual
+    // Encontrar o tï¿½tulo atual
     const listEl = document.getElementById('conversation-list');
     const convItem = listEl.querySelector(`[data-conv-id="${convId}"]`);
     const currentTitle = convItem?.querySelector('.conversation-item p:first-child')?.textContent || '';
@@ -1820,7 +1858,7 @@ function editConversationTitle(convId) {
         const newTitle = input.value.trim();
         
         if (!newTitle) {
-            showToastError('Erro', 'O nome não pode ser vazio');
+            showToastError('Erro', 'O nome nï¿½o pode ser vazio');
             return;
         }
         
@@ -1886,7 +1924,7 @@ async function copyConversation(convId) {
         });
         
         if (!getRes.ok) {
-            showToastError('Erro', 'Não foi possível buscar a conversa');
+            showToastError('Erro', 'Nï¿½o foi possï¿½vel buscar a conversa');
             return;
         }
         
@@ -1902,14 +1940,14 @@ async function copyConversation(convId) {
         });
         
         if (!createRes.ok) {
-            showToastError('Erro', 'Não foi possível criar nova conversa');
+            showToastError('Erro', 'Nï¿½o foi possï¿½vel criar nova conversa');
             return;
         }
         
         const newConv = await createRes.json();
         
-        // 3. Atualizar título da nova conversa
-        const newTitle = `${originalConv.title} (cópia)`;
+        // 3. Atualizar tï¿½tulo da nova conversa
+        const newTitle = `${originalConv.title} (cï¿½pia)`;
         const updateRes = await fetch(`https://atenaai.onrender.com/conversations/${newConv.id}`, {
             method: 'PUT',
             headers: {
@@ -1920,7 +1958,7 @@ async function copyConversation(convId) {
         });
         
         if (!updateRes.ok) {
-            showToastError('Erro', 'Não foi possível atualizar nome da cópia');
+            showToastError('Erro', 'Nï¿½o foi possï¿½vel atualizar nome da cï¿½pia');
             return;
         }
         
@@ -1942,18 +1980,18 @@ function deleteConversation(convId) {
         return;
     }
     
-    // Mostrar modal de confirmação
+    // Mostrar modal de confirmaï¿½ï¿½o
     showConfirmModal(
         'Deletar conversa',
-        'Esta ação não pode ser desfeita. Deseja continuar?',
+        'Esta aï¿½ï¿½o nï¿½o pode ser desfeita. Deseja continuar?',
         () => {
-            console.log("? Usuário confirmou exclusão de:", convId);
+            console.log("? Usuï¿½rio confirmou exclusï¿½o de:", convId);
             performDeleteConversation(convId, token);
         }
     );
 }
 
-// Executar exclusão de conversa
+// Executar exclusï¿½o de conversa
 async function performDeleteConversation(convId, token) {
     try {
         console.log("??? Deletando conversa:", convId);
