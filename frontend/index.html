@@ -207,22 +207,11 @@
 
         
 
-        /* Desktop menus - esconder no mobile, mostrar no desktop apenas com auth-show */
-
-        .desktop-menu {
-
-            display: none !important;
-
-        }
-
-        @media (min-width: 768px) {
-
-            .desktop-menu.auth-show {
-
-                display: flex !important;
-
+        /* Desktop menus - esconder no mobile */
+        @media (max-width: 767px) {
+            .desktop-menu {
+                display: none !important;
             }
-
         }
 
         
@@ -1101,27 +1090,16 @@ function hideToast() {
                 
 
                 <!-- Menu nao logado - desktop only (visivel por padrao) -->
-
-                <div id="menu-not-logged" class="desktop-menu auth-show items-center gap-2">
-
+                <div id="menu-not-logged" class="desktop-menu flex items-center gap-2">
                     <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline px-2">Quem somos</a>
-
                     <a href="login.html" data-i18n="navigation.login" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md text-sm font-medium">Entrar</a>
-
                     <a href="cadastro.html" data-i18n="navigation.register" class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-1.5 rounded-md text-sm font-medium">Criar Conta</a>
-
                 </div>
 
-                
-
-                <!-- Menu logado - desktop only -->
-
-                <div id="menu-logged" class="desktop-menu items-center gap-2">
-
+                <!-- Menu logado - desktop only (escondido por padrao) -->
+                <div id="menu-logged" class="desktop-menu hidden items-center gap-2">
                     <a href="quem-somos.html" data-i18n="navigation.about" class="text-sm font-medium hover:underline px-2">Quem somos</a>
-
                     <button id="logout-header" data-i18n="navigation.logout" class="text-red-600 hover:text-red-700 text-sm font-medium">Sair</button>
-
                 </div>
 
             </div>
@@ -1833,20 +1811,16 @@ function checkAndUpdateAuthStatus() {
 
         }
 
+        // Desktop menus - mostrar logado, esconder não logado
         if (menuLogged) {
-
-            menuLogged.classList.add('auth-show');
-
+            menuLogged.classList.remove('hidden');
+            menuLogged.classList.add('flex');
             console.log("✅ Logged menu shown");
-
         }
-
         if (menuNotLogged) {
-
-            menuNotLogged.classList.remove('auth-show');
-
+            menuNotLogged.classList.add('hidden');
+            menuNotLogged.classList.remove('flex');
             console.log("✅ Not logged menu hidden");
-
         }
 
         // Mobile menus
@@ -1883,19 +1857,16 @@ function checkAndUpdateAuthStatus() {
         }
 
         if (menuLogged) {
-
-            menuLogged.classList.remove('auth-show');
-
+        // Desktop menus - esconder logado, mostrar não logado
+        if (menuLogged) {
+            menuLogged.classList.add('hidden');
+            menuLogged.classList.remove('flex');
             console.log("❌ Logged menu hidden");
-
         }
-
         if (menuNotLogged) {
-
-            menuNotLogged.classList.add('auth-show');
-
+            menuNotLogged.classList.remove('hidden');
+            menuNotLogged.classList.add('flex');
             console.log("❌ Not logged menu shown");
-
         }
 
         // Mobile menus
