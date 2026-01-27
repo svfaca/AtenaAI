@@ -1,4 +1,4 @@
-NEXT_PUBLIC_API_URL=https://web-production-110f3.up.railway.app/
+const API_BASE_URL = "https://web-production-110f3.up.railway.app";
 
 const form = document.getElementById("chat-form");
 const input = document.getElementById("user-input");
