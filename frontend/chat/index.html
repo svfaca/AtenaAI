@@ -6,14 +6,23 @@
     <title>AtenaAI — Chat</title>
 
     <script>
-        function setVH() {
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-            document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
-        }
-        setVH();
-        window.addEventListener('resize', setVH);
-    </script>
+    function setVH() {
+      const vh = window.visualViewport
+        ? window.visualViewport.height * 0.01
+        : window.innerHeight * 0.01;
+
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    setVH();
+    window.addEventListener('load', setVH);
+    window.addEventListener('resize', setVH);
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', setVH);
+    }
+</script>
+
 
     <link rel="icon" type="image/x-icon" href="assets/logo/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32x32.png">
@@ -36,8 +45,9 @@
 
     <style>
         /* GERAL */
-        html, body { height: 100vh; height: var(--app-height, 100vh); overflow: hidden; }
-        body { font-family: 'Inter', sans-serif; }
+        html, body {
+    overflow: hidden;
+}
         
         /* CHAT CONTAINER */
         .chat-container { flex: 1; overflow-y: auto; overflow-x: hidden; }
@@ -113,7 +123,9 @@
     </style>
 </head>
 
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 flex flex-col h-screen overflow-hidden">
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 flex flex-col overflow-hidden"
+      style="height: calc(var(--vh, 1vh) * 100);">
+
 
 <div id="sidebar-overlay"></div>
 
