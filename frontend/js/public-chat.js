@@ -220,4 +220,12 @@ if (form && input && chatMessages) {
             setLoading(false);
         }
     });
+    function scrollToBottom() {
+  const chat = document.getElementById("chat-messages");
+  chat.scrollTop = chat.scrollHeight;
+}
+
+// Sempre que adicionar mensagem:
+scrollToBottom();
+
 }
