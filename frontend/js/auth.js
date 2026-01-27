@@ -75,9 +75,9 @@ export function logout() {
   console.log("Encerrando sessão...");
   localStorage.clear(); // Limpa TUDO para evitar resquícios de tokens antigos
   
-  // Tenta redirecionar para index.html (geralmente a raiz do projeto)
-  // Se seu login for em login.html, mude abaixo
-  window.location.href = "index.html"; 
+  // Tenta redirecionar para index (geralmente a raiz do projeto)
+  // Se seu login for em login, mude abaixo
+  window.location.href = "index"; 
 }
 
 // ==========================================================
@@ -99,16 +99,16 @@ export function handleAuthResponse(response) {
   const isLogged = isAuthenticated();
   const path = window.location.pathname;
 
-  const isChatPage = path.includes("chat.html");
-  const isAuthPage = path.includes("login.html") || path.includes("cadastro.html") || path.endsWith("index.html") || path.endsWith("/");
+  const isChatPage = path.includes("chat");
+  const isAuthPage = path.includes("login") || path.includes("cadastro") || path.endsWith("index") || path.endsWith("/");
 
   // Se estiver no chat sem estar logado -> Tira daqui
   if (isChatPage && !isLogged) {
-    window.location.href = "index.html";
+    window.location.href = "index";
   }
   
   // Se estiver na home/login estando logado -> Manda pro chat
   if (isAuthPage && isLogged) {
-    window.location.href = "chat.html";
+    window.location.href = "chat";
   }
 })();
