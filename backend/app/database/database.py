@@ -1,46 +1,37 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 import os
-from dotenv import load_dotenv
 
-# Carrega variáveis de ambiente
-load_dotenv()
+# -----------------------------------------------------------------------------
+# Banco de dados - Railway PostgreSQL
+# -----------------------------------------------------------------------------
 
-# ==============================================================================
-# 🛑 CORTE DE SEGURANÇA (HARDCODE)
-# Aqui nós ignoramos o os.getenv e FORÇAMOS o uso do SQLite.
-# Isso impede fisicamente que o código conecte no Render.
-# ==============================================================================
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Garante compatibilidade SQLAlchemy
-if DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")
-    
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL não configurada")
 
-engine = create_engine(DATABASE_URL)
+# Corrige prefixo antigo caso Railway forneça postgres://
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-print("\n" + "="*60)
-print(f"🏠 MODO LOCAL FORÇADO: Usando {SQLALCHEMY_DATABASE_URL}")
-print("="*60 + "\n")
+# Remove parâmetros extras como ?sslmode=require
+if "?sslmode=" in DATABASE_URL:
+    DATABASE_URL = DATABASE_URL.split("?")[0]
 
-# Configurações do motor (engine) para SQLite
-connect_args = {"check_same_thread": False}
-
+# Cria engine PostgreSQL
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-    connect_args=connect_args
+    DATABASE_URL,
+    pool_pre_ping=True
 )
 
-# Sessão do banco
+# Sessão
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Base para os Models
+# Base dos models
 Base = declarative_base()
 
-# Dependência para injetar o banco nas rotas
+# Dependency
 def get_db():
     db = SessionLocal()
     try:
