@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 showToast({ title: "toasts.success", message: "toasts.accountCreatedMessage", type: "success" });
                 
                 setTimeout(() => {
-                    window.location.href = "chat.html";
+                    window.location.href = "chat";
                 }, 1500);
 
             } catch (err) {
