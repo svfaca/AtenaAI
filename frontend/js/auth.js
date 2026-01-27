@@ -77,7 +77,7 @@ export function logout() {
   
   // Tenta redirecionar para index (geralmente a raiz do projeto)
   // Se seu login for em login, mude abaixo
-  window.location.href = "index"; 
+  window.location.href = "/"; 
 }
 
 // ==========================================================
@@ -104,7 +104,7 @@ export function handleAuthResponse(response) {
 
   // Se estiver no chat sem estar logado -> Tira daqui
   if (isChatPage && !isLogged) {
-    window.location.href = "index";
+    window.location.href = "/";
   }
   
   // Se estiver na home/login estando logado -> Manda pro chat
