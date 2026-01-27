@@ -100,7 +100,7 @@ function renderRateLimitBox(retryAfterSeconds) {
         <strong>${title}</strong><br>
         ${waitText.replace("{time}", `<span id="rate-limit-timer"></span>`)}<br><br>
         ${orText}<br>
-        <a href="cadastro.html" class="text-blue-600 dark:text-blue-400 underline font-semibold">
+        <a href="cadastro" class="text-blue-600 dark:text-blue-400 underline font-semibold">
             ${btnText}
         </a>
       </div>
