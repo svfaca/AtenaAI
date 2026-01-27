@@ -7,6 +7,8 @@ from fastapi.staticfiles import StaticFiles
 from app.core.config import CORS_ORIGINS, API_VERSION
 from app.database.database import Base, engine
 
+Base.metadata.create_all(bind=engine)
+
 # ===== ROUTERS =====
 from app.routes.chat import router as chat_router
 from app.routes.conversations import router as conversations_router
