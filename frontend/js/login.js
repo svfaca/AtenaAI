@@ -1,7 +1,7 @@
 import { saveToken, saveUserData } from "./auth.js";
 
 // URL do Backend
-NEXT_PUBLIC_API_URL=https://web-production-110f3.up.railway.app/
+const API_BASE_URL = "https://web-production-110f3.up.railway.app";
 
 // ========================================================
 // 🎨 FUNÇÃO SHOW TOAST (COM DESIGN)
