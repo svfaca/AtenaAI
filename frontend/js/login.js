@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
 
           setTimeout(() => {
-              window.location.href = "chat.html";
+              window.location.href = "chat";
           }, 1000);
 
         } catch (err) {
