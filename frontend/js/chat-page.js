@@ -1,6 +1,6 @@
 import { getToken, logout, updateAvatarUI } from "./auth.js";
 
-NEXT_PUBLIC_API_URL=https://web-production-110f3.up.railway.app/
+const API_BASE_URL = "https://web-production-110f3.up.railway.app";
 let currentConversationId = null;
 let pendingActionId = null;
 
