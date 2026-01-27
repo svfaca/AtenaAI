@@ -294,7 +294,7 @@ export class SettingsManager {
             if (res.ok) {
                 alert("Conta excluída.");
                 localStorage.clear();
-                window.location.href = 'index';
+                window.location.href = '/';
             } else {
                 alert("Erro ao excluir conta.");
             }
