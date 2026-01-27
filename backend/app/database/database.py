@@ -12,6 +12,11 @@ load_dotenv()
 # Isso impede fisicamente que o código conecte no Render.
 # ==============================================================================
 DATABASE_URL = os.getenv("DATABASE_URL")
+
+# Garante compatibilidade SQLAlchemy
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")
+    
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL não configurada")
 
