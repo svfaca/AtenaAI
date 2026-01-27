@@ -5,7 +5,7 @@ import { getUserData, saveUserData, getToken, updateAvatarUI } from "./auth.js";
 // =========================================================
 // 🛑 CONFIGURAÇÃO DE URL LOCAL
 // =========================================================
-const API_BASE_URL = "http://127.0.0.1:8000";
+NEXT_PUBLIC_API_URL=https://web-production-110f3.up.railway.app/
 
 export class SettingsManager {
     constructor(updateAvatarCallback) {
