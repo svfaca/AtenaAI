@@ -1,4 +1,4 @@
-NEXT_PUBLIC_API_URL=https://web-production-110f3.up.railway.app/
+const API_BASE_URL = "https://web-production-110f3.up.railway.app";
 const TOKEN_KEY = "access_token";
 
 export async function apiRequest(endpoint, options = {}) {
