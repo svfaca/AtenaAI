@@ -298,7 +298,7 @@ document.getElementById('new-conversation')?.addEventListener('click', startNewC
 // 🏁 INICIALIZAÇÃO
 // ========================================================
 document.addEventListener("DOMContentLoaded", () => {
-    if (!window.location.pathname.includes("chat.html")) return;
+    if (!window.location.pathname.includes("chat")) return;
     updateAvatarUI();
     loadConversations();
     startNewChat();
