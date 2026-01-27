@@ -3,7 +3,7 @@ import { saveToken, saveUserData } from "./auth.js";
 // ========================================================
 // 🔧 CONFIGURAÇÕES
 // ========================================================
-NEXT_PUBLIC_API_URL=https://web-production-110f3.up.railway.app/
+const API_BASE_URL = "https://web-production-110f3.up.railway.app";
 
 // ========================================================
 // 🎨 FUNÇÃO SHOW TOAST (Igual ao Login)
