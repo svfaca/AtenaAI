@@ -11,7 +11,9 @@ load_dotenv()
 # Aqui nós ignoramos o os.getenv e FORÇAMOS o uso do SQLite.
 # Isso impede fisicamente que o código conecte no Render.
 # ==============================================================================
-SQLALCHEMY_DATABASE_URL = "sqlite:///./database.db"
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+engine = create_engine(DATABASE_URL)
 
 print("\n" + "="*60)
 print(f"🏠 MODO LOCAL FORÇADO: Usando {SQLALCHEMY_DATABASE_URL}")
