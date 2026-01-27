@@ -48,11 +48,10 @@
 
     <style>
         /* GERAL */
-        html, body { 
-            height: 100vh; 
-            height: var(--app-height, 100vh); 
-            overflow: hidden; 
+        html, body {
+            overflow: hidden;
         }
+
         body { font-family: 'Inter', sans-serif; }
         
         /* CHAT CONTAINER */
@@ -195,7 +194,11 @@
         
         // Se novas mensagens forem inseridas dinamicamente
         const observer = new MutationObserver(scrollToBottom);
-        observer.observe(document.getElementById("chat-messages"), { childList: true });
+        observer.observe(
+  document.getElementById("chat-messages"),
+  { childList: true, subtree: true }
+);
+
     </script>
 
 </body>
